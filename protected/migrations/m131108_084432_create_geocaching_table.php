@@ -17,13 +17,11 @@ class m131108_084432_create_geocaching_table extends CDbMigration
             'town' =>'string NOT NULL'
         ));
 
-        $this->createTable('{{player}}', array(
+        $this->createTable('{{user}}', array(
             'id' => 'pk',
-            'picture_id' => 'integer NOT NULL',
-            'place_id' =>'integer',
-            'nickname' =>'varchar(60) NOT NULL',
+            'username' =>'varchar(60) NOT NULL UNIQUE KEY',
             'password' =>'varchar(32) NOT NULL',
-            'e-mail' =>'varchar(32) NOT NULL',
+            'e_mail' =>'varchar(32) NOT NULL UNIQUE KEY',
             'name' =>'varchar(60)',
             'first_name' =>'varchar(60)',
             'last_name' =>'varchar(60)',
@@ -31,14 +29,13 @@ class m131108_084432_create_geocaching_table extends CDbMigration
             'birthday' =>'date',
             'phone' =>'varchar(18)',
             'other_information' =>'longtext',
-            'create_date' =>'datetime NOT NULL'
+            'create_date' =>'datetime NOT NULL',
+
+
         ));
 
         $this->createTable('{{stash}}', array(
             'id' => 'pk',
-            'player_id' => 'integer NOT NULL',
-            'picture_id' => 'integer NOT NULL',
-            'place_id' =>'integer',
             'stash_name' =>'varchar(60) NOT NULL',
             'type' =>'varchar(60) NOT NULL',
             'class' =>'varchar(32)',
@@ -58,30 +55,21 @@ class m131108_084432_create_geocaching_table extends CDbMigration
 
         $this->createTable('{{notepad}}', array(
             'id' => 'pk',
-            'player_id' => 'integer NOT NULL',
-            'stash_id' =>'integer NOT NULL',
             'comment' =>'longtext NOT NULL',
             'comment_date' =>'datetime NOT NULL'
         ));
 
-        $this->addForeignKey('player_picture', '{{player}}', 'picture_id', '{{picture}}', 'id');
-        $this->addForeignKey('player_place', '{{player}}', 'place_id', '{{place}}', 'id');
-        $this->addForeignKey('stash_picture', '{{stash}}', 'picture_id', '{{picture}}', 'id');
-        $this->addForeignKey('stash_place', '{{stash}}', 'place_id', '{{place}}', 'id');
-        $this->addForeignKey('stash_player', '{{stash}}', 'player_id', '{{player}}', 'id');
-        $this->addForeignKey('notepad_player', '{{notepad}}', 'player_id', '{{player}}', 'id');
-        $this->addForeignKey('notepad_stash', '{{notepad}}', 'stash_id', '{{stash}}', 'id');
 
 
 	}
 
 	public function down()
 	{
+        $this->dropTable('{{notepad}}');
+        $this->dropTable('{{stash}}');
+        $this->dropTable('{{user}}');
         $this->dropTable('{{picture}}');
         $this->dropTable('{{place}}');
-        $this->dropTable('{{player}}');
-        $this->dropTable('{{stash}}');
-        $this->dropTable('{{notepad}}');
 	}
 
 	/*
