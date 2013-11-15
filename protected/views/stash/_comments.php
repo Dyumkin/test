@@ -1,7 +1,7 @@
 <?php
 /* @var $comments Notepad */
-foreach($comments as $comment):
-?>
+foreach ($comments as $comment):
+    ?>
     <div class="comment" id="c<?php echo $comment->id; ?>">
 
 
@@ -20,7 +20,7 @@ foreach($comments as $comment):
         </div>
 
         <div class="time">
-            <?php echo date('F j, Y \a\t h:i a',$comment->comment_date); ?>
+            <?php echo Yii::app()->dateFormatter->formatDateTime($comment->comment_date, 'full'); ?>
         </div>
 
         <div class="content">

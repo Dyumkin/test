@@ -11,6 +11,7 @@ Yii::setPathOfAlias('bootstrap', dirname(__FILE__).'/../extensions/bootstrap');
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
 	'name'=>'My Web Application',
+    'language' => 'ru',
 
 	// preloading 'log' component
 	'preload'=>array('log'),
@@ -64,15 +65,14 @@ return array(
 
 
 		*/
-        /*
-        'urlManager'=>array(
-            'urlFormat'=>'path',
-            'rules'=>array(
-                'stash/<id:\d+>/<title:.*?>'=>'stash/view',
 
-                '<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
+        'urlManager' => array(
+            'urlFormat' => 'path',
+            'showScriptName' => false,
+            'rules' => array(
+                '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
             ),
-        ),*/
+        ),
         /*
 		'db'=>array(
 			'connectionString' => 'sqlite:'.dirname(__FILE__).'/../data/testdrive.db',

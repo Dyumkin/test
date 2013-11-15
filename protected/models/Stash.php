@@ -110,7 +110,6 @@ class Stash extends CActiveRecord
     }
 
 
-
     /**
      * Adds a new comment to this post.
      * This method will set status and post_id of the comment accordingly.
@@ -120,10 +119,11 @@ class Stash extends CActiveRecord
 
     public function addComment($comment)
     {
-        if (Yii::app()->params['commentNeedApproval'])
+        if (Yii::app()->params['commentNeedApproval']) {
             $comment->status = Notepad::STATUS_PENDING;
-        else
+        } else {
             $comment->status = Notepad::STATUS_APPROVED;
+        }
         $comment->stash_id = $this->id;
         return $comment->save();
     }

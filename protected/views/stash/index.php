@@ -2,8 +2,8 @@
 /* @var $this StashController */
 /* @var $dataProvider CActiveDataProvider */
 
-$this->breadcrumbs=array(
-	'Stashes',
+$this->breadcrumbs = array(
+    'Stashes',
 );
 
 ?>
@@ -11,7 +11,7 @@ $this->breadcrumbs=array(
 <h1>Stashes</h1>
 
 <?php $this->widget('zii.widgets.CListView', array(
-    'dataProvider'=>$dataProvider,
-    'itemView'=>'_view',
-    'template'=>"{items}\n{pager}",
+    'dataProvider' => $dataProvider,
+    'itemView' => '_view',
+    'template' => "{items}\n{pager}",
 )); ?>

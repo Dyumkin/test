@@ -36,15 +36,15 @@ Yii::app()->getClientScript()->registerScript('delete', $deleteJS);
     </div>
 
     <div class="time">
-        <?php if($data->status==Notepad::STATUS_PENDING): ?>
+        <?php if ($data->status == Notepad::STATUS_PENDING): ?>
             <span class="pending">Pending approval</span> |
             <?php echo CHtml::linkButton('Approve', array(
-                'submit'=>array('notepad/approve','id'=>$data->id),
+                'submit' => array('notepad/approve', 'id' => $data->id),
             )); ?> |
         <?php endif; ?>
-        <?php echo CHtml::link('Update',array('notepad/update','id'=>$data->id)); ?> |
-        <?php echo CHtml::link('Delete',array('notepad/delete','id'=>$data->id),array('class'=>'delete')); ?> |
-        <?php echo date('F j, Y \a\t h:i a',$data->comment_date); ?>
+        <?php echo CHtml::link('Update', array('notepad/update', 'id' => $data->id)); ?> |
+        <?php echo CHtml::link('Delete', array('notepad/delete', 'id' => $data->id), array('class' => 'delete')); ?> |
+        <?php echo date('F j, Y \a\t h:i a', $data->comment_date); ?>
     </div>
 
     <div class="content">
