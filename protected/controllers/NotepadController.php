@@ -19,7 +19,6 @@ class NotepadController extends Controller
 	{
 		return array(
 			'accessControl', // perform access control for CRUD operations
-			'postOnly + delete', // we only allow deletion via POST request
 		);
 	}
 
@@ -44,17 +43,19 @@ class NotepadController extends Controller
 	 * Displays a particular model.
 	 * @param integer $id the ID of the model to be displayed
 	 */
+    /*
 	public function actionView($id)
 	{
 		$this->render('view',array(
 			'model'=>$this->loadModel($id),
 		));
 	}
-
+    */
 	/**
 	 * Creates a new model.
 	 * If creation is successful, the browser will be redirected to the 'view' page.
 	 */
+    /*
 	public function actionCreate()
 	{
 		$model=new Notepad;
@@ -73,7 +74,7 @@ class NotepadController extends Controller
 			'model'=>$model,
 		));
 	}
-
+*/
 	/**
 	 * Updates a particular model.
 	 * If update is successful, the browser will be redirected to the 'view' page.
@@ -95,8 +96,8 @@ class NotepadController extends Controller
 		{
 			$model->attributes=$_POST['Notepad'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
-		}
+                $this->redirect(array('index'));
+        }
 
 		$this->render('update',array(
 			'model'=>$model,
@@ -114,8 +115,8 @@ class NotepadController extends Controller
 
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 		if(!isset($_GET['ajax']))
-			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
-	}
+            $this->redirect(array('index'));
+    }
 
 	/**
 	 * Lists all models.
@@ -136,6 +137,7 @@ class NotepadController extends Controller
 	/**
 	 * Manages all models.
 	 */
+    /*
 	public function actionAdmin()
 	{
 		$model=new Notepad('search');
@@ -147,6 +149,7 @@ class NotepadController extends Controller
 			'model'=>$model,
 		));
 	}
+    */
 
     /**
      * Approves a particular comment.
@@ -188,6 +191,7 @@ class NotepadController extends Controller
 	 * Performs the AJAX validation.
 	 * @param Notepad $model the model to be validated
 	 */
+    /*
 	protected function performAjaxValidation($model)
 	{
 		if(isset($_POST['ajax']) && $_POST['ajax']==='notepad-form')
@@ -196,4 +200,5 @@ class NotepadController extends Controller
 			Yii::app()->end();
 		}
 	}
+    */
 }

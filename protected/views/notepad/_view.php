@@ -20,13 +20,18 @@ Yii::app()->getClientScript()->registerScript('delete', $deleteJS);
 
 <div class="comment" id="c<?php echo $data->id; ?>">
 
-    <?php echo CHtml::link("#{$data->id}", $data->url, array(
+    <?php
+    /*
+    echo CHtml::link("#{$data->id}", $data->url, array(
         'class'=>'cid',
         'title'=>'Permalink to this comment',
-    )); ?>
+    ));
+    */
+    ?>
+
 
     <div class="author">
-        <?php echo $data->authorLink; ?> says on
+        <?php echo $data->getUserLink(); ?> says on
         <?php echo CHtml::link(CHtml::encode($data->stash->stash_name), $data->stash->url);?>
     </div>
 
@@ -34,7 +39,7 @@ Yii::app()->getClientScript()->registerScript('delete', $deleteJS);
         <?php if($data->status==Notepad::STATUS_PENDING): ?>
             <span class="pending">Pending approval</span> |
             <?php echo CHtml::linkButton('Approve', array(
-                'submit'=>array('comment/approve','id'=>$data->id),
+                'submit'=>array('notepad/approve','id'=>$data->id),
             )); ?> |
         <?php endif; ?>
         <?php echo CHtml::link('Update',array('notepad/update','id'=>$data->id)); ?> |

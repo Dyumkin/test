@@ -3,6 +3,7 @@
 /* @var $model Stash */
 
 $this->breadcrumbs=array(
+    'Stashes'=>array('index'),
     $model->stash_name,
 );
 $this->pageTitle=$model->stash_name;
@@ -20,7 +21,7 @@ $this->pageTitle=$model->stash_name;
 
         <?php $this->renderPartial('_comments',array(
             'stash'=>$model,
-            'notepad'=>$model->comments,
+            'comments'=>$model->comments,
         ));?>
     <?php endif; ?>
 

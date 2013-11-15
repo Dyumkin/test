@@ -6,7 +6,7 @@
  * The followings are the available columns in table '{{notepad}}':
  * @property integer $id
  * @property string $comment
- * @property string $comment_date
+ * @property integer $comment_date
  * @property integer $user_id
  * @property integer $stash_id
  * @property integer $status
@@ -36,7 +36,7 @@ class Notepad extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			//array('comment, comment_date', 'required'),
+			array('comment', 'required'),
 			array('user_id, stash_id', 'numerical', 'integerOnly'=>true),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
@@ -76,20 +76,23 @@ class Notepad extends CActiveRecord
         $this->status=Notepad::STATUS_APPROVED;
         $this->update(array('status'));
     }
-
+/*
     public function getUrl($stash=null)
     {
         if($stash===null)
             $stash=$this->stash;
         return $stash->url.'#c'.$this->id;
     }
-
-    public function getAuthorLink()
+*/
+    public function getUserLink()
     {
-        if(!empty($this->url))
-            return CHtml::link(CHtml::encode($this->user),$this->url);
-        else
-            return CHtml::encode($this->user);
+        if (!empty($this->user_id)){
+            return CHtml::link(CHtml::encode($this->user->username), 'stash/view', array(
+                'id' => $this->user_id,));
+        }
+        else{
+            return CHtml::encode($this->user->username);
+        }
     }
 
     public function findRecentComments($limit=10)
@@ -115,7 +118,8 @@ class Notepad extends CActiveRecord
         if(parent::beforeSave())
         {
             if($this->isNewRecord)
-                $this->comment_date= new CDbExpression('NOW()');
+                $this->comment_date=time();
+                $this->user_id=Yii::app()->user->id;
             return true;
         }
         else

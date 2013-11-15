@@ -65,6 +65,7 @@ class User extends CActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
             'stashes' => array(self::HAS_MANY, 'Stash', 'user_id'),
+            'notepads' => array(self::HAS_MANY, 'Notepad', 'user_id'),
         );
 	}
 
