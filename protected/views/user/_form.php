@@ -4,6 +4,7 @@
 /* @var $form CActiveForm */
 ?>
 
+
 <div class="form">
 
     <?php $form = $this->beginWidget('CActiveForm', array(
@@ -63,29 +64,34 @@
 
     <div class="row">
         <?php echo $form->labelEx($model, 'sex'); ?>
-        <?php echo $form->textField($model, 'sex', array('size' => 7, 'maxlength' => 7)); ?>
+        <?php echo $form->dropDownList($model, 'sex',$model->genderOptions,array('empty' => 'Select a gender') ); ?>
         <?php echo $form->error($model, 'sex'); ?>
     </div>
 
-    <div class="row">
-        <?=$form->labelEx($model, 'birthday')?>
-        <?php
-        $form->widget('zii.widgets.jui.CJuiDatePicker', array(
-            'model' => $model,
-            'attribute' => 'birthday',
-            'flat' => false,
-            'options' => array(
-                'dateFormat' => 'M d, yy',
-            ),
-            'htmlOptions' => array(
-                'class' => 'span-5',
-                'value' => ($birthday = $model->birthday) ? Yii::app()->getDateFormatter()->format("MMM d, y", $birthday) : '',
-            ),
-        ));
-        ?>
-        <?=$form->error($model, 'birthday')?>
-    </div>
 
+    <?php echo $form->labelEx($model, 'birthday'); ?>
+    <?php
+    echo $this->widget('zii.widgets.jui.CJuiDatePicker', array(
+        'name' => 'birthday',
+        'language' => 'ru',
+        'model' => $model,
+        'attribute' => 'birthday',
+        'options' => array(
+            'showAnim' => 'fold',
+            'yearRange'=>'-70:+0',
+            'changeMonth' => 'true',
+            'changeYear' => 'true',
+            'constrainInput' => 'false',
+        ),
+        'htmlOptions' => array(
+            'style' => 'height:20px;',
+        ),
+
+        // DONT FORGET TO ADD TRUE this will create the datepicker return
+        // as string
+    ), true);
+    ?>
+    <?php echo $form->error($model,'birthday'); ?>
 
     <div class="row">
         <?php echo $form->labelEx($model, 'phone'); ?>
@@ -98,7 +104,6 @@
         <?php echo $form->textArea($model, 'other_information', array('rows' => 6, 'cols' => 50)); ?>
         <?php echo $form->error($model, 'other_information'); ?>
     </div>
-
 
     <div class="row buttons">
         <?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>

@@ -27,7 +27,7 @@
 
     <div class="row">
         <?php echo $form->labelEx($model, 'type'); ?>
-        <?php echo $form->textField($model, 'type', array('size' => 60, 'maxlength' => 60)); ?>
+        <?php echo $form->dropDownList($model, 'type',$model->typeOptions,array('empty' => 'Select a stash type') ); ?>
         <?php echo $form->error($model, 'type'); ?>
     </div>
 
@@ -52,18 +52,25 @@
     <div class="row">
         <?=$form->labelEx($model, 'set_date')?>
         <?php
-        $form->widget('zii.widgets.jui.CJuiDatePicker', array(
+        echo $this->widget('zii.widgets.jui.CJuiDatePicker', array(
+            'name' => 'set_date',
+            'language' => 'ru',
             'model' => $model,
             'attribute' => 'set_date',
-            'flat' => false,
             'options' => array(
-                'dateFormat' => 'M d, yy',
+                'showAnim' => 'fold',
+                'yearRange'=>'-30:+0',
+                'changeMonth' => 'true',
+                'changeYear' => 'true',
+                'constrainInput' => 'false',
             ),
             'htmlOptions' => array(
-                'class' => 'span-5',
-                'value' => ($set_date = $model->set_date) ? Yii::app()->getDateFormatter()->format("MMM d, y", $set_date) : '',
+                'style' => 'height:20px;',
             ),
-        ));
+
+            // DONT FORGET TO ADD TRUE this will create the datepicker return
+            // as string
+        ), true);
         ?>
         <?=$form->error($model, 'set_date')?>
     </div>

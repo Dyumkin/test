@@ -20,6 +20,9 @@
 class User extends CActiveRecord
 {
 
+    const SEX_MALE = 'Male';
+    const SEX_FEMALE = 'Female';
+
 
     public $verifyPassword;
 
@@ -43,14 +46,14 @@ class User extends CActiveRecord
             array('username, name, first_name, last_name', 'length', 'max' => 60),
             array('username', 'unique'),
             array('e_mail', 'unique'),
-            array('password, verifyPassword', 'required', 'on' => 'create'),
+            array('password, verifyPassword', 'required', 'on'=>'create'),
             array('password', 'safe', 'on' => 'update'),
             array('password, e_mail', 'length', 'max' => 32),
             array('verifyPassword', 'compare', 'compareAttribute' => 'password', 'message' => 'Retype Password is incorrect'),
             array('sex', 'length', 'max' => 7),
             array('phone', 'length', 'max' => 18),
             array('birthday, other_information', 'safe'),
-            array('birthday', 'date', 'format' => 'yyyy-MM-dd'),
+            array('birthday', 'date', 'format'=>'dd.MM.yyyy'),
             // The following rule is used by search().
             // @todo Please remove those attributes that should not be searched.
             array('id, username, password, e_mail, name, first_name, last_name, sex, birthday, phone, other_information', 'safe', 'on' => 'search'),
@@ -100,7 +103,9 @@ class User extends CActiveRecord
                 if (!empty($this->password) && ($this->password == $this->verifyPassword)) {
                     $this->password = crypt($this->password, Yii::app()->params['cryptSalt']);
                 }
-
+                if (!empty($this->birthday)){
+                    $this->birthday =strtotime($this->birthday);
+                }
             }
 
             return true;
@@ -109,28 +114,28 @@ class User extends CActiveRecord
 
         return false;
     }
-
+/*
     public function beforeValidate()
     {
-        if (!parent::beforeValidate()) {
-            return false;
-        }
-
-        if (!empty($this->birthday)) {
-            $this->birthday = date('Y-m-d', strtotime($this->birthday));
-        } else {
-            $this->birthday = null;
-        }
-
-        return true;
+         $this->birthday = $this->year_of_birth . '-' . $this->month_of_birth . '-' . $this->day_of_birth;
+        return parent::beforeValidate();
     }
-
+*/
     public function findByUsername($username)
     {
         return $this->find(array(
             'condition' => 'username=:username',
             'params' => array(':username' => $username)
         ));
+    }
+
+    public function getGenderOptions(){
+        return array('Male' => User::SEX_MALE, 'Female' => User::SEX_FEMALE);
+    }
+
+    protected function afterFind() {
+        $this->birthday = Yii::app()->dateFormatter->formatDateTime($this->birthday, 'long','');
+        parent::afterFind();
     }
 
     /**

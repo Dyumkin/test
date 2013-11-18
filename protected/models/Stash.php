@@ -35,6 +35,11 @@ class Stash extends CActiveRecord
     const STATUS_PUBLISHED = true;
     const STATUS_UNPUBLISHED = false;
 
+    const TYPE_TRADITIONAL = 'Traditional';
+    const TYPE_VIRTUAL = 'Virtual';
+    const TYPE_STEPPED_TRADITIONAL = 'Stepped traditional';
+    const TYPE_STEPPED_VIRTUAL = 'Stepped virtual';
+
     public function tableName()
     {
         return '{{stash}}';
@@ -136,6 +141,7 @@ class Stash extends CActiveRecord
                 $this->create_date = $this->update_date = time();
                 $this->user_id = Yii::app()->user->id;
                 $this->status = true;
+                $this->set_date =strtotime($this->set_date);
             } else
                 $this->update_date = time();
             return true;
@@ -149,6 +155,19 @@ class Stash extends CActiveRecord
         Notepad::model()->deleteAll('stash_id=' . $this->id);
     }
 
+    protected function afterFind() {
+        $this->set_date = Yii::app()->dateFormatter->formatDateTime($this->set_date, 'long','');
+        parent::afterFind();
+    }
+
+    public function getTypeOptions(){
+        return array(
+            'Traditional' => Stash::TYPE_TRADITIONAL,
+            'Stepped traditional' => Stash::TYPE_STEPPED_TRADITIONAL,
+            'Virtual' => Stash::TYPE_VIRTUAL,
+            'Stepped virtual' => Stash::TYPE_STEPPED_VIRTUAL,
+        );
+    }
     /**
      * Retrieves a list of models based on the current search/filter conditions.
      *
