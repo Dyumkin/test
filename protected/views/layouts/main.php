@@ -10,12 +10,12 @@
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/print.css" media="print" />
 
     <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/styles.css" />
-    <?php Yii::app()->bootstrap->register(); ?>
+    <?php Yii::app()->bootstrap->enableCdn= true; ?>
 	<!--[if lt IE 8]>
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/ie.css" media="screen, projection" />
 	<![endif]-->
 
-	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/main.css" />
+    <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/main.css" />
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/form.css" />
 
 
@@ -31,21 +31,46 @@
 		<div id="logo"><?php echo CHtml::encode(Yii::app()->name); ?></div>
 	</div><!-- header -->
 
-	<div id="mainmenu">
-		<?php $this->widget('zii.widgets.CMenu',array(
-			'items'=>array(
-				array('label'=>'Home', 'url'=>array('/site/index')),
-				array('label'=>'About', 'url'=>array('/site/page', 'view'=>'about')),
-				array('label'=>'Contact', 'url'=>array('/site/contact')),
-                array('label'=>'Users', 'url'=>array('/user/index')),
-                array('label'=>'Stashes', 'url'=>array('/stash/index')),
-				array('label'=>'Login', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
-				array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest),
-			),
-		)); ?>
+	<div id="navbar">
+        <?php $this->widget('bootstrap.widgets.TbNavbar', array(
+            'type' => 'inverse',
+            'brand' => 'Title',
+            'brandUrl' => '#',
+            'collapse' => true,
+            'items' => array(
+                array(
+                    'class' => 'bootstrap.widgets.TbMenu',
+                    'items' => array(
+                        array('label' => 'Home', 'url' => array('/site/index')),
+
+                        array('label' => 'About game', 'items' => array(
+                                array('label' => 'History', 'url' => array('/site/page', 'view' => 'history')),
+                                array('label' => 'Rules', 'url' => array('/site/page', 'view' => 'rules')),
+                                array('label' => 'Advice', 'url' => array('/site/page', 'view' => 'advice')),
+                                array('label' => 'Players', 'url' => array('/user/index')),
+                            ),
+                        ),
+                        array('label' => 'Stashes', 'items' => array(
+                                array('label' => 'Stashes', 'url' => array('/stash/index')),
+                                array('label' => 'Geocaches map', 'url' => array('/stash/map')),
+                                array('label' => 'List of geocaches', 'url' => array('/site/list')),
+                            ),
+                        ),
+                        array('label' => 'Contact', 'url' => array('/site/contact')),
+                        array('label' => 'Login', 'url' => array('/site/login'), 'visible' => Yii::app()->user->isGuest),
+
+                        array('label' => 'Welcome ' . Yii::app()->user->name, 'visible' => !Yii::app()->user->isGuest, 'items' => array(
+                                array('label' => 'Private Office', 'url' => array('/profile/index')),
+                                array('label' => 'Logout (' . Yii::app()->user->name . ')', 'url' => array('/site/logout')),
+                            )
+                        ),
+                    ),
+                ),
+            ),
+        )); ?>
 	</div><!-- mainmenu -->
 	<?php if(isset($this->breadcrumbs)):?>
-		<?php $this->widget('zii.widgets.CBreadcrumbs', array(
+		<?php $this->widget('bootstrap.widgets.TbBreadcrumbs', array(
 			'links'=>$this->breadcrumbs,
 		)); ?><!-- breadcrumbs -->
 	<?php endif?>

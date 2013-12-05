@@ -38,7 +38,7 @@ class StashController extends Controller
                 'users' => array('*'),
             ),
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
-                /*'actions'=>array('create','update'),*/
+                'actions'=>array('create','update','newComment'),
                 'users' => array('@'),
             ),
             /*
@@ -75,7 +75,7 @@ class StashController extends Controller
     public function actionCreate()
     {
         $model = new Stash;
-
+        $model->season = Stash::SEASON_ALL;
         // Uncomment the following line if AJAX validation is needed
         // $this->performAjaxValidation($model);
 
@@ -185,7 +185,7 @@ class StashController extends Controller
                 } else {
                     $condition = '';
                 }
-                $this->_model = Stash::model()->findByPk($_GET['id'], $condition);
+                $this->_model = Stash::model()->findByPk($_GET['id']/*, $condition*/);
             }
             if ($this->_model === null) {
                 throw new CHttpException(404, 'The requested page does not exist.');

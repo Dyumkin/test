@@ -3,7 +3,7 @@
 /* @var $model Stash */
 
 $this->breadcrumbs = array(
-    'Stashes' => array('index'),
+    'Profile' => array('profile/index'),
     'Create',
 );
 

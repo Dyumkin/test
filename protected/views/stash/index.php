@@ -10,8 +10,18 @@ $this->breadcrumbs = array(
 
 <h1>Stashes</h1>
 
-<?php $this->widget('zii.widgets.CListView', array(
+<?php $this->widget('bootstrap.widgets.TbGridView', array(
+    'type' => 'bordered',
     'dataProvider' => $dataProvider,
-    'itemView' => '_view',
-    'template' => "{items}\n{pager}",
+    'columns' => array(
+        'stash_name',
+        'type',
+        'season',
+        'complexity',
+        'stashPlace',
+        array(
+            'class'=>'bootstrap.widgets.TbButtonColumn',
+            'template'=>'{view}',
+        ),
+    ),
 )); ?>

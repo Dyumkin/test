@@ -1,52 +1,40 @@
 <?php
 /* @var $this SiteController */
 /* @var $model LoginForm */
-/* @var $form CActiveForm  */
+/* @var $form TbActiveForm */
 
-$this->pageTitle=Yii::app()->name . ' - Login';
-$this->breadcrumbs=array(
+$this->pageTitle = Yii::app()->name . ' - Login';
+$this->breadcrumbs = array(
     'Login',
 );
 ?>
 
-<h1>Login</h1>
+    <fieldset>
 
-<p>Please fill out the following form with your login credentials:</p>
+        <legend>Login</legend>
 
-<div class="form">
-    <?php $form=$this->beginWidget('CActiveForm', array(
-        'id'=>'login-form',
-        'enableClientValidation'=>true,
-        'clientOptions'=>array(
-            'validateOnSubmit'=>true,
-        ),
-    )); ?>
+        <p>Please fill out the following form with your login credentials:</p>
 
-    <p class="note">Fields with <span class="required">*</span> are required.</p>
+        <?php $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
+            'id' => 'horizontalForm',
+            'type' => 'horizontal',
+            'enableClientValidation' => true,
+        )); ?>
 
-    <div class="row">
-        <?php echo $form->labelEx($model,'username'); ?>
-        <?php echo $form->textField($model,'username'); ?>
-        <?php echo $form->error($model,'username'); ?>
-    </div>
+        <p class="note">Fields with <span class="required">*</span> are required.</p>
 
-    <div class="row">
-        <?php echo $form->labelEx($model,'password'); ?>
-        <?php echo $form->passwordField($model,'password'); ?>
-        <?php echo $form->error($model,'password'); ?>
-    </div>
+            <?php echo $form->textFieldRow($model, 'username'); ?>
+            <?php echo $form->passwordFieldRow($model, 'password', array('placeholder' => 'Password')); ?>
 
-    <a href="<?=Yii::app()->createUrl('user/create');?>">Registration</a>
+        <a href="<?= Yii::app()->createUrl('user/create'); ?>">Registration</a>
 
-    <div class="row rememberMe">
-        <?php echo $form->checkBox($model,'rememberMe'); ?>
-        <?php echo $form->label($model,'rememberMe'); ?>
-        <?php echo $form->error($model,'rememberMe'); ?>
-    </div>
+            <?php echo $form->checkBoxRow($model, 'rememberMe'); ?>
 
-    <div class="row buttons">
-        <?php echo CHtml::submitButton('Login'); ?>
-    </div>
+    </fieldset>
 
-    <?php $this->endWidget(); ?>
-</div><!-- form -->
+<?php echo TbHtml::formActions(array(
+    TbHtml::submitButton('Sing in', array('color' => TbHtml::BUTTON_COLOR_PRIMARY)),
+    TbHtml::resetButton('Reset'),
+)); ?>
+
+<?php $this->endWidget(); ?>

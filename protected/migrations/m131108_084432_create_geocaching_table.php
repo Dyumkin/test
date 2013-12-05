@@ -41,7 +41,6 @@ class m131108_084432_create_geocaching_table extends CDbMigration
             'class' =>'varchar(32)',
             'attribute' =>'string',
             'season' =>'string',
-            'set_date' =>'date NOT NULL',
             'coordinates' =>'point NOT NULL',
             'complexity' =>'integer',
             'stash_description' =>'longtext NOT NULL',

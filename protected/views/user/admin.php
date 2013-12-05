@@ -48,7 +48,6 @@ $('.search-form form').submit(function(){
     'columns' => array(
         'id',
         'username',
-        'password',
         'e_mail',
         'name',
         'first_name',

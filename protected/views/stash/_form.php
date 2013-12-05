@@ -1,126 +1,50 @@
 <?php
 /* @var $this StashController */
 /* @var $model Stash */
-/* @var $form CActiveForm */
+/* @var $form TbActiveForm */
 ?>
 
-<div class="form">
 
-    <?php $form = $this->beginWidget('CActiveForm', array(
-        'id' => 'stash-form',
-        // Please note: When you enable ajax validation, make sure the corresponding
-        // controller action is handling ajax validation correctly.
-        // There is a call to performAjaxValidation() commented in generated controller code.
-        // See class documentation of CActiveForm for details on this.
-        'enableAjaxValidation' => false,
-    )); ?>
+<?php $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
+    'id' => 'horizontalForm',
+    'type' => 'horizontal',
+    'enableClientValidation' => true,
+)); ?>
 
     <p class="note">Fields with <span class="required">*</span> are required.</p>
 
     <?php echo $form->errorSummary($model); ?>
 
-    <div class="row">
-        <?php echo $form->labelEx($model, 'stash_name'); ?>
-        <?php echo $form->textField($model, 'stash_name', array('size' => 60, 'maxlength' => 60)); ?>
-        <?php echo $form->error($model, 'stash_name'); ?>
-    </div>
+    <?php echo $form->textFieldRow($model, 'stash_name', array('size' => 60, 'maxlength' => 60)); ?>
 
-    <div class="row">
-        <?php echo $form->labelEx($model, 'type'); ?>
-        <?php echo $form->dropDownList($model, 'type',$model->typeOptions,array('empty' => 'Select a stash type') ); ?>
-        <?php echo $form->error($model, 'type'); ?>
-    </div>
+    <?php echo $form->dropDownListRow($model, 'type', $model->typeOptions, array('empty' => 'Select a stash type')); ?>
 
-    <div class="row">
-        <?php echo $form->labelEx($model, 'class'); ?>
-        <?php echo $form->textField($model, 'class', array('size' => 32, 'maxlength' => 32)); ?>
-        <?php echo $form->error($model, 'class'); ?>
-    </div>
+    <?php echo $form->checkBoxListRow($model, 'class', $model->classOptions); ?>
 
-    <div class="row">
-        <?php echo $form->labelEx($model, 'attribute'); ?>
-        <?php echo $form->textField($model, 'attribute', array('size' => 60, 'maxlength' => 255)); ?>
-        <?php echo $form->error($model, 'attribute'); ?>
-    </div>
+    <?php echo $form->textFieldRow($model, 'attribute', array('size' => 60, 'maxlength' => 255)); ?>
 
-    <div class="row">
-        <?php echo $form->labelEx($model, 'season'); ?>
-        <?php echo $form->textField($model, 'season', array('size' => 60, 'maxlength' => 255)); ?>
-        <?php echo $form->error($model, 'season'); ?>
-    </div>
+    <?php echo $form->radioButtonListRow($model, 'season', $model->seasonOptions); ?>
 
-    <div class="row">
-        <?=$form->labelEx($model, 'set_date')?>
-        <?php
-        echo $this->widget('zii.widgets.jui.CJuiDatePicker', array(
-            'name' => 'set_date',
-            'language' => 'ru',
-            'model' => $model,
-            'attribute' => 'set_date',
-            'options' => array(
-                'showAnim' => 'fold',
-                'yearRange'=>'-30:+0',
-                'changeMonth' => 'true',
-                'changeYear' => 'true',
-                'constrainInput' => 'false',
-            ),
-            'htmlOptions' => array(
-                'style' => 'height:20px;',
-            ),
+    <?php echo $form->dropDownListRow($model, 'complexity', range(1, 5)); ?>
 
-            // DONT FORGET TO ADD TRUE this will create the datepicker return
-            // as string
-        ), true);
-        ?>
-        <?=$form->error($model, 'set_date')?>
-    </div>
+    <?php $this->widget('WidgetProvider', array('model' => $model)); ?>
 
-    <div class="row">
-        <?php echo $form->labelEx($model, 'complexity'); ?>
-        <?php echo $form->textField($model, 'complexity'); ?>
-        <?php echo $form->error($model, 'complexity'); ?>
-    </div>
+    <?php echo $form->textAreaRow($model, 'stash_description', array('rows' => 6, 'cols' => 50)); ?>
 
-    <div class="row">
-        <?php echo $form->labelEx($model, 'stash_description'); ?>
-        <?php echo $form->textArea($model, 'stash_description', array('rows' => 6, 'cols' => 50)); ?>
-        <?php echo $form->error($model, 'stash_description'); ?>
-    </div>
+    <?php echo $form->textAreaRow($model, 'place_description', array('rows' => 6, 'cols' => 50)); ?>
 
-    <div class="row">
-        <?php echo $form->labelEx($model, 'place_description'); ?>
-        <?php echo $form->textArea($model, 'place_description', array('rows' => 6, 'cols' => 50)); ?>
-        <?php echo $form->error($model, 'place_description'); ?>
-    </div>
+    <?php echo $form->textAreaRow($model, 'other_information', array('rows' => 6, 'cols' => 50)); ?>
 
-    <div class="row">
-        <?php echo $form->labelEx($model, 'other_information'); ?>
-        <?php echo $form->textArea($model, 'other_information', array('rows' => 6, 'cols' => 50)); ?>
-        <?php echo $form->error($model, 'other_information'); ?>
-    </div>
+    <?php echo $form->textAreaRow($model, 'content', array('rows' => 6, 'cols' => 50)); ?>
 
-    <div class="row">
-        <?php echo $form->labelEx($model, 'content'); ?>
-        <?php echo $form->textArea($model, 'content', array('rows' => 6, 'cols' => 50)); ?>
-        <?php echo $form->error($model, 'content'); ?>
-    </div>
+    <?php echo $form->textAreaRow($model, 'answer', array('rows' => 6, 'cols' => 50)); ?>
 
-    <div class="row">
-        <?php echo $form->labelEx($model, 'answer'); ?>
-        <?php echo $form->textArea($model, 'answer', array('rows' => 6, 'cols' => 50)); ?>
-        <?php echo $form->error($model, 'answer'); ?>
-    </div>
+    <?php echo $form->textAreaRow($model, 'question', array('rows' => 6, 'cols' => 50)); ?>
 
-    <div class="row">
-        <?php echo $form->labelEx($model, 'question'); ?>
-        <?php echo $form->textArea($model, 'question', array('rows' => 6, 'cols' => 50)); ?>
-        <?php echo $form->error($model, 'question'); ?>
-    </div>
-
-    <div class="row buttons">
-        <?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
-    </div>
+    <?php echo TbHtml::formActions(array(
+        TbHtml::submitButton($model->isNewRecord ? 'Create' : 'Save', array('color' => TbHtml::BUTTON_COLOR_PRIMARY)),
+        TbHtml::resetButton('Reset'),
+    )); ?>
 
     <?php $this->endWidget(); ?>
 
-</div><!-- form -->

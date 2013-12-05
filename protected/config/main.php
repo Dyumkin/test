@@ -4,7 +4,6 @@
 // Yii::setPathOfAlias('local','path/to/local-folder');
 // Define a path alias for the Bootstrap extension as it's used internally.
 // In this example we assume that you unzipped the extension under protected/extensions.
-Yii::setPathOfAlias('bootstrap', dirname(__FILE__).'/../extensions/bootstrap');
 
 // This is the main Web application configuration. Any writable
 // CWebApplication properties can be configured here.
@@ -16,10 +15,15 @@ return array(
 	// preloading 'log' component
 	'preload'=>array('log'),
 
+    'aliases' => array(
+        'bootstrap' => realpath(__DIR__ . '/../extensions/bootstrap'), // change this if necessary
+    ),
+
 	// autoloading model and component classes
 	'import'=>array(
 		'application.models.*',
 		'application.components.*',
+        'bootstrap.helpers.TbHtml',
 	),
 
     'theme'=>'bootstrap', // requires you to copy the theme under your themes directory
@@ -43,7 +47,7 @@ return array(
 	// application components
 	'components'=>array(
         'bootstrap'=>array(
-            'class'=>'bootstrap.components.Bootstrap',
+            'class' => 'bootstrap.components.Bootstrap',
         ),
 
 		'user'=>array(

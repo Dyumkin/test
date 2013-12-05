@@ -38,11 +38,6 @@
     </div>
 
     <div class="row">
-        <?php echo $form->label($model, 'set_date'); ?>
-        <?php echo $form->textField($model, 'set_date'); ?>
-    </div>
-
-    <div class="row">
         <?php echo $form->label($model, 'complexity'); ?>
         <?php echo $form->textField($model, 'complexity'); ?>
     </div>

@@ -16,6 +16,9 @@
  * @property string $phone
  * @property string $other_information
  * @property string $create_date
+ * @property integer $city_id
+ * @property City $city
+ * @property Country $country
  */
 class User extends CActiveRecord
 {
@@ -23,8 +26,18 @@ class User extends CActiveRecord
     const SEX_MALE = 'Male';
     const SEX_FEMALE = 'Female';
 
+    protected static $genderMap = array(
+        self::SEX_MALE,
+        self::SEX_FEMALE,
+
+    );
+
 
     public $verifyPassword;
+
+    public $userPlace;
+
+    public $avaImg;
 
     /**
      * @return string the associated database table name
@@ -54,6 +67,8 @@ class User extends CActiveRecord
             array('phone', 'length', 'max' => 18),
             array('birthday, other_information', 'safe'),
             array('birthday', 'date', 'format'=>'dd.MM.yyyy'),
+            array('city_id' , 'numerical', 'integerOnly'=>true),
+            array('avaImg', 'file', 'types' => 'png, gif, jpg', 'allowEmpty' => true),
             // The following rule is used by search().
             // @todo Please remove those attributes that should not be searched.
             array('id, username, password, e_mail, name, first_name, last_name, sex, birthday, phone, other_information', 'safe', 'on' => 'search'),
@@ -70,6 +85,7 @@ class User extends CActiveRecord
         return array(
             'stashes' => array(self::HAS_MANY, 'Stash', 'user_id'),
             'notepads' => array(self::HAS_MANY, 'Notepad', 'user_id'),
+            'cities' => array(self::BELONGS_TO, 'City', 'city_id'),
         );
     }
 
@@ -91,6 +107,7 @@ class User extends CActiveRecord
             'phone' => 'Phone',
             'other_information' => 'Other Information',
             'create_date' => 'Create Date',
+            'city_id' => 'Place',
         );
     }
 
@@ -99,13 +116,12 @@ class User extends CActiveRecord
         if (parent::beforeSave()) {
             if ($this->isNewRecord) {
                 $this->create_date = new CDbExpression('NOW()');
-                //$this->password = $this->hashPassword($this->password);
                 if (!empty($this->password) && ($this->password == $this->verifyPassword)) {
                     $this->password = crypt($this->password, Yii::app()->params['cryptSalt']);
                 }
-                if (!empty($this->birthday)){
-                    $this->birthday =strtotime($this->birthday);
-                }
+            }
+            if (!empty($this->birthday)){
+                $this->birthday =strtotime($this->birthday);
             }
 
             return true;
@@ -114,13 +130,53 @@ class User extends CActiveRecord
 
         return false;
     }
-/*
-    public function beforeValidate()
-    {
-         $this->birthday = $this->year_of_birth . '-' . $this->month_of_birth . '-' . $this->day_of_birth;
-        return parent::beforeValidate();
+
+    public function behaviors() {
+        return array(
+            'avaImgBehavior' => array(
+                'class' => 'application.components.behaviors.FileARBehavior.ImageARBehavior',
+                'attribute' => 'avaImg', // Эта переменная которую мы объявлили
+                'extension' => 'png, gif, jpg', // Возможные расширения файла
+                'prefix' => 'img_',
+                'relativeWebRootFolder' => 'uploads/users', // this folder must exist
+
+                // 'forceExt' => png, // Если раскомментировать эту строчку, то изображения будут конвертироватся в png формат
+
+                //'useImageMagick' => '/usr/bin', # Поведение может использовать ImageMagick
+
+                // Определяем "форматы" в которых будут хранится изображения
+                'formats' => array(
+                    // ava_small - маленькая аватарка, ресайз изображения 90x90px
+                    'ava_small' => array(
+                        'suffix' => '_small',
+                        'process' => array('resize' => array(90, 90)),
+                    ),
+                    // ava_big - аватарка побольше, ресайз изображения 200x200px
+                    'ava_big' => array(
+                        'suffix' => '_big',
+                        'process' => array('resize' => array(200, 200)),
+                    ),
+                    // and override the default :
+                    'normal' => array(
+                        'process' => array('resize' => array(200, 200)),
+                    ),
+                ),
+
+                'defaultName' => 'default', // when no file is associated, this one is used by getFileUrl
+                // defaultName need to exist in the relativeWebRootFolder path, and prefixed by prefix,
+                // and with one of the possible extensions. if multiple formats are used, a default file must exist
+                // for each format. Name is constructed like this :
+                //     {prefix}{name of the default file}{suffix}{one of the extension}
+            )
+        );
     }
-*/
+    /*
+        public function beforeValidate()
+        {
+             $this->birthday = $this->year_of_birth . '-' . $this->month_of_birth . '-' . $this->day_of_birth;
+            return parent::beforeValidate();
+        }
+    */
     public function findByUsername($username)
     {
         return $this->find(array(
@@ -130,11 +186,18 @@ class User extends CActiveRecord
     }
 
     public function getGenderOptions(){
-        return array('Male' => User::SEX_MALE, 'Female' => User::SEX_FEMALE);
+        return array_combine(self::$genderMap, self::$genderMap);
     }
 
-    protected function afterFind() {
-        $this->birthday = Yii::app()->dateFormatter->formatDateTime($this->birthday, 'long','');
+    protected function afterFind()
+    {
+        $this->birthday = Yii::app()->dateFormatter->formatDateTime($this->birthday, 'long', '');
+
+        if (!empty($this->city_id)) {
+            $this->userPlace = City::model()->with('region', 'country')->findByPk($this->city_id);
+            $this->userPlace = $this->userPlace->country->name . ' ' . $this->userPlace->region->name . ' ' . $this->userPlace->name;
+        }
+
         parent::afterFind();
     }
 
@@ -158,7 +221,6 @@ class User extends CActiveRecord
 
         $criteria->compare('id', $this->id);
         $criteria->compare('username', $this->username, true);
-        $criteria->compare('password', $this->password, true);
         $criteria->compare('e_mail', $this->e_mail, true);
         $criteria->compare('name', $this->name, true);
         $criteria->compare('first_name', $this->first_name, true);

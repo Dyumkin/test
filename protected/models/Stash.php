@@ -10,7 +10,6 @@
  * @property string $class
  * @property string $attribute
  * @property string $season
- * @property string $set_date
  * @property integer $complexity
  * @property string $stash_description
  * @property string $place_description
@@ -22,10 +21,13 @@
  * @property integer $user_id
  * @property string $create_date
  * @property string $update_date
+ * @property integer $city_id
  *
  *
  * The followings are the available model relations:
  * @property User $user
+ * @property Notepad[] $notepads
+ * @property City $city
  */
 class Stash extends CActiveRecord
 {
@@ -40,6 +42,40 @@ class Stash extends CActiveRecord
     const TYPE_STEPPED_TRADITIONAL = 'Stepped traditional';
     const TYPE_STEPPED_VIRTUAL = 'Stepped virtual';
 
+    const CLASS_ARCHAEOLOGICAL = 'Archaeological';
+    const CLASS_ARCHITECTURAL = 'Architectural';
+    const CLASS_HISTORICAL = 'Historical';
+    const CLASS_LOGICAL = 'Logical';
+    const CLASS_NATURAL = 'Natural';
+    const CLASS_EXTREME = 'Extreme';
+
+    const SEASON_WINTER = 'Not available in winter';
+    const SEASON_ALL = 'Available year-round';
+
+    protected static $typesMap = array(
+        self::TYPE_TRADITIONAL,
+        self::TYPE_VIRTUAL,
+        self::TYPE_STEPPED_TRADITIONAL,
+        self::TYPE_STEPPED_VIRTUAL,
+    );
+
+    protected static $classesMap = array(
+        self::CLASS_ARCHAEOLOGICAL,
+        self::CLASS_ARCHITECTURAL,
+        self::CLASS_HISTORICAL,
+        self::CLASS_LOGICAL,
+        self::CLASS_NATURAL,
+        self::CLASS_EXTREME,
+    );
+
+    protected static $seasonsMap = array(
+        self:: SEASON_ALL,
+        self:: SEASON_WINTER,
+    );
+
+    public $stashPlace;
+
+
     public function tableName()
     {
         return '{{stash}}';
@@ -53,15 +89,15 @@ class Stash extends CActiveRecord
         // NOTE: you should only define rules for those attributes that
         // will receive user inputs.
         return array(
-            array('stash_name, type, set_date, stash_description, place_description, content, answer, question', 'required'),
-            array('complexity, status, user_id', 'numerical', 'integerOnly' => true),
+            array('stash_name, type, stash_description, place_description, content, answer, question', 'required'),
+            array('complexity, status, user_id, city_id', 'numerical', 'integerOnly' => true),
             array('stash_name, type', 'length', 'max' => 60),
-            array('class', 'length', 'max' => 32),
+            array('class', 'inArrayValidator', 'range' => array_keys($this->getClassOptions())),
             array('attribute, season', 'length', 'max' => 255),
             array('other_information', 'safe'),
             // The following rule is used by search().
             // @todo Please remove those attributes that should not be searched.
-            array('stash_name, type, class, attribute, season, set_date, complexity, stash_description, place_description, other_information, content, question, status', 'safe', 'on' => 'search'),
+            array('stash_name, type, class, attribute, season, complexity, stash_description, place_description, other_information, content, question, status', 'safe', 'on' => 'search'),
         );
     }
 
@@ -76,6 +112,7 @@ class Stash extends CActiveRecord
             'user' => array(self::BELONGS_TO, 'User', 'user_id'),
             'comments' => array(self::HAS_MANY, 'Notepad', 'stash_id', 'condition' => 'comments.status=' . Notepad::STATUS_APPROVED, 'order' => 'comments.comment_date DESC'),
             'commentCount' => array(self::STAT, 'Notepad', 'stash_id', 'condition' => 'status=' . Notepad::STATUS_APPROVED),
+            'cities' => array(self::BELONGS_TO, 'City', 'city_id'),
         );
     }
 
@@ -90,7 +127,6 @@ class Stash extends CActiveRecord
             'class' => 'Class',
             'attribute' => 'Attribute',
             'season' => 'Season',
-            'set_date' => 'Set Date',
             'complexity' => 'Complexity',
             'stash_description' => 'Stash Description',
             'place_description' => 'Place Description',
@@ -102,6 +138,7 @@ class Stash extends CActiveRecord
             'user_id' => 'User',
             'create_date' => 'Create Date',
             'update_date' => 'Update Date',
+            'stashPlace' => 'Location/Nearest location',
         );
     }
 
@@ -114,6 +151,22 @@ class Stash extends CActiveRecord
         ));
     }
 
+    /**
+     * @param string $attribute
+     * @param array $params
+     */
+    public function inArrayValidator($attribute, $params)
+    {
+        $allowedValues = $params['range'];
+        $currentValues = $this->$attribute;
+        if (!empty($currentValues)) {
+            $wrongValues = array_diff($currentValues, array_intersect($currentValues, $allowedValues));
+
+            if (!empty($wrongValues)) {
+                $this->addError('class', implode(', ', $wrongValues));
+            }
+        }
+    }
 
     /**
      * Adds a new comment to this post.
@@ -133,17 +186,32 @@ class Stash extends CActiveRecord
         return $comment->save();
     }
 
+    protected function serializeItems()
+    {
+        if (is_array($this->class)) {
+            $this->class = implode(',', $this->class);
+        }
+    }
+
+    protected function unserializeItems()
+    {
+        if (is_string($this->class)) {
+            $this->class = explode(',', $this->class);
+        }
+    }
 
     protected function beforeSave()
     {
+        $this->serializeItems();
+
         if (parent::beforeSave()) {
             if ($this->isNewRecord) {
                 $this->create_date = $this->update_date = time();
                 $this->user_id = Yii::app()->user->id;
                 $this->status = true;
-                $this->set_date =strtotime($this->set_date);
-            } else
+            } else {
                 $this->update_date = time();
+            }
             return true;
         } else
             return false;
@@ -156,17 +224,28 @@ class Stash extends CActiveRecord
     }
 
     protected function afterFind() {
-        $this->set_date = Yii::app()->dateFormatter->formatDateTime($this->set_date, 'long','');
+        $this->create_date = Yii::app()->dateFormatter->formatDateTime($this->create_date, 'full');
+        $this->update_date = Yii::app()->dateFormatter->formatDateTime($this->update_date, 'long','');
+        $this->unserializeItems();
+
+        if (!empty($this->city_id)) {
+            $this->stashPlace = City::model()->with('region', 'country')->findByPk($this->city_id);
+            $this->stashPlace = $this->stashPlace->country->name . ' ' . $this->stashPlace->region->name . ' ' . $this->stashPlace->name;
+        }
+
         parent::afterFind();
     }
 
     public function getTypeOptions(){
-        return array(
-            'Traditional' => Stash::TYPE_TRADITIONAL,
-            'Stepped traditional' => Stash::TYPE_STEPPED_TRADITIONAL,
-            'Virtual' => Stash::TYPE_VIRTUAL,
-            'Stepped virtual' => Stash::TYPE_STEPPED_VIRTUAL,
-        );
+        return array_combine(self::$typesMap, self::$typesMap);
+    }
+
+    public function getClassOptions(){
+        return array_combine(self::$classesMap, self::$classesMap);
+    }
+
+    public function getSeasonOptions(){
+        return array_combine(self::$seasonsMap, self::$seasonsMap);
     }
     /**
      * Retrieves a list of models based on the current search/filter conditions.
@@ -192,7 +271,6 @@ class Stash extends CActiveRecord
         $criteria->compare('class', $this->class, true);
         $criteria->compare('attribute', $this->attribute, true);
         $criteria->compare('season', $this->season, true);
-        $criteria->compare('set_date', $this->set_date, true);
         $criteria->compare('complexity', $this->complexity);
         $criteria->compare('stash_description', $this->stash_description, true);
         $criteria->compare('place_description', $this->place_description, true);

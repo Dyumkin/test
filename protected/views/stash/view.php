@@ -6,8 +6,9 @@ $this->breadcrumbs = array(
     'Stashes' => array('index'),
     $model->stash_name,
 );
-$this->pageTitle = $model->stash_name;
 ?>
+
+<?php $this->pageTitle = $model->stash_name; ?>
 
 <?php $this->renderPartial('_view', array(
     'data' => $model,

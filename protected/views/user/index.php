@@ -5,16 +5,20 @@
 $this->breadcrumbs = array(
     'Users',
 );
-
-$this->menu = array(
-    array('label' => 'Create User', 'url' => array('create')),
-    array('label' => 'Manage User', 'url' => array('admin')),
-);
 ?>
 
 <h1>Users</h1>
 
-<?php $this->widget('zii.widgets.CListView', array(
+<?php $this->widget('bootstrap.widgets.TbGridView', array(
+    'type' => 'bordered',
     'dataProvider' => $dataProvider,
-    'itemView' => '_view',
+   // 'filter' => $dataProvider,
+    'columns' => array(
+        'username',
+        'create_date',
+        array(
+            'class'=>'bootstrap.widgets.TbButtonColumn',
+            'template'=>'{view}',
+        ),
+),
 )); ?>

@@ -53,7 +53,6 @@ $('.search-form form').submit(function(){
         'attribute',
         'season',
         /*
-        'set_date',
         'coordinates',
         'complexity',
         'stash_description',

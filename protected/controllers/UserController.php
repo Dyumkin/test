@@ -8,6 +8,18 @@ class UserController extends Controller
      */
     public $layout = '//layouts/column2';
 
+
+    public function actions()
+    {
+        return array(
+            'widget.'=> array(
+                'class' => 'application.components.WidgetProvider'
+            ),
+            'update' => 'application.components.actions.UpdateUser',
+        );
+    }
+
+
     /**
      * @return array action filters
      */
@@ -27,13 +39,17 @@ class UserController extends Controller
     public function accessRules()
     {
         return array(
-            array('allow', // allow all users to perform 'index' and 'view' actions
+           /* array('allow', // allow all users to perform 'index' and 'view' actions
                 'actions' => array('index', 'view'),
-                'users' => array('admin'),
+                'users' => array('@'),
+            ),*/
+            array('allow', // allow authenticated user to perform 'create' and 'update' actions
+                'actions' => array('index', 'view','create', 'widget.UpdateCity', 'widget.UpdateRegion'),
+                'users' => array('*'),
             ),
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
-                'actions' => array('create', 'update'),
-                'users' => array('*'),
+                'actions' => array('update', 'widget.UpdateCity', 'widget.UpdateRegion'),
+                'users' => array('admin'),
             ),
             array('allow', // allow admin user to perform 'admin' and 'delete' actions
                 'actions' => array('admin', 'delete'),
@@ -75,31 +91,7 @@ class UserController extends Controller
         }
 
         $this->render('create', array(
-            'model' => $model,
-        ));
-    }
-
-    /**
-     * Updates a particular model.
-     * If update is successful, the browser will be redirected to the 'view' page.
-     * @param integer $id the ID of the model to be updated
-     */
-    public function actionUpdate($id)
-    {
-        $model = $this->loadModel($id);
-
-        // Uncomment the following line if AJAX validation is needed
-        // $this->performAjaxValidation($model);
-
-        if (isset($_POST['User'])) {
-            $model->attributes = $_POST['User'];
-            if ($model->save()) {
-                $this->redirect(array('view', 'id' => $model->id));
-            }
-        }
-
-        $this->render('update', array(
-            'model' => $model,
+            'model' => $model
         ));
     }
 
@@ -145,6 +137,8 @@ class UserController extends Controller
         ));
     }
 
+
+
     /**
      * Returns the data model based on the primary key given in the GET variable.
      * If the data model is not found, an HTTP exception will be raised.
@@ -160,6 +154,7 @@ class UserController extends Controller
         }
         return $model;
     }
+
 
     /**
      * Performs the AJAX validation.
