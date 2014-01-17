@@ -40253,3 +40253,13 @@ Stack trace:
 REQUEST_URI=/site/list
 HTTP_REFERER=http://geocaching.localhost/stash/index
 ---
+2014/01/17 13:25:23 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Системе не удалось найти запрашиваемое действие "гзвфеу".' in C:\xampp\htdocs\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\framework\web\CController.php(270): CController->missingAction('????????????')
+#1 C:\xampp\htdocs\framework\web\CWebApplication.php(282): CController->run('????????????')
+#2 C:\xampp\htdocs\framework\web\CWebApplication.php(141): CWebApplication->runController('stash/?????????...')
+#3 C:\xampp\htdocs\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\geocaching\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/stash/%D0%B3%D0%B7%D0%B2%D1%84%D0%B5%D1%83?id=26
+---

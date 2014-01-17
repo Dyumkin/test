@@ -2,6 +2,7 @@
 /* @var $this StashController */
 /* @var $model Stash */
 $this->breadcrumbs = array(
+    'Stashes' => array('index'),
     $model->stash_name => $model->url,
     'Update',
 );

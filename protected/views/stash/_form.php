@@ -25,7 +25,7 @@
 
     <?php echo $form->radioButtonListRow($model, 'season', $model->seasonOptions); ?>
 
-    <?php echo $form->dropDownListRow($model, 'complexity', range(1, 5)); ?>
+    <?php echo $form->dropDownListRow($model, 'complexity', range(0,5)); ?>
 
     <?php $this->widget('WidgetProvider', array('model' => $model)); ?>
 
