@@ -18,7 +18,9 @@
     <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/main.css" />
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/form.css" />
 
-
+    <script type="text/javascript"
+            src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAGfACAjLKdKKCsqPSD7xVYeI6Jkn96KRE&sensor=true">
+    </script>
 
 	<title><?php echo CHtml::encode($this->pageTitle); ?></title>
 </head>
@@ -44,15 +46,15 @@
                         array('label' => 'Home', 'url' => array('/site/index')),
 
                         array('label' => 'About game', 'items' => array(
-                                array('label' => 'History', 'url' => array('/site/page', 'view' => 'history')),
-                                array('label' => 'Rules', 'url' => array('/site/page', 'view' => 'rules')),
-                                array('label' => 'Advice', 'url' => array('/site/page', 'view' => 'advice')),
+                                array('label' => 'History', 'url' => array('/site/history')),
+                                array('label' => 'Rules', 'url' => array('/site/rules')),
+                                array('label' => 'Advice', 'url' => array('/site/advices')),
                                 array('label' => 'Players', 'url' => array('/user/index')),
                             ),
                         ),
                         array('label' => 'Stashes', 'items' => array(
                                 array('label' => 'Stashes', 'url' => array('/stash/index')),
-                                array('label' => 'Geocaches map', 'url' => array('/stash/map')),
+                                array('label' => 'Geocaches map', 'url' => array('/stash/viewMap')),
                                 array('label' => 'List of geocaches', 'url' => array('/site/list')),
                             ),
                         ),

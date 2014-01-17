@@ -31,9 +31,10 @@ class NotepadController extends Controller
     public function accessRules()
     {
         return array(
- /*           array('allow', // allow all users to perform 'index' and 'view' actions
-                'users' => array('@'),
-            ),*/
+            array('allow', // allow all users to perform 'index' and 'view' actions
+                'actions' => array('approve'),
+                'users' => array('admin'),
+            ),
             array('allow', // allow all users to perform 'index' and 'view' actions
                 'actions' => array('index','update','delete'),
                 'users' => array('@'),

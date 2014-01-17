@@ -22,7 +22,8 @@
  * @property string $create_date
  * @property string $update_date
  * @property integer $city_id
- *
+ *@property integer $latitude
+ * @property integer $longitude
  *
  * The followings are the available model relations:
  * @property User $user
@@ -89,8 +90,9 @@ class Stash extends CActiveRecord
         // NOTE: you should only define rules for those attributes that
         // will receive user inputs.
         return array(
-            array('stash_name, type, stash_description, place_description, content, answer, question', 'required'),
+            array('stash_name, type, stash_description, place_description, content, answer, question, latitude, longitude', 'required'),
             array('complexity, status, user_id, city_id', 'numerical', 'integerOnly' => true),
+            array('latitude, longitude', 'numerical'),
             array('stash_name, type', 'length', 'max' => 60),
             array('class', 'inArrayValidator', 'range' => array_keys($this->getClassOptions())),
             array('attribute, season', 'length', 'max' => 255),
@@ -139,6 +141,8 @@ class Stash extends CActiveRecord
             'create_date' => 'Create Date',
             'update_date' => 'Update Date',
             'stashPlace' => 'Location/Nearest location',
+            'latitude' => 'Latitude',
+            'longitude' => 'Longitude'
         );
     }
 
@@ -147,7 +151,6 @@ class Stash extends CActiveRecord
     {
         return Yii::app()->createUrl('stash/view', array(
             'id' => $this->id,
-            'stash_name' => $this->stash_name,
         ));
     }
 
@@ -224,7 +227,7 @@ class Stash extends CActiveRecord
     }
 
     protected function afterFind() {
-        $this->create_date = Yii::app()->dateFormatter->formatDateTime($this->create_date, 'full');
+        $this->create_date = Yii::app()->dateFormatter->formatDateTime($this->create_date, 'long','');
         $this->update_date = Yii::app()->dateFormatter->formatDateTime($this->update_date, 'long','');
         $this->unserializeItems();
 
@@ -278,6 +281,8 @@ class Stash extends CActiveRecord
         $criteria->compare('content', $this->content, true);
         $criteria->compare('question', $this->question, true);
         $criteria->compare('status', $this->status);
+        $criteria->compare('latitude', $this->latitude, true);
+        $criteria->compare('longitude', $this->longitude, true);
 
 
         return new CActiveDataProvider($this, array(

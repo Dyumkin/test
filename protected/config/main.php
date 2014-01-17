@@ -9,7 +9,7 @@
 // CWebApplication properties can be configured here.
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
-	'name'=>'My Web Application',
+	'name'=>'Application for managing tourist game "Geocaching"',
     'language' => 'ru',
 
 	// preloading 'log' component
@@ -24,6 +24,9 @@ return array(
 		'application.models.*',
 		'application.components.*',
         'bootstrap.helpers.TbHtml',
+        'application.extensions.image.*',
+        'application.extensions.imageAttachment.*',
+        'application.extensions.EGMap.*',
 	),
 
     'theme'=>'bootstrap', // requires you to copy the theme under your themes directory
@@ -56,7 +59,15 @@ return array(
 		),
 
 
-		// uncomment the following to enable URLs in path-format
+        'image'=>array(
+            'class'=>'CImageComponent',
+            // GD or ImageMagick
+            'driver'=>'GD',
+            // ImageMagick setup path
+            'params'=>array('directory'=>'C:\imagemagick'),
+        ),
+
+        // uncomment the following to enable URLs in path-format
 		/*
 		'urlManager'=>array(
 			'urlFormat'=>'path',

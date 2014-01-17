@@ -24,4 +24,5 @@ $this->breadcrumbs = array(
             'template'=>'{view}',
         ),
     ),
-)); ?>
+));
+?>

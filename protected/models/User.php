@@ -55,14 +55,13 @@ class User extends CActiveRecord
         // NOTE: you should only define rules for those attributes that
         // will receive user inputs.
         return array(
-            array('username, password, e_mail, verifyPassword', 'required'),
+            array('username, password, e_mail, verifyPassword', 'required','on'=>'create'),
             array('username, name, first_name, last_name', 'length', 'max' => 60),
             array('username', 'unique'),
             array('e_mail', 'unique'),
-            array('password, verifyPassword', 'required', 'on'=>'create'),
-            array('password', 'safe', 'on' => 'update'),
+            array('password, verifyPassword, birthday', 'safe', 'on' => 'update'),
             array('password, e_mail', 'length', 'max' => 32),
-            array('verifyPassword', 'compare', 'compareAttribute' => 'password', 'message' => 'Retype Password is incorrect'),
+            array('verifyPassword', 'compare', 'compareAttribute' => 'password', 'message' => 'Retype Password is incorrect','on'=>'create'),
             array('sex', 'length', 'max' => 7),
             array('phone', 'length', 'max' => 18),
             array('birthday, other_information', 'safe'),
@@ -131,45 +130,6 @@ class User extends CActiveRecord
         return false;
     }
 
-    public function behaviors() {
-        return array(
-            'avaImgBehavior' => array(
-                'class' => 'application.components.behaviors.FileARBehavior.ImageARBehavior',
-                'attribute' => 'avaImg', // Эта переменная которую мы объявлили
-                'extension' => 'png, gif, jpg', // Возможные расширения файла
-                'prefix' => 'img_',
-                'relativeWebRootFolder' => 'uploads/users', // this folder must exist
-
-                // 'forceExt' => png, // Если раскомментировать эту строчку, то изображения будут конвертироватся в png формат
-
-                //'useImageMagick' => '/usr/bin', # Поведение может использовать ImageMagick
-
-                // Определяем "форматы" в которых будут хранится изображения
-                'formats' => array(
-                    // ava_small - маленькая аватарка, ресайз изображения 90x90px
-                    'ava_small' => array(
-                        'suffix' => '_small',
-                        'process' => array('resize' => array(90, 90)),
-                    ),
-                    // ava_big - аватарка побольше, ресайз изображения 200x200px
-                    'ava_big' => array(
-                        'suffix' => '_big',
-                        'process' => array('resize' => array(200, 200)),
-                    ),
-                    // and override the default :
-                    'normal' => array(
-                        'process' => array('resize' => array(200, 200)),
-                    ),
-                ),
-
-                'defaultName' => 'default', // when no file is associated, this one is used by getFileUrl
-                // defaultName need to exist in the relativeWebRootFolder path, and prefixed by prefix,
-                // and with one of the possible extensions. if multiple formats are used, a default file must exist
-                // for each format. Name is constructed like this :
-                //     {prefix}{name of the default file}{suffix}{one of the extension}
-            )
-        );
-    }
     /*
         public function beforeValidate()
         {
@@ -177,6 +137,34 @@ class User extends CActiveRecord
             return parent::beforeValidate();
         }
     */
+
+    public function behaviors()
+    {
+        return array(
+            'preview' => array(
+                'class' => 'ext.imageAttachment.ImageAttachmentBehavior',
+                // size for image preview in widget
+                'previewHeight' => 200,
+                'previewWidth' => 300,
+                // extension for image saving, can be also tiff, png or gif
+                'extension' => 'jpg',
+                // folder to store images
+                'directory' => Yii::getPathOfAlias('webroot').'/images/avatar',
+                // url for images folder
+                'url' => Yii::app()->request->baseUrl . '/images/avatar',
+                // image versions
+                'versions' => array(
+                    'small' => array(
+                        'resize' => array(200, null),
+                    ),
+                    'medium' => array(
+                        'resize' => array(800, null),
+                    )
+                )
+            )
+        );
+    }
+
     public function findByUsername($username)
     {
         return $this->find(array(

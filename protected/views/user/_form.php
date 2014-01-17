@@ -50,20 +50,7 @@
 
         )); ?>
 
-        <div class="row">
-            <?php
-            $avaSmallUrl = $model->avaImgBehavior->getFileUrl('ava_small');
-            if($avaSmallUrl){
-                echo CHtml::image($avaSmallUrl);
-            }
-            ?>
-
-            <?php echo $form->labelEx($model,'avaImg'); ?>
-            <?php echo $form->fileField($model,'avaImg');; ?>
-            <?php echo $form->error($model,'avaImg'); ?>
-        </div>
-
-<?php echo $form->textFieldRow($model, 'phone', array('size' => 18, 'maxlength' => 18)); ?>
+    <?php echo $form->textFieldRow($model, 'phone', array('size' => 18, 'maxlength' => 18)); ?>
 
         <?php echo $form->textAreaRow($model, 'other_information', array('rows' => 6, 'cols' => 50)); ?>
 

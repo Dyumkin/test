@@ -14,6 +14,12 @@ $this->breadcrumbs = array(
     'data' => $model,
 )); ?>
 
+<?php $this->beginClip('infoBox'); ?>
+    <?php $this->renderPartial('_viewInfoBox', array(
+        'data' => $model,
+    )); ?>
+<?php $this->endClip(); ?>
+
 <div id="comments">
     <?php if ($model->commentCount >= 1): ?>
         <h3>

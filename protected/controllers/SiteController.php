@@ -22,6 +22,24 @@ class SiteController extends Controller
 		);
 	}
 
+    public function accessRules()
+    {
+        return array(
+            array('allow', // allow all users to perform 'index' and 'view' actions
+                'actions' => array('index', 'view', 'viewMap'),
+                'users' => array('*'),
+            ),
+            array('allow', // allow authenticated user to perform 'create' and 'update' actions
+                'actions'=>array('create','update','newComment'),
+                'users' => array('@'),
+            ),
+
+            array('deny', // deny all users
+                'users' => array('*'),
+            ),
+        );
+    }
+
 	/**
 	 * This is the default 'index' action that is invoked
 	 * when an action is not explicitly requested by users.
@@ -46,6 +64,40 @@ class SiteController extends Controller
 				$this->render('error', $error);
 		}
 	}
+
+    public function actionHistory()
+    {
+        $history = $this->loadModel('history');
+        $this->render('pages/history', array('model'=>$history));
+    }
+
+    public function actionRules()
+    {
+        $rules = $this->loadModel('rules');
+        $this->render('pages/rules', array('model'=>$rules));
+    }
+
+    public function actionAdvices()
+    {
+        $advices = $this->loadModel('advices');
+        $this->render('pages/advice', array('model'=>$advices));
+    }
+
+    public function actionUpdate($attribute)
+    {
+        $model = $this->loadModel($attribute);
+
+        if (isset($_POST['SiteContent'])) {
+            $model->attributes = $_POST['SiteContent'];
+            if ($model->save()) {
+                $this->redirect(array($attribute));
+            }
+        }
+
+        $this->render('pages/update', array(
+            'model' => $model,
+        ));
+    }
 
 	/**
 	 * Displays the contact page
@@ -107,4 +159,13 @@ class SiteController extends Controller
 		Yii::app()->user->logout();
 		$this->redirect(Yii::app()->homeUrl);
 	}
+
+    public function loadModel($attribute)
+    {
+        $model = SiteContent::model()->findByAttributes(array('name' => $attribute));
+        if ($model === null) {
+            throw new CHttpException(404, 'The requested page does not exist.');
+        }
+        return $model;
+    }
 }

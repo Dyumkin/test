@@ -16,6 +16,8 @@ class UserController extends Controller
                 'class' => 'application.components.WidgetProvider'
             ),
             'update' => 'application.components.actions.UpdateUser',
+
+            'saveImageAttachment' => 'application.extensions.imageAttachment.ImageAttachmentAction',
         );
     }
 
@@ -44,7 +46,7 @@ class UserController extends Controller
                 'users' => array('@'),
             ),*/
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
-                'actions' => array('index', 'view','create', 'widget.UpdateCity', 'widget.UpdateRegion'),
+                'actions' => array('index', 'view','create', 'widget.UpdateCity', 'widget.UpdateRegion','saveImageAttachment'),
                 'users' => array('*'),
             ),
             array('allow', // allow authenticated user to perform 'create' and 'update' actions

@@ -38,7 +38,7 @@ class UpdateUser extends CAction
         if (isset($_POST['User'])) {
             $model->attributes = $_POST['User'];
             if ($model->save()) {
-                $this->getController()->redirect(array($view, 'id' => $model->id));
+                $this->getController()->redirect(array('index'));
             }
         }
 

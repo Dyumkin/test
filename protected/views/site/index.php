@@ -6,15 +6,17 @@ $this->pageTitle=Yii::app()->name;
 
 <h1>Welcome to <i><?php echo CHtml::encode(Yii::app()->name); ?></i></h1>
 
-<p>Congratulations! You have successfully created your Yii application.</p>
+<div class="container">
+    <div id="myCarousel" class="carousel">
+        <!-- Картинки в карусельке -->
+        <div class="carousel-inner">
+            <div class="active item"><?php echo CHtml::image('/images/carousel/1501.jpg'); ?></div>
+            <div class="item"><?php echo CHtml::image('/images/carousel/picture-1011.jpg'); ?></div>
+            <div class="item"><?php echo CHtml::image('/images/carousel/vm_d30317s69e.jpg'); ?></div>
+        </div>
+        <!-- Навигационные элементы -->
+        <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+        <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+    </div>
+</div>
 
-<p>You may change the content of this page by modifying the following two files:</p>
-<ul>
-	<li>View file: <code><?php echo __FILE__; ?></code></li>
-	<li>Layout file: <code><?php echo $this->getLayoutFile('main'); ?></code></li>
-</ul>
-
-<p>For more details on how to further develop this application, please read
-the <a href="http://www.yiiframework.com/doc/">documentation</a>.
-Feel free to ask in the <a href="http://www.yiiframework.com/forum/">forum</a>,
-should you have any questions.</p>
