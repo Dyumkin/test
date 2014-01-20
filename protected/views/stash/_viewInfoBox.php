@@ -20,5 +20,6 @@
 
         ),
     ));
+    echo CHtml::link(CHtml::encode('View in Map'), $data->getMapUrl());
     $this->endWidget();
 ?>

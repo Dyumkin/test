@@ -154,6 +154,13 @@ class Stash extends CActiveRecord
         ));
     }
 
+
+    public function getMapUrl()
+    {
+        return Yii::app()->createUrl('stash/viewMap', array(
+            'id' => $this->id,
+        ));
+    }
     /**
      * @param string $attribute
      * @param array $params

@@ -13,6 +13,7 @@ class StashController extends Controller
      */
     private $_model;
 
+    public $coordinates = array();
     /**
      * @return array action filters
      */
@@ -227,6 +228,18 @@ class StashController extends Controller
     {
 
         $model = new Stash;
+
+        if (isset($_GET['id'])){
+            if($coordinate = $model->findByPk($_GET['id'])){
+            $this->coordinates = array(
+                'latitude' => $coordinate->latitude,
+                'longitude' => $coordinate->longitude,
+            );
+            }else{
+                throw new CHttpException(404, 'The requested coordinates does not exist in base.');
+            }
+
+        }
 
         $this->render('viewMap', array(
             'model' => $model,

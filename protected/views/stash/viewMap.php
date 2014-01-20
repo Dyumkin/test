@@ -8,8 +8,16 @@
     $gMap->setJsName('map');
     $gMap->width = '100%';
     $gMap->height = 600;
-    $gMap->zoom = 6;
-    $gMap->setCenter(53.315076, 28.23800);
+
+    if ($this->coordinates != null){
+        $gMap->zoom = 11;
+        $gMap->setCenter($this->coordinates['latitude'], $this->coordinates['longitude']);
+    } else
+    {
+        $gMap->zoom = 6;
+        $gMap->setCenter(53.315076, 28.23800);
+    }
+
     foreach ($model->findAll() as $attribute) {
         $infoBox = new EGMapInfoBox('<div class="info_box">
             <h4 class="text-center">' . $attribute['stash_name'] . '</h4>
