@@ -39,15 +39,15 @@ class StashController extends Controller
                 'users' => array('*'),
             ),
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
-                'actions'=>array('create','update','newComment'),
+                'actions'=>array('create','update','newComment','gallery'),
                 'users' => array('@'),
             ),
-            /*
+
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
 				'actions'=>array('admin','delete'),
 				'users'=>array('admin'),
 			),
-            */
+
             array('deny', // deny all users
                 'users' => array('*'),
             ),
@@ -83,7 +83,12 @@ class StashController extends Controller
         if (isset($_POST['Stash'])) {
             $model->attributes = $_POST['Stash'];
             if ($model->save()) {
+                if($model->galleryAdded = 1)
+                {
+                    $this->redirect(array('gallery', 'id' => $model->id));
+                } else{
                 $this->redirect(array('view', 'id' => $model->id));
+                }
             }
         }
 
@@ -193,6 +198,15 @@ class StashController extends Controller
             }
         }
         return $this->_model;
+    }
+
+    public function actionGallery($id)
+    {
+        $model = $this->loadModel($id);
+
+        $this->render('gallery', array(
+            'model' => $model,
+        ));
     }
 
     /**

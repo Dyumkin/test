@@ -65,6 +65,8 @@
 
     <?php echo $form->textAreaRow($model, 'answer', array('class' => 'span6', 'rows' => 3)); ?>
 
+    <?php echo $form->checkBoxRow($model, 'galleryAdded'); ?>
+
     <?php echo TbHtml::formActions(array(
         TbHtml::submitButton($model->isNewRecord ? 'Create' : 'Save', array('color' => TbHtml::BUTTON_COLOR_PRIMARY)),
         TbHtml::resetButton('Reset'),

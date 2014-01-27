@@ -22,6 +22,9 @@
             src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAGfACAjLKdKKCsqPSD7xVYeI6Jkn96KRE&sensor=true">
     </script>
 
+    <script  type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
+
+
 	<title><?php echo CHtml::encode($this->pageTitle); ?></title>
 </head>
 

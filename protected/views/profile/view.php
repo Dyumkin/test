@@ -30,11 +30,19 @@ $this->widget('bootstrap.widgets.TbGridView', array(
         'stashPlace',
         array(
             'class'=>'bootstrap.widgets.TbButtonColumn',
-            'template'=>'{view}',
-            'viewButtonUrl' => function($data, $row) {
+            'template'=>'{view}{picture}',
+            'viewButtonUrl' => function($data) {
                 /** @var Stash $data */
                 return Yii::app()->createUrl('stash/view', array("id"=>$data->primaryKey));
             },
+            'buttons'=>array(
+                'picture' => array(
+                    'label' => 'Gallery',
+                    'imageUrl' => Yii::app()->request->baseUrl.'/extensions/bootstrap/assets/bootstrap/img/glyphicons-halflings.png',
+                    'url' => 'Yii::app()->createUrl("stash/gallery", array("id"=>$data->id))',
+                    'options' => array('class'=>'icon-picture'),
+                ),
+            ),
         ),
     ),
 ));

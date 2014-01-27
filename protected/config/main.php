@@ -19,6 +19,11 @@ return array(
         'bootstrap' => realpath(__DIR__ . '/../extensions/bootstrap'), // change this if necessary
     ),
 
+    'controllerMap' => array(
+        'image' => array('class' => 'vendor.crisu83.yii-imagemanager.controllers.ImageController'),
+        'gallery' => array('class' => 'application.extensions.galleryManager.GalleryController'),
+    ),
+
 	// autoloading model and component classes
 	'import'=>array(
 		'application.models.*',
@@ -27,7 +32,9 @@ return array(
         'application.extensions.image.*',
         'application.extensions.imageAttachment.*',
         'application.extensions.EGMap.*',
-	),
+        'application.extensions.galleryManager.*',
+        'application.extensions.galleryManager.models.*',
+    ),
 
     'theme'=>'bootstrap', // requires you to copy the theme under your themes directory
 

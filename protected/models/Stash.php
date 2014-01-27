@@ -22,8 +22,9 @@
  * @property string $create_date
  * @property string $update_date
  * @property integer $city_id
- *@property integer $latitude
+ * @property integer $latitude
  * @property integer $longitude
+ * @property integer $gallery_id
  *
  * The followings are the available model relations:
  * @property User $user
@@ -76,6 +77,9 @@ class Stash extends CActiveRecord
 
     public $stashPlace;
 
+    public $alias ='stash';
+
+    public $galleryAdded =0;
 
     public function tableName()
     {
@@ -96,7 +100,7 @@ class Stash extends CActiveRecord
             array('stash_name, type', 'length', 'max' => 60),
             array('class', 'inArrayValidator', 'range' => array_keys($this->getClassOptions())),
             array('attribute, season', 'length', 'max' => 255),
-            array('other_information', 'safe'),
+            array('other_information, gallery_id', 'safe'),
             // The following rule is used by search().
             // @todo Please remove those attributes that should not be searched.
             array('stash_name, type, class, attribute, season, complexity, stash_description, place_description, other_information, content, question, status', 'safe', 'on' => 'search'),
@@ -142,8 +146,32 @@ class Stash extends CActiveRecord
             'update_date' => 'Update Date',
             'stashPlace' => 'Location/Nearest location',
             'latitude' => 'Latitude',
-            'longitude' => 'Longitude'
+            'longitude' => 'Longitude',
+            'galleryAdded' => 'Check if you wish add photos to your stash',
         );
+    }
+
+    public function behaviors()
+    {
+        return array(
+            'galleryBehavior' => array(
+                'class' => 'GalleryBehavior',
+                'imagePath' => 'gallery/'.$this->alias,
+                'idAttribute' => 'gallery_id',
+                'versions' => array(
+                    'small' => array(
+                        'centeredpreview' => array(200, 200), //array(98, 98),
+                    ),
+                    'medium' => array(
+                        'resize' => array(800, null),
+                    )
+                ),
+                'name' => true,
+                'description' => true,
+            )
+
+        );
+
     }
 
 

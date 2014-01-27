@@ -8,6 +8,18 @@ $this->breadcrumbs = array(
 );
 ?>
 
+<?php Yii::app()->clientScript->registerCssFile(Yii::app()->request->baseUrl . "/css/colorbox.css"); ?>
+<?php Yii::app()->clientScript->registerScriptFile(Yii::app()->request->baseUrl."/js/colorbox-master/jquery.colorbox-min.js",CClientScript::POS_HEAD); ?>
+
+
+<script>
+    jQuery(document).ready(function () {
+        jQuery('a.gallery').colorbox({ opacity:0.5 , rel:'group1', loop:false});
+        jQuery('a.<?php echo $model->alias;?>').colorbox({ opacity:0.5 , rel:'group1', loop:false });
+    });
+</script>
+
+
 <?php $this->pageTitle = $model->stash_name; ?>
 
 <?php $this->renderPartial('_view', array(
@@ -19,6 +31,21 @@ $this->breadcrumbs = array(
         'data' => $model,
     )); ?>
 <?php $this->endClip(); ?>
+
+<?php
+    $existPhoto = $model->galleryBehavior->getGalleryPhotos();
+    if(!empty($existPhoto) && $model->gallery_id != "0") : ?>
+    <section id="photo">
+        <h3>Фото</h3>
+        <?php
+        $this->widget('GalleryViewer', array(
+            'gallery' => $model->galleryBehavior->getGallery(),
+            'controllerRoute' => '/gallery',
+            'gallerypath' => $model->alias,
+        ));
+        ?>
+    </section>
+<?php endif; ?>
 
 <div id="comments">
     <?php if ($model->commentCount >= 1): ?>
@@ -45,3 +72,4 @@ $this->breadcrumbs = array(
     <?php endif; ?>
 
 </div><!-- comments -->
+
