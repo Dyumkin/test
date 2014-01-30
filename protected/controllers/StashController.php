@@ -82,8 +82,9 @@ class StashController extends Controller
 
         if (isset($_POST['Stash'])) {
             $model->attributes = $_POST['Stash'];
+
             if ($model->save()) {
-                if($model->galleryAdded = 1)
+                if($model->galleryAdded == 1)
                 {
                     $this->redirect(array('gallery', 'id' => $model->id));
                 } else{

@@ -79,7 +79,7 @@ class Stash extends CActiveRecord
 
     public $alias ='stash';
 
-    public $galleryAdded =0;
+    public $galleryAdded;
 
     public function tableName()
     {
@@ -95,7 +95,7 @@ class Stash extends CActiveRecord
         // will receive user inputs.
         return array(
             array('stash_name, type, stash_description, place_description, content, answer, question, latitude, longitude', 'required'),
-            array('complexity, user_id, city_id, status', 'numerical', 'integerOnly' => true),
+            array('complexity, user_id, city_id, status, galleryAdded', 'numerical', 'integerOnly' => true),
             array('latitude, longitude', 'numerical'),
             array('stash_name, type', 'length', 'max' => 60),
             array('class', 'inArrayValidator', 'range' => array_keys($this->getClassOptions())),
