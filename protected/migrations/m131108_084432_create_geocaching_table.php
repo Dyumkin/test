@@ -49,7 +49,7 @@ class m131108_084432_create_geocaching_table extends CDbMigration
             'content' =>'text NOT NULL',
             'answer' =>'text NOT NULL',
             'question' => 'text NOT NULL',
-            'status' => 'boolean NOT NULL'
+            'status' => 'varchar(10) NOT NULL'
         ));
 
         $this->createTable('{{notepad}}', array(

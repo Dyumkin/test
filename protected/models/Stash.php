@@ -17,7 +17,7 @@
  * @property string $content
  * @property string $answer
  * @property string $question
- * @property integer $status
+ * @property string $status
  * @property integer $user_id
  * @property string $create_date
  * @property string $update_date
@@ -36,8 +36,8 @@ class Stash extends CActiveRecord
     /**
      * @return string the associated database table name
      */
-    const STATUS_PUBLISHED = true;
-    const STATUS_UNPUBLISHED = false;
+    const STATUS_PENDING = 1;
+    const STATUS_APPROVED = 2;
 
     const TYPE_TRADITIONAL = 'Traditional';
     const TYPE_VIRTUAL = 'Virtual';
@@ -95,7 +95,7 @@ class Stash extends CActiveRecord
         // will receive user inputs.
         return array(
             array('stash_name, type, stash_description, place_description, content, answer, question, latitude, longitude', 'required'),
-            array('complexity, status, user_id, city_id', 'numerical', 'integerOnly' => true),
+            array('complexity, user_id, city_id, status', 'numerical', 'integerOnly' => true),
             array('latitude, longitude', 'numerical'),
             array('stash_name, type', 'length', 'max' => 60),
             array('class', 'inArrayValidator', 'range' => array_keys($this->getClassOptions())),
@@ -246,7 +246,7 @@ class Stash extends CActiveRecord
             if ($this->isNewRecord) {
                 $this->create_date = $this->update_date = time();
                 $this->user_id = Yii::app()->user->id;
-                $this->status = true;
+                $this->status = Stash::STATUS_APPROVED;
             } else {
                 $this->update_date = time();
             }
@@ -285,6 +285,17 @@ class Stash extends CActiveRecord
     public function getSeasonOptions(){
         return array_combine(self::$seasonsMap, self::$seasonsMap);
     }
+
+    public function approve()
+    {
+        $this->status = Stash::STATUS_APPROVED;
+        $this->update(array('status'));
+    }
+
+    public function getPendingStashCount()
+    {
+        return $this->count('status=' . self::STATUS_PENDING);
+    }
     /**
      * Retrieves a list of models based on the current search/filter conditions.
      *
@@ -306,7 +317,8 @@ class Stash extends CActiveRecord
 
         $criteria->compare('stash_name', $this->stash_name, true);
         $criteria->compare('type', $this->type, true);
-        $criteria->compare('class', $this->class, true);
+        $criteria->compare('create_date', $this->create_date, true);
+        $criteria->compare('update_date', $this->update_date, true);
         $criteria->compare('attribute', $this->attribute, true);
         $criteria->compare('season', $this->season, true);
         $criteria->compare('complexity', $this->complexity);
@@ -319,9 +331,12 @@ class Stash extends CActiveRecord
         $criteria->compare('latitude', $this->latitude, true);
         $criteria->compare('longitude', $this->longitude, true);
 
+        $sort = new CSort();
+        $sort->defaultOrder = 'create_date DESC';
 
         return new CActiveDataProvider($this, array(
             'criteria' => $criteria,
+            'sort' => $sort,
         ));
     }
 

@@ -33,8 +33,8 @@ $this->widget(
                 'label' => 'Stash manage',
                 'itemOptions' => array('class' => 'nav-header')
             ),
-            array('label' => 'Approve Stashes',
-                'url' => array('user/admin')
+            array('label' => 'Approve Stashes'. ' (' . Stash::model()->pendingStashCount . ')',
+                'url' => array('stash/admin')
             ),
             array('label' => 'Approve Comments'. ' (' . Notepad::model()->pendingCommentCount . ')',
                 'url' => array('notepad/index'),

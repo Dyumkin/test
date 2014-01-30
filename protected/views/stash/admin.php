@@ -24,6 +24,19 @@ $('.search-form form').submit(function(){
 	return false;
 });
 ");
+
+Yii::app()->clientScript->registerScript('approve', "
+jQuery('#stash-grid a.approve').live('click',function() {
+        if(!confirm('Are you sure you want to approve this Stash?')) return false;
+
+        var url = $(this).attr('href');
+        //  do your post request here
+        $.post(url,function(){
+             $.fn.yiiGridView.update('stash-grid');
+         });
+        return false;
+});
+");
 ?>
 
 <h1>Manage Stashes</h1>
@@ -48,24 +61,36 @@ $('.search-form form').submit(function(){
     'columns' => array(
         'id',
         'stash_name',
-        'type',
-        'class',
-        'attribute',
-        'season',
-        /*
-        'coordinates',
-        'complexity',
-        'stash_description',
-        'place_description',
-        'other_information',
-        'content',
-        'answer',
-        'question',
         'status',
-        'user_id',
-        */
+        'create_date',
+        /*
+                'type',
+                'class',
+                'attribute',
+                'season',
+                'coordinates',
+                'complexity',
+                'stash_description',
+                'place_description',
+                'other_information',
+                'content',
+                'answer',
+                'question',
+                'status',
+                'user_id',
+                */
         array(
             'class' => 'CButtonColumn',
+            'template'=>'{view}{update}{approve}{delete}',
+            'buttons'=>array(
+                'approve' => array(
+                    'label' => 'Approve Stash',
+                    'imageUrl' => '/images/system/green_checkmark.png',
+                    'url' =>'Yii::app()->createUrl("stash/approve",array("id"=>$data->id))',
+                    'options'=>array('class'=>'approve'),
+                    'visible'=> '$data->status == "1"',
+                ),
+            ),
         ),
     ),
 )); ?>

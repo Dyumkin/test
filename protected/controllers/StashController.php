@@ -44,7 +44,7 @@ class StashController extends Controller
             ),
 
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','delete'),
+				'actions'=>array('admin','delete','approve'),
 				'users'=>array('admin'),
 			),
 
@@ -142,7 +142,7 @@ class StashController extends Controller
     public function actionIndex()
     {
         $criteria = new CDbCriteria(array(
-            'condition' => 'status=' . Stash::STATUS_PUBLISHED,
+            'condition' => 'status=' . Stash::STATUS_APPROVED,
             'order' => 'update_date DESC',
             'with' => 'commentCount',
         ));
@@ -174,6 +174,17 @@ class StashController extends Controller
         ));
     }
 
+    public function actionApprove()
+    {
+        if (Yii::app()->request->isPostRequest) {
+            $status = $this->loadModel();
+            $status->approve();
+            $this->redirect(array('admin'));
+        } else {
+            throw new CHttpException(400, 'Invalid request. Please do not repeat this request again.');
+        }
+    }
+
     /**
      * Returns the data model based on the primary key given in the GET variable.
      * If the data model is not found, an HTTP exception will be raised.
@@ -187,11 +198,11 @@ class StashController extends Controller
         if ($this->_model === null) {
             if (isset($_GET['id'])) {
                 if (Yii::app()->user->isGuest) {
-                    $condition = 'status=' . Stash::STATUS_PUBLISHED . ' OR status=' . Stash::STATUS_UNPUBLISHED;
+                    $condition = 'status=' . Stash::STATUS_APPROVED . ' OR status=' . Stash::STATUS_PENDING;
                 } else {
                     $condition = '';
                 }
-                $this->_model = Stash::model()->findByPk($_GET['id']/*, $condition*/);
+                $this->_model = Stash::model()->findByPk($_GET['id'], $condition);
             }
             if ($this->_model === null) {
                 throw new CHttpException(404, 'The requested page does not exist.');

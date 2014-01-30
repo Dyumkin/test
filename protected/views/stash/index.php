@@ -19,6 +19,7 @@ $this->breadcrumbs = array(
         'season',
         'complexity',
         'stashPlace',
+        'update_date',
         array(
             'class'=>'bootstrap.widgets.TbButtonColumn',
             'template'=>'{view}',

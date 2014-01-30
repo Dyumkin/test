@@ -43794,3 +43794,1017 @@ REQUEST_URI=/stash/view?id=37
 in C:\xampp\htdocs\geocaching\protected\views\stash\view.php (14)
 in C:\xampp\htdocs\geocaching\protected\controllers\StashController.php (69)
 in C:\xampp\htdocs\geocaching\index.php (13)
+2014/01/28 09:58:50 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Системе не удалось найти запрашиваемое действие "manage".' in C:\xampp\htdocs\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\framework\web\CController.php(270): CController->missingAction('manage')
+#1 C:\xampp\htdocs\framework\web\CWebApplication.php(282): CController->run('manage')
+#2 C:\xampp\htdocs\framework\web\CWebApplication.php(141): CWebApplication->runController('stash/manage')
+#3 C:\xampp\htdocs\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\geocaching\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/stash/manage
+---
+2014/01/28 09:59:09 [error] [php] htmlspecialchars() expects parameter 1 to be string, array given (C:\xampp\htdocs\framework\web\helpers\CHtml.php:103)
+Stack trace:
+#0 C:\xampp\htdocs\framework\utils\CFormatter.php(128): CFormatter->formatText()
+#1 C:\xampp\htdocs\framework\zii\widgets\grid\CDataColumn.php(140): CFormatter->format()
+#2 C:\xampp\htdocs\framework\zii\widgets\grid\CGridColumn.php(151): CDataColumn->renderDataCellContent()
+#3 C:\xampp\htdocs\framework\zii\widgets\grid\CGridView.php(616): CDataColumn->renderDataCell()
+#4 C:\xampp\htdocs\framework\zii\widgets\grid\CGridView.php(572): CGridView->renderTableRow()
+#5 C:\xampp\htdocs\framework\zii\widgets\grid\CGridView.php(482): CGridView->renderTableBody()
+#6 C:\xampp\htdocs\framework\zii\widgets\CBaseListView.php(167): CGridView->renderItems()
+#7 unknown(0): CGridView->renderSection()
+#8 C:\xampp\htdocs\framework\zii\widgets\CBaseListView.php(150): preg_replace_callback()
+#9 C:\xampp\htdocs\framework\zii\widgets\CBaseListView.php(135): CGridView->renderContent()
+#10 C:\xampp\htdocs\framework\web\CBaseController.php(173): CGridView->run()
+#11 C:\xampp\htdocs\geocaching\protected\views\stash\admin.php(71): StashController->widget()
+#12 C:\xampp\htdocs\framework\web\CBaseController.php(126): require()
+#13 C:\xampp\htdocs\framework\web\CBaseController.php(95): StashController->renderInternal()
+#14 C:\xampp\htdocs\framework\web\CController.php(869): StashController->renderFile()
+#15 C:\xampp\htdocs\framework\web\CController.php(782): StashController->renderPartial()
+#16 C:\xampp\htdocs\geocaching\protected\controllers\StashController.php(174): StashController->render()
+#17 C:\xampp\htdocs\framework\web\actions\CInlineAction.php(49): StashController->actionAdmin()
+#18 C:\xampp\htdocs\framework\web\CController.php(308): CInlineAction->runWithParams()
+#19 C:\xampp\htdocs\framework\web\filters\CFilterChain.php(133): StashController->runAction()
+#20 C:\xampp\htdocs\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#21 C:\xampp\htdocs\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#22 C:\xampp\htdocs\framework\web\filters\CInlineFilter.php(58): StashController->filterAccessControl()
+#23 C:\xampp\htdocs\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#24 C:\xampp\htdocs\framework\web\CController.php(291): CFilterChain->run()
+#25 C:\xampp\htdocs\framework\web\CController.php(265): StashController->runActionWithFilters()
+#26 C:\xampp\htdocs\framework\web\CWebApplication.php(282): StashController->run()
+#27 C:\xampp\htdocs\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#28 C:\xampp\htdocs\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#29 C:\xampp\htdocs\geocaching\index.php(13): CWebApplication->run()
+REQUEST_URI=/stash/admin
+in C:\xampp\htdocs\geocaching\protected\views\stash\admin.php (71)
+in C:\xampp\htdocs\geocaching\protected\controllers\StashController.php (174)
+in C:\xampp\htdocs\geocaching\index.php (13)
+2014/01/28 10:15:11 [error] [php] htmlspecialchars() expects parameter 1 to be string, array given (C:\xampp\htdocs\framework\web\helpers\CHtml.php:103)
+Stack trace:
+#0 C:\xampp\htdocs\framework\utils\CFormatter.php(128): CFormatter->formatText()
+#1 C:\xampp\htdocs\framework\zii\widgets\grid\CDataColumn.php(140): CFormatter->format()
+#2 C:\xampp\htdocs\framework\zii\widgets\grid\CGridColumn.php(151): CDataColumn->renderDataCellContent()
+#3 C:\xampp\htdocs\framework\zii\widgets\grid\CGridView.php(616): CDataColumn->renderDataCell()
+#4 C:\xampp\htdocs\framework\zii\widgets\grid\CGridView.php(572): CGridView->renderTableRow()
+#5 C:\xampp\htdocs\framework\zii\widgets\grid\CGridView.php(482): CGridView->renderTableBody()
+#6 C:\xampp\htdocs\framework\zii\widgets\CBaseListView.php(167): CGridView->renderItems()
+#7 unknown(0): CGridView->renderSection()
+#8 C:\xampp\htdocs\framework\zii\widgets\CBaseListView.php(150): preg_replace_callback()
+#9 C:\xampp\htdocs\framework\zii\widgets\CBaseListView.php(135): CGridView->renderContent()
+#10 C:\xampp\htdocs\framework\web\CBaseController.php(173): CGridView->run()
+#11 C:\xampp\htdocs\geocaching\protected\views\stash\admin.php(71): StashController->widget()
+#12 C:\xampp\htdocs\framework\web\CBaseController.php(126): require()
+#13 C:\xampp\htdocs\framework\web\CBaseController.php(95): StashController->renderInternal()
+#14 C:\xampp\htdocs\framework\web\CController.php(869): StashController->renderFile()
+#15 C:\xampp\htdocs\framework\web\CController.php(782): StashController->renderPartial()
+#16 C:\xampp\htdocs\geocaching\protected\controllers\StashController.php(174): StashController->render()
+#17 C:\xampp\htdocs\framework\web\actions\CInlineAction.php(49): StashController->actionAdmin()
+#18 C:\xampp\htdocs\framework\web\CController.php(308): CInlineAction->runWithParams()
+#19 C:\xampp\htdocs\framework\web\filters\CFilterChain.php(133): StashController->runAction()
+#20 C:\xampp\htdocs\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#21 C:\xampp\htdocs\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#22 C:\xampp\htdocs\framework\web\filters\CInlineFilter.php(58): StashController->filterAccessControl()
+#23 C:\xampp\htdocs\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#24 C:\xampp\htdocs\framework\web\CController.php(291): CFilterChain->run()
+#25 C:\xampp\htdocs\framework\web\CController.php(265): StashController->runActionWithFilters()
+#26 C:\xampp\htdocs\framework\web\CWebApplication.php(282): StashController->run()
+#27 C:\xampp\htdocs\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#28 C:\xampp\htdocs\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#29 C:\xampp\htdocs\geocaching\index.php(13): CWebApplication->run()
+REQUEST_URI=/stash/admin
+in C:\xampp\htdocs\geocaching\protected\views\stash\admin.php (71)
+in C:\xampp\htdocs\geocaching\protected\controllers\StashController.php (174)
+in C:\xampp\htdocs\geocaching\index.php (13)
+2014/01/28 11:59:38 [warning] [application] Не удалось присвоить небезопасный атрибут "id" класса "Stash".
+in C:\xampp\htdocs\geocaching\protected\controllers\StashController.php (169)
+in C:\xampp\htdocs\geocaching\index.php (13)
+2014/01/28 11:59:47 [warning] [application] Не удалось присвоить небезопасный атрибут "id" класса "Stash".
+in C:\xampp\htdocs\geocaching\protected\controllers\StashController.php (169)
+in C:\xampp\htdocs\geocaching\index.php (13)
+2014/01/28 11:59:53 [warning] [application] Не удалось присвоить небезопасный атрибут "id" класса "Stash".
+in C:\xampp\htdocs\geocaching\protected\controllers\StashController.php (169)
+in C:\xampp\htdocs\geocaching\index.php (13)
+2014/01/28 11:59:59 [warning] [application] Не удалось присвоить небезопасный атрибут "id" класса "Stash".
+in C:\xampp\htdocs\geocaching\protected\controllers\StashController.php (169)
+in C:\xampp\htdocs\geocaching\index.php (13)
+2014/01/28 12:00:03 [warning] [application] Не удалось присвоить небезопасный атрибут "id" класса "Stash".
+in C:\xampp\htdocs\geocaching\protected\controllers\StashController.php (169)
+in C:\xampp\htdocs\geocaching\index.php (13)
+2014/01/29 10:32:09 [warning] [application] Не удалось присвоить небезопасный атрибут "id" класса "Stash".
+in C:\xampp\htdocs\geocaching\protected\controllers\StashController.php (169)
+in C:\xampp\htdocs\geocaching\index.php (13)
+2014/01/29 10:32:16 [warning] [application] Не удалось присвоить небезопасный атрибут "id" класса "Stash".
+in C:\xampp\htdocs\geocaching\protected\controllers\StashController.php (169)
+in C:\xampp\htdocs\geocaching\index.php (13)
+2014/01/29 10:32:27 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Системе не удалось найти запрашиваемое действие "manage".' in C:\xampp\htdocs\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\framework\web\CController.php(270): CController->missingAction('manage')
+#1 C:\xampp\htdocs\framework\web\CWebApplication.php(282): CController->run('manage')
+#2 C:\xampp\htdocs\framework\web\CWebApplication.php(141): CWebApplication->runController('stash/manage')
+#3 C:\xampp\htdocs\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\geocaching\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/stash/manage
+---
+2014/01/29 10:38:01 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Невозможно обработать запрос "extensions/bootstrap/assets/bootstrap/img/glyphicons-halflings.png".' in C:\xampp\htdocs\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\framework\web\CWebApplication.php(141): CWebApplication->runController('extensions/boot...')
+#1 C:\xampp\htdocs\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\geocaching\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/extensions/bootstrap/assets/bootstrap/img/glyphicons-halflings.png
+HTTP_REFERER=http://geocaching.localhost/stash/admin
+---
+2014/01/29 10:55:24 [error] [php] rmdir(C:/xampp/htdocs/geocaching/gallery): Directory not empty (C:\xampp\htdocs\geocaching\protected\extensions\galleryManager\models\GalleryPhoto.php:163)
+Stack trace:
+#0 C:\xampp\htdocs\geocaching\protected\extensions\galleryManager\GalleryBehavior.php(53): Gallery->delete()
+#1 C:\xampp\htdocs\framework\base\CComponent.php(561): GalleryBehavior->beforeDelete()
+#2 C:\xampp\htdocs\framework\db\ar\CActiveRecord.php(859): Stash->raiseEvent()
+#3 C:\xampp\htdocs\framework\db\ar\CActiveRecord.php(973): Stash->onBeforeDelete()
+#4 C:\xampp\htdocs\framework\db\ar\CActiveRecord.php(1220): Stash->beforeDelete()
+#5 C:\xampp\htdocs\geocaching\protected\controllers\StashController.php(131): Stash->delete()
+#6 unknown(0): StashController->actionDelete()
+#7 C:\xampp\htdocs\framework\web\actions\CAction.php(108): ReflectionMethod->invokeArgs()
+#8 C:\xampp\htdocs\framework\web\actions\CInlineAction.php(47): CInlineAction->runWithParamsInternal()
+#9 C:\xampp\htdocs\framework\web\CController.php(308): CInlineAction->runWithParams()
+#10 C:\xampp\htdocs\framework\web\filters\CFilterChain.php(133): StashController->runAction()
+#11 C:\xampp\htdocs\framework\web\CController.php(1116): CFilterChain->run()
+#12 C:\xampp\htdocs\framework\web\filters\CInlineFilter.php(58): StashController->filterPostOnly()
+#13 C:\xampp\htdocs\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#14 C:\xampp\htdocs\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#15 C:\xampp\htdocs\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#16 C:\xampp\htdocs\framework\web\filters\CInlineFilter.php(58): StashController->filterAccessControl()
+#17 C:\xampp\htdocs\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#18 C:\xampp\htdocs\framework\web\CController.php(291): CFilterChain->run()
+#19 C:\xampp\htdocs\framework\web\CController.php(265): StashController->runActionWithFilters()
+#20 C:\xampp\htdocs\framework\web\CWebApplication.php(282): StashController->run()
+#21 C:\xampp\htdocs\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#22 C:\xampp\htdocs\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#23 C:\xampp\htdocs\geocaching\index.php(13): CWebApplication->run()
+REQUEST_URI=/stash/delete?ajax=stash-grid&id=32
+in C:\xampp\htdocs\geocaching\protected\extensions\galleryManager\models\GalleryPhoto.php (163)
+in C:\xampp\htdocs\geocaching\protected\extensions\galleryManager\models\Gallery.php (134)
+in C:\xampp\htdocs\geocaching\protected\extensions\galleryManager\GalleryBehavior.php (53)
+2014/01/29 13:16:44 [warning] [application] Не удалось присвоить небезопасный атрибут "galleryAdded" класса "Stash".
+in C:\xampp\htdocs\geocaching\protected\controllers\StashController.php (84)
+in C:\xampp\htdocs\geocaching\index.php (13)
+2014/01/29 13:17:02 [error] [system.db.CDbCommand] Не удалось выполнить CDbCommand::fetchColumn(): SQLSTATE[42S22]: Column not found: 1054 Unknown column 'APPROVED' in 'where clause'. Выполнявшийся SQL-запрос: SELECT COUNT(DISTINCT `t`.`id`) FROM `tbl_stash` `t`  WHERE (status=APPROVED).
+in C:\xampp\htdocs\geocaching\protected\extensions\bootstrap\widgets\TbGridView.php (68)
+in C:\xampp\htdocs\geocaching\protected\views\stash\index.php (27)
+in C:\xampp\htdocs\geocaching\protected\controllers\StashController.php (158)
+2014/01/29 13:17:02 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand не удалось исполнить SQL-запрос: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'APPROVED' in 'where clause'. The SQL statement executed was: SELECT COUNT(DISTINCT `t`.`id`) FROM `tbl_stash` `t`  WHERE (status=APPROVED)' in C:\xampp\htdocs\framework\db\CDbCommand.php:543
+Stack trace:
+#0 C:\xampp\htdocs\framework\db\CDbCommand.php(433): CDbCommand->queryInternal('fetchColumn', 0, Array)
+#1 C:\xampp\htdocs\framework\db\ar\CActiveFinder.php(759): CDbCommand->queryScalar()
+#2 C:\xampp\htdocs\framework\db\ar\CActiveFinder.php(151): CJoinElement->count(Object(CDbCriteria))
+#3 C:\xampp\htdocs\framework\db\ar\CActiveRecord.php(1605): CActiveFinder->count(Object(CDbCriteria))
+#4 C:\xampp\htdocs\framework\web\CActiveDataProvider.php(228): CActiveRecord->count(Object(CDbCriteria))
+#5 C:\xampp\htdocs\framework\web\CDataProvider.php(224): CActiveDataProvider->calculateTotalItemCount()
+#6 C:\xampp\htdocs\framework\web\CActiveDataProvider.php(178): CDataProvider->getTotalItemCount()
+#7 C:\xampp\htdocs\framework\web\CDataProvider.php(168): CActiveDataProvider->fetchData()
+#8 C:\xampp\htdocs\framework\zii\widgets\CBaseListView.php(111): CDataProvider->getData()
+#9 C:\xampp\htdocs\framework\zii\widgets\grid\CGridView.php(339): CBaseListView->init()
+#10 C:\xampp\htdocs\geocaching\protected\extensions\bootstrap\widgets\TbGridView.php(68): CGridView->init()
+#11 C:\xampp\htdocs\framework\web\CBaseController.php(147): TbGridView->init()
+#12 C:\xampp\htdocs\framework\web\CBaseController.php(172): CBaseController->createWidget('bootstrap.widge...', Array)
+#13 C:\xampp\htdocs\geocaching\protected\views\stash\index.php(27): CBaseController->widget('bootstrap.widge...', Array)
+#14 C:\xampp\htdocs\framework\web\CBaseController.php(126): require('C:\xampp\htdocs...')
+#15 C:\xampp\htdocs\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\xampp\htdocs...', Array, true)
+#16 C:\xampp\htdocs\framework\web\CController.php(869): CBaseController->renderFile('C:\xampp\htdocs...', Array, true)
+#17 C:\xampp\htdocs\framework\web\CController.php(782): CController->renderPartial('index', Array, true)
+#18 C:\xampp\htdocs\geocaching\protected\controllers\StashController.php(158): CController->render('index', Array)
+#19 C:\xampp\htdocs\framework\web\actions\CInlineAction.php(49): StashController->actionIndex()
+#20 C:\xampp\htdocs\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#21 C:\xampp\htdocs\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#22 C:\xampp\htdocs\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#23 C:\xampp\htdocs\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#24 C:\xampp\htdocs\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#25 C:\xampp\htdocs\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#26 C:\xampp\htdocs\framework\web\CController.php(291): CFilterChain->run()
+#27 C:\xampp\htdocs\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#28 C:\xampp\htdocs\framework\web\CWebApplication.php(282): CController->run('index')
+#29 C:\xampp\htdocs\framework\web\CWebApplication.php(141): CWebApplication->runController('stash/index')
+#30 C:\xampp\htdocs\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#31 C:\xampp\htdocs\geocaching\index.php(13): CApplication->run()
+#32 {main}
+REQUEST_URI=/stash/index
+HTTP_REFERER=http://geocaching.localhost/stash/view?id=38
+---
+2014/01/29 13:19:41 [error] [system.db.CDbCommand] Не удалось выполнить CDbCommand::fetchColumn(): SQLSTATE[42S22]: Column not found: 1054 Unknown column 'APPROVED' in 'where clause'. Выполнявшийся SQL-запрос: SELECT COUNT(DISTINCT `t`.`id`) FROM `tbl_stash` `t`  WHERE (status=APPROVED).
+in C:\xampp\htdocs\geocaching\protected\extensions\bootstrap\widgets\TbGridView.php (68)
+in C:\xampp\htdocs\geocaching\protected\views\stash\index.php (27)
+in C:\xampp\htdocs\geocaching\protected\controllers\StashController.php (158)
+2014/01/29 13:19:41 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand не удалось исполнить SQL-запрос: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'APPROVED' in 'where clause'. The SQL statement executed was: SELECT COUNT(DISTINCT `t`.`id`) FROM `tbl_stash` `t`  WHERE (status=APPROVED)' in C:\xampp\htdocs\framework\db\CDbCommand.php:543
+Stack trace:
+#0 C:\xampp\htdocs\framework\db\CDbCommand.php(433): CDbCommand->queryInternal('fetchColumn', 0, Array)
+#1 C:\xampp\htdocs\framework\db\ar\CActiveFinder.php(759): CDbCommand->queryScalar()
+#2 C:\xampp\htdocs\framework\db\ar\CActiveFinder.php(151): CJoinElement->count(Object(CDbCriteria))
+#3 C:\xampp\htdocs\framework\db\ar\CActiveRecord.php(1605): CActiveFinder->count(Object(CDbCriteria))
+#4 C:\xampp\htdocs\framework\web\CActiveDataProvider.php(228): CActiveRecord->count(Object(CDbCriteria))
+#5 C:\xampp\htdocs\framework\web\CDataProvider.php(224): CActiveDataProvider->calculateTotalItemCount()
+#6 C:\xampp\htdocs\framework\web\CActiveDataProvider.php(178): CDataProvider->getTotalItemCount()
+#7 C:\xampp\htdocs\framework\web\CDataProvider.php(168): CActiveDataProvider->fetchData()
+#8 C:\xampp\htdocs\framework\zii\widgets\CBaseListView.php(111): CDataProvider->getData()
+#9 C:\xampp\htdocs\framework\zii\widgets\grid\CGridView.php(339): CBaseListView->init()
+#10 C:\xampp\htdocs\geocaching\protected\extensions\bootstrap\widgets\TbGridView.php(68): CGridView->init()
+#11 C:\xampp\htdocs\framework\web\CBaseController.php(147): TbGridView->init()
+#12 C:\xampp\htdocs\framework\web\CBaseController.php(172): CBaseController->createWidget('bootstrap.widge...', Array)
+#13 C:\xampp\htdocs\geocaching\protected\views\stash\index.php(27): CBaseController->widget('bootstrap.widge...', Array)
+#14 C:\xampp\htdocs\framework\web\CBaseController.php(126): require('C:\xampp\htdocs...')
+#15 C:\xampp\htdocs\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\xampp\htdocs...', Array, true)
+#16 C:\xampp\htdocs\framework\web\CController.php(869): CBaseController->renderFile('C:\xampp\htdocs...', Array, true)
+#17 C:\xampp\htdocs\framework\web\CController.php(782): CController->renderPartial('index', Array, true)
+#18 C:\xampp\htdocs\geocaching\protected\controllers\StashController.php(158): CController->render('index', Array)
+#19 C:\xampp\htdocs\framework\web\actions\CInlineAction.php(49): StashController->actionIndex()
+#20 C:\xampp\htdocs\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#21 C:\xampp\htdocs\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#22 C:\xampp\htdocs\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#23 C:\xampp\htdocs\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#24 C:\xampp\htdocs\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#25 C:\xampp\htdocs\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#26 C:\xampp\htdocs\framework\web\CController.php(291): CFilterChain->run()
+#27 C:\xampp\htdocs\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#28 C:\xampp\htdocs\framework\web\CWebApplication.php(282): CController->run('index')
+#29 C:\xampp\htdocs\framework\web\CWebApplication.php(141): CWebApplication->runController('stash/index')
+#30 C:\xampp\htdocs\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#31 C:\xampp\htdocs\geocaching\index.php(13): CApplication->run()
+#32 {main}
+REQUEST_URI=/stash/index
+HTTP_REFERER=http://geocaching.localhost/stash/view?id=38
+---
+2014/01/29 13:22:31 [error] [system.db.CDbCommand] Не удалось выполнить CDbCommand::fetchColumn(): SQLSTATE[42S22]: Column not found: 1054 Unknown column 'APPROVED' in 'where clause'. Выполнявшийся SQL-запрос: SELECT COUNT(DISTINCT `t`.`id`) FROM `tbl_stash` `t`  WHERE (status=APPROVED).
+in C:\xampp\htdocs\geocaching\protected\extensions\bootstrap\widgets\TbGridView.php (68)
+in C:\xampp\htdocs\geocaching\protected\views\stash\index.php (27)
+in C:\xampp\htdocs\geocaching\protected\controllers\StashController.php (158)
+2014/01/29 13:22:31 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand не удалось исполнить SQL-запрос: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'APPROVED' in 'where clause'. The SQL statement executed was: SELECT COUNT(DISTINCT `t`.`id`) FROM `tbl_stash` `t`  WHERE (status=APPROVED)' in C:\xampp\htdocs\framework\db\CDbCommand.php:543
+Stack trace:
+#0 C:\xampp\htdocs\framework\db\CDbCommand.php(433): CDbCommand->queryInternal('fetchColumn', 0, Array)
+#1 C:\xampp\htdocs\framework\db\ar\CActiveFinder.php(759): CDbCommand->queryScalar()
+#2 C:\xampp\htdocs\framework\db\ar\CActiveFinder.php(151): CJoinElement->count(Object(CDbCriteria))
+#3 C:\xampp\htdocs\framework\db\ar\CActiveRecord.php(1605): CActiveFinder->count(Object(CDbCriteria))
+#4 C:\xampp\htdocs\framework\web\CActiveDataProvider.php(228): CActiveRecord->count(Object(CDbCriteria))
+#5 C:\xampp\htdocs\framework\web\CDataProvider.php(224): CActiveDataProvider->calculateTotalItemCount()
+#6 C:\xampp\htdocs\framework\web\CActiveDataProvider.php(178): CDataProvider->getTotalItemCount()
+#7 C:\xampp\htdocs\framework\web\CDataProvider.php(168): CActiveDataProvider->fetchData()
+#8 C:\xampp\htdocs\framework\zii\widgets\CBaseListView.php(111): CDataProvider->getData()
+#9 C:\xampp\htdocs\framework\zii\widgets\grid\CGridView.php(339): CBaseListView->init()
+#10 C:\xampp\htdocs\geocaching\protected\extensions\bootstrap\widgets\TbGridView.php(68): CGridView->init()
+#11 C:\xampp\htdocs\framework\web\CBaseController.php(147): TbGridView->init()
+#12 C:\xampp\htdocs\framework\web\CBaseController.php(172): CBaseController->createWidget('bootstrap.widge...', Array)
+#13 C:\xampp\htdocs\geocaching\protected\views\stash\index.php(27): CBaseController->widget('bootstrap.widge...', Array)
+#14 C:\xampp\htdocs\framework\web\CBaseController.php(126): require('C:\xampp\htdocs...')
+#15 C:\xampp\htdocs\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\xampp\htdocs...', Array, true)
+#16 C:\xampp\htdocs\framework\web\CController.php(869): CBaseController->renderFile('C:\xampp\htdocs...', Array, true)
+#17 C:\xampp\htdocs\framework\web\CController.php(782): CController->renderPartial('index', Array, true)
+#18 C:\xampp\htdocs\geocaching\protected\controllers\StashController.php(158): CController->render('index', Array)
+#19 C:\xampp\htdocs\framework\web\actions\CInlineAction.php(49): StashController->actionIndex()
+#20 C:\xampp\htdocs\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#21 C:\xampp\htdocs\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#22 C:\xampp\htdocs\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#23 C:\xampp\htdocs\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#24 C:\xampp\htdocs\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#25 C:\xampp\htdocs\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#26 C:\xampp\htdocs\framework\web\CController.php(291): CFilterChain->run()
+#27 C:\xampp\htdocs\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#28 C:\xampp\htdocs\framework\web\CWebApplication.php(282): CController->run('index')
+#29 C:\xampp\htdocs\framework\web\CWebApplication.php(141): CWebApplication->runController('stash/index')
+#30 C:\xampp\htdocs\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#31 C:\xampp\htdocs\geocaching\index.php(13): CApplication->run()
+#32 {main}
+REQUEST_URI=/stash/index
+HTTP_REFERER=http://geocaching.localhost/stash/view?id=38
+---
+2014/01/29 13:25:25 [error] [system.db.CDbCommand] Не удалось выполнить CDbCommand::fetchColumn(): SQLSTATE[42S22]: Column not found: 1054 Unknown column 'APPROVED' in 'where clause'. Выполнявшийся SQL-запрос: SELECT COUNT(DISTINCT `t`.`id`) FROM `tbl_stash` `t`  WHERE (status=APPROVED).
+in C:\xampp\htdocs\geocaching\protected\extensions\bootstrap\widgets\TbGridView.php (68)
+in C:\xampp\htdocs\geocaching\protected\views\stash\index.php (27)
+in C:\xampp\htdocs\geocaching\protected\controllers\StashController.php (158)
+2014/01/29 13:25:25 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand не удалось исполнить SQL-запрос: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'APPROVED' in 'where clause'. The SQL statement executed was: SELECT COUNT(DISTINCT `t`.`id`) FROM `tbl_stash` `t`  WHERE (status=APPROVED)' in C:\xampp\htdocs\framework\db\CDbCommand.php:543
+Stack trace:
+#0 C:\xampp\htdocs\framework\db\CDbCommand.php(433): CDbCommand->queryInternal('fetchColumn', 0, Array)
+#1 C:\xampp\htdocs\framework\db\ar\CActiveFinder.php(759): CDbCommand->queryScalar()
+#2 C:\xampp\htdocs\framework\db\ar\CActiveFinder.php(151): CJoinElement->count(Object(CDbCriteria))
+#3 C:\xampp\htdocs\framework\db\ar\CActiveRecord.php(1605): CActiveFinder->count(Object(CDbCriteria))
+#4 C:\xampp\htdocs\framework\web\CActiveDataProvider.php(228): CActiveRecord->count(Object(CDbCriteria))
+#5 C:\xampp\htdocs\framework\web\CDataProvider.php(224): CActiveDataProvider->calculateTotalItemCount()
+#6 C:\xampp\htdocs\framework\web\CActiveDataProvider.php(178): CDataProvider->getTotalItemCount()
+#7 C:\xampp\htdocs\framework\web\CDataProvider.php(168): CActiveDataProvider->fetchData()
+#8 C:\xampp\htdocs\framework\zii\widgets\CBaseListView.php(111): CDataProvider->getData()
+#9 C:\xampp\htdocs\framework\zii\widgets\grid\CGridView.php(339): CBaseListView->init()
+#10 C:\xampp\htdocs\geocaching\protected\extensions\bootstrap\widgets\TbGridView.php(68): CGridView->init()
+#11 C:\xampp\htdocs\framework\web\CBaseController.php(147): TbGridView->init()
+#12 C:\xampp\htdocs\framework\web\CBaseController.php(172): CBaseController->createWidget('bootstrap.widge...', Array)
+#13 C:\xampp\htdocs\geocaching\protected\views\stash\index.php(27): CBaseController->widget('bootstrap.widge...', Array)
+#14 C:\xampp\htdocs\framework\web\CBaseController.php(126): require('C:\xampp\htdocs...')
+#15 C:\xampp\htdocs\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\xampp\htdocs...', Array, true)
+#16 C:\xampp\htdocs\framework\web\CController.php(869): CBaseController->renderFile('C:\xampp\htdocs...', Array, true)
+#17 C:\xampp\htdocs\framework\web\CController.php(782): CController->renderPartial('index', Array, true)
+#18 C:\xampp\htdocs\geocaching\protected\controllers\StashController.php(158): CController->render('index', Array)
+#19 C:\xampp\htdocs\framework\web\actions\CInlineAction.php(49): StashController->actionIndex()
+#20 C:\xampp\htdocs\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#21 C:\xampp\htdocs\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#22 C:\xampp\htdocs\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#23 C:\xampp\htdocs\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#24 C:\xampp\htdocs\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#25 C:\xampp\htdocs\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#26 C:\xampp\htdocs\framework\web\CController.php(291): CFilterChain->run()
+#27 C:\xampp\htdocs\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#28 C:\xampp\htdocs\framework\web\CWebApplication.php(282): CController->run('index')
+#29 C:\xampp\htdocs\framework\web\CWebApplication.php(141): CWebApplication->runController('stash/index')
+#30 C:\xampp\htdocs\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#31 C:\xampp\htdocs\geocaching\index.php(13): CApplication->run()
+#32 {main}
+REQUEST_URI=/stash/index
+HTTP_REFERER=http://geocaching.localhost/stash/view?id=38
+---
+2014/01/29 13:25:27 [error] [system.db.CDbCommand] Не удалось выполнить CDbCommand::fetchColumn(): SQLSTATE[42S22]: Column not found: 1054 Unknown column 'APPROVED' in 'where clause'. Выполнявшийся SQL-запрос: SELECT COUNT(DISTINCT `t`.`id`) FROM `tbl_stash` `t`  WHERE (status=APPROVED).
+in C:\xampp\htdocs\geocaching\protected\extensions\bootstrap\widgets\TbGridView.php (68)
+in C:\xampp\htdocs\geocaching\protected\views\stash\index.php (27)
+in C:\xampp\htdocs\geocaching\protected\controllers\StashController.php (158)
+2014/01/29 13:25:27 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand не удалось исполнить SQL-запрос: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'APPROVED' in 'where clause'. The SQL statement executed was: SELECT COUNT(DISTINCT `t`.`id`) FROM `tbl_stash` `t`  WHERE (status=APPROVED)' in C:\xampp\htdocs\framework\db\CDbCommand.php:543
+Stack trace:
+#0 C:\xampp\htdocs\framework\db\CDbCommand.php(433): CDbCommand->queryInternal('fetchColumn', 0, Array)
+#1 C:\xampp\htdocs\framework\db\ar\CActiveFinder.php(759): CDbCommand->queryScalar()
+#2 C:\xampp\htdocs\framework\db\ar\CActiveFinder.php(151): CJoinElement->count(Object(CDbCriteria))
+#3 C:\xampp\htdocs\framework\db\ar\CActiveRecord.php(1605): CActiveFinder->count(Object(CDbCriteria))
+#4 C:\xampp\htdocs\framework\web\CActiveDataProvider.php(228): CActiveRecord->count(Object(CDbCriteria))
+#5 C:\xampp\htdocs\framework\web\CDataProvider.php(224): CActiveDataProvider->calculateTotalItemCount()
+#6 C:\xampp\htdocs\framework\web\CActiveDataProvider.php(178): CDataProvider->getTotalItemCount()
+#7 C:\xampp\htdocs\framework\web\CDataProvider.php(168): CActiveDataProvider->fetchData()
+#8 C:\xampp\htdocs\framework\zii\widgets\CBaseListView.php(111): CDataProvider->getData()
+#9 C:\xampp\htdocs\framework\zii\widgets\grid\CGridView.php(339): CBaseListView->init()
+#10 C:\xampp\htdocs\geocaching\protected\extensions\bootstrap\widgets\TbGridView.php(68): CGridView->init()
+#11 C:\xampp\htdocs\framework\web\CBaseController.php(147): TbGridView->init()
+#12 C:\xampp\htdocs\framework\web\CBaseController.php(172): CBaseController->createWidget('bootstrap.widge...', Array)
+#13 C:\xampp\htdocs\geocaching\protected\views\stash\index.php(27): CBaseController->widget('bootstrap.widge...', Array)
+#14 C:\xampp\htdocs\framework\web\CBaseController.php(126): require('C:\xampp\htdocs...')
+#15 C:\xampp\htdocs\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\xampp\htdocs...', Array, true)
+#16 C:\xampp\htdocs\framework\web\CController.php(869): CBaseController->renderFile('C:\xampp\htdocs...', Array, true)
+#17 C:\xampp\htdocs\framework\web\CController.php(782): CController->renderPartial('index', Array, true)
+#18 C:\xampp\htdocs\geocaching\protected\controllers\StashController.php(158): CController->render('index', Array)
+#19 C:\xampp\htdocs\framework\web\actions\CInlineAction.php(49): StashController->actionIndex()
+#20 C:\xampp\htdocs\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#21 C:\xampp\htdocs\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#22 C:\xampp\htdocs\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#23 C:\xampp\htdocs\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#24 C:\xampp\htdocs\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#25 C:\xampp\htdocs\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#26 C:\xampp\htdocs\framework\web\CController.php(291): CFilterChain->run()
+#27 C:\xampp\htdocs\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#28 C:\xampp\htdocs\framework\web\CWebApplication.php(282): CController->run('index')
+#29 C:\xampp\htdocs\framework\web\CWebApplication.php(141): CWebApplication->runController('stash/index')
+#30 C:\xampp\htdocs\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#31 C:\xampp\htdocs\geocaching\index.php(13): CApplication->run()
+#32 {main}
+REQUEST_URI=/stash/index
+HTTP_REFERER=http://geocaching.localhost/stash/view?id=38
+---
+2014/01/29 13:26:40 [error] [system.db.CDbCommand] Не удалось выполнить CDbCommand::fetchColumn(): SQLSTATE[42S22]: Column not found: 1054 Unknown column 'APPROVED' in 'where clause'. Выполнявшийся SQL-запрос: SELECT COUNT(DISTINCT `t`.`id`) FROM `tbl_stash` `t`  WHERE (status=APPROVED).
+in C:\xampp\htdocs\geocaching\protected\extensions\bootstrap\widgets\TbGridView.php (68)
+in C:\xampp\htdocs\geocaching\protected\views\stash\index.php (27)
+in C:\xampp\htdocs\geocaching\protected\controllers\StashController.php (158)
+2014/01/29 13:26:40 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand не удалось исполнить SQL-запрос: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'APPROVED' in 'where clause'. The SQL statement executed was: SELECT COUNT(DISTINCT `t`.`id`) FROM `tbl_stash` `t`  WHERE (status=APPROVED)' in C:\xampp\htdocs\framework\db\CDbCommand.php:543
+Stack trace:
+#0 C:\xampp\htdocs\framework\db\CDbCommand.php(433): CDbCommand->queryInternal('fetchColumn', 0, Array)
+#1 C:\xampp\htdocs\framework\db\ar\CActiveFinder.php(759): CDbCommand->queryScalar()
+#2 C:\xampp\htdocs\framework\db\ar\CActiveFinder.php(151): CJoinElement->count(Object(CDbCriteria))
+#3 C:\xampp\htdocs\framework\db\ar\CActiveRecord.php(1605): CActiveFinder->count(Object(CDbCriteria))
+#4 C:\xampp\htdocs\framework\web\CActiveDataProvider.php(228): CActiveRecord->count(Object(CDbCriteria))
+#5 C:\xampp\htdocs\framework\web\CDataProvider.php(224): CActiveDataProvider->calculateTotalItemCount()
+#6 C:\xampp\htdocs\framework\web\CActiveDataProvider.php(178): CDataProvider->getTotalItemCount()
+#7 C:\xampp\htdocs\framework\web\CDataProvider.php(168): CActiveDataProvider->fetchData()
+#8 C:\xampp\htdocs\framework\zii\widgets\CBaseListView.php(111): CDataProvider->getData()
+#9 C:\xampp\htdocs\framework\zii\widgets\grid\CGridView.php(339): CBaseListView->init()
+#10 C:\xampp\htdocs\geocaching\protected\extensions\bootstrap\widgets\TbGridView.php(68): CGridView->init()
+#11 C:\xampp\htdocs\framework\web\CBaseController.php(147): TbGridView->init()
+#12 C:\xampp\htdocs\framework\web\CBaseController.php(172): CBaseController->createWidget('bootstrap.widge...', Array)
+#13 C:\xampp\htdocs\geocaching\protected\views\stash\index.php(27): CBaseController->widget('bootstrap.widge...', Array)
+#14 C:\xampp\htdocs\framework\web\CBaseController.php(126): require('C:\xampp\htdocs...')
+#15 C:\xampp\htdocs\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\xampp\htdocs...', Array, true)
+#16 C:\xampp\htdocs\framework\web\CController.php(869): CBaseController->renderFile('C:\xampp\htdocs...', Array, true)
+#17 C:\xampp\htdocs\framework\web\CController.php(782): CController->renderPartial('index', Array, true)
+#18 C:\xampp\htdocs\geocaching\protected\controllers\StashController.php(158): CController->render('index', Array)
+#19 C:\xampp\htdocs\framework\web\actions\CInlineAction.php(49): StashController->actionIndex()
+#20 C:\xampp\htdocs\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#21 C:\xampp\htdocs\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#22 C:\xampp\htdocs\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#23 C:\xampp\htdocs\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#24 C:\xampp\htdocs\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#25 C:\xampp\htdocs\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#26 C:\xampp\htdocs\framework\web\CController.php(291): CFilterChain->run()
+#27 C:\xampp\htdocs\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#28 C:\xampp\htdocs\framework\web\CWebApplication.php(282): CController->run('index')
+#29 C:\xampp\htdocs\framework\web\CWebApplication.php(141): CWebApplication->runController('stash/index')
+#30 C:\xampp\htdocs\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#31 C:\xampp\htdocs\geocaching\index.php(13): CApplication->run()
+#32 {main}
+REQUEST_URI=/stash/index
+HTTP_REFERER=http://geocaching.localhost/stash/update?id=38
+---
+2014/01/29 13:31:54 [error] [system.db.CDbCommand] Не удалось выполнить CDbCommand::fetchColumn(): SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Approved' in 'where clause'. Выполнявшийся SQL-запрос: SELECT COUNT(DISTINCT `t`.`id`) FROM `tbl_stash` `t`  WHERE (status=Approved).
+in C:\xampp\htdocs\geocaching\protected\extensions\bootstrap\widgets\TbGridView.php (68)
+in C:\xampp\htdocs\geocaching\protected\views\stash\index.php (27)
+in C:\xampp\htdocs\geocaching\protected\controllers\StashController.php (158)
+2014/01/29 13:31:54 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand не удалось исполнить SQL-запрос: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Approved' in 'where clause'. The SQL statement executed was: SELECT COUNT(DISTINCT `t`.`id`) FROM `tbl_stash` `t`  WHERE (status=Approved)' in C:\xampp\htdocs\framework\db\CDbCommand.php:543
+Stack trace:
+#0 C:\xampp\htdocs\framework\db\CDbCommand.php(433): CDbCommand->queryInternal('fetchColumn', 0, Array)
+#1 C:\xampp\htdocs\framework\db\ar\CActiveFinder.php(759): CDbCommand->queryScalar()
+#2 C:\xampp\htdocs\framework\db\ar\CActiveFinder.php(151): CJoinElement->count(Object(CDbCriteria))
+#3 C:\xampp\htdocs\framework\db\ar\CActiveRecord.php(1605): CActiveFinder->count(Object(CDbCriteria))
+#4 C:\xampp\htdocs\framework\web\CActiveDataProvider.php(228): CActiveRecord->count(Object(CDbCriteria))
+#5 C:\xampp\htdocs\framework\web\CDataProvider.php(224): CActiveDataProvider->calculateTotalItemCount()
+#6 C:\xampp\htdocs\framework\web\CActiveDataProvider.php(178): CDataProvider->getTotalItemCount()
+#7 C:\xampp\htdocs\framework\web\CDataProvider.php(168): CActiveDataProvider->fetchData()
+#8 C:\xampp\htdocs\framework\zii\widgets\CBaseListView.php(111): CDataProvider->getData()
+#9 C:\xampp\htdocs\framework\zii\widgets\grid\CGridView.php(339): CBaseListView->init()
+#10 C:\xampp\htdocs\geocaching\protected\extensions\bootstrap\widgets\TbGridView.php(68): CGridView->init()
+#11 C:\xampp\htdocs\framework\web\CBaseController.php(147): TbGridView->init()
+#12 C:\xampp\htdocs\framework\web\CBaseController.php(172): CBaseController->createWidget('bootstrap.widge...', Array)
+#13 C:\xampp\htdocs\geocaching\protected\views\stash\index.php(27): CBaseController->widget('bootstrap.widge...', Array)
+#14 C:\xampp\htdocs\framework\web\CBaseController.php(126): require('C:\xampp\htdocs...')
+#15 C:\xampp\htdocs\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\xampp\htdocs...', Array, true)
+#16 C:\xampp\htdocs\framework\web\CController.php(869): CBaseController->renderFile('C:\xampp\htdocs...', Array, true)
+#17 C:\xampp\htdocs\framework\web\CController.php(782): CController->renderPartial('index', Array, true)
+#18 C:\xampp\htdocs\geocaching\protected\controllers\StashController.php(158): CController->render('index', Array)
+#19 C:\xampp\htdocs\framework\web\actions\CInlineAction.php(49): StashController->actionIndex()
+#20 C:\xampp\htdocs\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#21 C:\xampp\htdocs\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#22 C:\xampp\htdocs\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#23 C:\xampp\htdocs\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#24 C:\xampp\htdocs\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#25 C:\xampp\htdocs\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#26 C:\xampp\htdocs\framework\web\CController.php(291): CFilterChain->run()
+#27 C:\xampp\htdocs\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#28 C:\xampp\htdocs\framework\web\CWebApplication.php(282): CController->run('index')
+#29 C:\xampp\htdocs\framework\web\CWebApplication.php(141): CWebApplication->runController('stash/index')
+#30 C:\xampp\htdocs\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#31 C:\xampp\htdocs\geocaching\index.php(13): CApplication->run()
+#32 {main}
+REQUEST_URI=/stash/index
+HTTP_REFERER=http://geocaching.localhost/stash/update?id=38
+---
+2014/01/29 13:33:28 [warning] [application] Не удалось присвоить небезопасный атрибут "galleryAdded" класса "Stash".
+in C:\xampp\htdocs\geocaching\protected\controllers\StashController.php (84)
+in C:\xampp\htdocs\geocaching\index.php (13)
+2014/01/29 13:33:36 [error] [system.db.CDbCommand] Не удалось выполнить CDbCommand::fetchColumn(): SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Approved' in 'where clause'. Выполнявшийся SQL-запрос: SELECT COUNT(DISTINCT `t`.`id`) FROM `tbl_stash` `t`  WHERE (status=Approved).
+in C:\xampp\htdocs\geocaching\protected\extensions\bootstrap\widgets\TbGridView.php (68)
+in C:\xampp\htdocs\geocaching\protected\views\stash\index.php (27)
+in C:\xampp\htdocs\geocaching\protected\controllers\StashController.php (158)
+2014/01/29 13:33:36 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand не удалось исполнить SQL-запрос: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Approved' in 'where clause'. The SQL statement executed was: SELECT COUNT(DISTINCT `t`.`id`) FROM `tbl_stash` `t`  WHERE (status=Approved)' in C:\xampp\htdocs\framework\db\CDbCommand.php:543
+Stack trace:
+#0 C:\xampp\htdocs\framework\db\CDbCommand.php(433): CDbCommand->queryInternal('fetchColumn', 0, Array)
+#1 C:\xampp\htdocs\framework\db\ar\CActiveFinder.php(759): CDbCommand->queryScalar()
+#2 C:\xampp\htdocs\framework\db\ar\CActiveFinder.php(151): CJoinElement->count(Object(CDbCriteria))
+#3 C:\xampp\htdocs\framework\db\ar\CActiveRecord.php(1605): CActiveFinder->count(Object(CDbCriteria))
+#4 C:\xampp\htdocs\framework\web\CActiveDataProvider.php(228): CActiveRecord->count(Object(CDbCriteria))
+#5 C:\xampp\htdocs\framework\web\CDataProvider.php(224): CActiveDataProvider->calculateTotalItemCount()
+#6 C:\xampp\htdocs\framework\web\CActiveDataProvider.php(178): CDataProvider->getTotalItemCount()
+#7 C:\xampp\htdocs\framework\web\CDataProvider.php(168): CActiveDataProvider->fetchData()
+#8 C:\xampp\htdocs\framework\zii\widgets\CBaseListView.php(111): CDataProvider->getData()
+#9 C:\xampp\htdocs\framework\zii\widgets\grid\CGridView.php(339): CBaseListView->init()
+#10 C:\xampp\htdocs\geocaching\protected\extensions\bootstrap\widgets\TbGridView.php(68): CGridView->init()
+#11 C:\xampp\htdocs\framework\web\CBaseController.php(147): TbGridView->init()
+#12 C:\xampp\htdocs\framework\web\CBaseController.php(172): CBaseController->createWidget('bootstrap.widge...', Array)
+#13 C:\xampp\htdocs\geocaching\protected\views\stash\index.php(27): CBaseController->widget('bootstrap.widge...', Array)
+#14 C:\xampp\htdocs\framework\web\CBaseController.php(126): require('C:\xampp\htdocs...')
+#15 C:\xampp\htdocs\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\xampp\htdocs...', Array, true)
+#16 C:\xampp\htdocs\framework\web\CController.php(869): CBaseController->renderFile('C:\xampp\htdocs...', Array, true)
+#17 C:\xampp\htdocs\framework\web\CController.php(782): CController->renderPartial('index', Array, true)
+#18 C:\xampp\htdocs\geocaching\protected\controllers\StashController.php(158): CController->render('index', Array)
+#19 C:\xampp\htdocs\framework\web\actions\CInlineAction.php(49): StashController->actionIndex()
+#20 C:\xampp\htdocs\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#21 C:\xampp\htdocs\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#22 C:\xampp\htdocs\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#23 C:\xampp\htdocs\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#24 C:\xampp\htdocs\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#25 C:\xampp\htdocs\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#26 C:\xampp\htdocs\framework\web\CController.php(291): CFilterChain->run()
+#27 C:\xampp\htdocs\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#28 C:\xampp\htdocs\framework\web\CWebApplication.php(282): CController->run('index')
+#29 C:\xampp\htdocs\framework\web\CWebApplication.php(141): CWebApplication->runController('stash/index')
+#30 C:\xampp\htdocs\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#31 C:\xampp\htdocs\geocaching\index.php(13): CApplication->run()
+#32 {main}
+REQUEST_URI=/stash/index
+HTTP_REFERER=http://geocaching.localhost/stash/view?id=39
+---
+2014/01/29 13:39:05 [error] [system.db.CDbCommand] Не удалось выполнить CDbCommand::fetchColumn(): SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Pending' in 'where clause'. Выполнявшийся SQL-запрос: SELECT COUNT(DISTINCT `t`.`id`) FROM `tbl_stash` `t`  WHERE (status=Pending).
+in C:\xampp\htdocs\geocaching\protected\extensions\bootstrap\widgets\TbGridView.php (68)
+in C:\xampp\htdocs\geocaching\protected\views\stash\index.php (27)
+in C:\xampp\htdocs\geocaching\protected\controllers\StashController.php (158)
+2014/01/29 13:39:05 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand не удалось исполнить SQL-запрос: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Pending' in 'where clause'. The SQL statement executed was: SELECT COUNT(DISTINCT `t`.`id`) FROM `tbl_stash` `t`  WHERE (status=Pending)' in C:\xampp\htdocs\framework\db\CDbCommand.php:543
+Stack trace:
+#0 C:\xampp\htdocs\framework\db\CDbCommand.php(433): CDbCommand->queryInternal('fetchColumn', 0, Array)
+#1 C:\xampp\htdocs\framework\db\ar\CActiveFinder.php(759): CDbCommand->queryScalar()
+#2 C:\xampp\htdocs\framework\db\ar\CActiveFinder.php(151): CJoinElement->count(Object(CDbCriteria))
+#3 C:\xampp\htdocs\framework\db\ar\CActiveRecord.php(1605): CActiveFinder->count(Object(CDbCriteria))
+#4 C:\xampp\htdocs\framework\web\CActiveDataProvider.php(228): CActiveRecord->count(Object(CDbCriteria))
+#5 C:\xampp\htdocs\framework\web\CDataProvider.php(224): CActiveDataProvider->calculateTotalItemCount()
+#6 C:\xampp\htdocs\framework\web\CActiveDataProvider.php(178): CDataProvider->getTotalItemCount()
+#7 C:\xampp\htdocs\framework\web\CDataProvider.php(168): CActiveDataProvider->fetchData()
+#8 C:\xampp\htdocs\framework\zii\widgets\CBaseListView.php(111): CDataProvider->getData()
+#9 C:\xampp\htdocs\framework\zii\widgets\grid\CGridView.php(339): CBaseListView->init()
+#10 C:\xampp\htdocs\geocaching\protected\extensions\bootstrap\widgets\TbGridView.php(68): CGridView->init()
+#11 C:\xampp\htdocs\framework\web\CBaseController.php(147): TbGridView->init()
+#12 C:\xampp\htdocs\framework\web\CBaseController.php(172): CBaseController->createWidget('bootstrap.widge...', Array)
+#13 C:\xampp\htdocs\geocaching\protected\views\stash\index.php(27): CBaseController->widget('bootstrap.widge...', Array)
+#14 C:\xampp\htdocs\framework\web\CBaseController.php(126): require('C:\xampp\htdocs...')
+#15 C:\xampp\htdocs\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\xampp\htdocs...', Array, true)
+#16 C:\xampp\htdocs\framework\web\CController.php(869): CBaseController->renderFile('C:\xampp\htdocs...', Array, true)
+#17 C:\xampp\htdocs\framework\web\CController.php(782): CController->renderPartial('index', Array, true)
+#18 C:\xampp\htdocs\geocaching\protected\controllers\StashController.php(158): CController->render('index', Array)
+#19 C:\xampp\htdocs\framework\web\actions\CInlineAction.php(49): StashController->actionIndex()
+#20 C:\xampp\htdocs\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#21 C:\xampp\htdocs\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#22 C:\xampp\htdocs\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#23 C:\xampp\htdocs\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#24 C:\xampp\htdocs\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#25 C:\xampp\htdocs\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#26 C:\xampp\htdocs\framework\web\CController.php(291): CFilterChain->run()
+#27 C:\xampp\htdocs\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#28 C:\xampp\htdocs\framework\web\CWebApplication.php(282): CController->run('index')
+#29 C:\xampp\htdocs\framework\web\CWebApplication.php(141): CWebApplication->runController('stash/index')
+#30 C:\xampp\htdocs\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#31 C:\xampp\htdocs\geocaching\index.php(13): CApplication->run()
+#32 {main}
+REQUEST_URI=/stash/index
+HTTP_REFERER=http://geocaching.localhost/stash/view?id=39
+---
+2014/01/29 13:41:56 [error] [system.db.CDbCommand] Не удалось выполнить CDbCommand::fetchColumn(): SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Approved' in 'where clause'. Выполнявшийся SQL-запрос: SELECT COUNT(DISTINCT `t`.`id`) FROM `tbl_stash` `t`  WHERE (status=Approved).
+in C:\xampp\htdocs\geocaching\protected\extensions\bootstrap\widgets\TbGridView.php (68)
+in C:\xampp\htdocs\geocaching\protected\views\stash\index.php (27)
+in C:\xampp\htdocs\geocaching\protected\controllers\StashController.php (158)
+2014/01/29 13:41:56 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand не удалось исполнить SQL-запрос: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Approved' in 'where clause'. The SQL statement executed was: SELECT COUNT(DISTINCT `t`.`id`) FROM `tbl_stash` `t`  WHERE (status=Approved)' in C:\xampp\htdocs\framework\db\CDbCommand.php:543
+Stack trace:
+#0 C:\xampp\htdocs\framework\db\CDbCommand.php(433): CDbCommand->queryInternal('fetchColumn', 0, Array)
+#1 C:\xampp\htdocs\framework\db\ar\CActiveFinder.php(759): CDbCommand->queryScalar()
+#2 C:\xampp\htdocs\framework\db\ar\CActiveFinder.php(151): CJoinElement->count(Object(CDbCriteria))
+#3 C:\xampp\htdocs\framework\db\ar\CActiveRecord.php(1605): CActiveFinder->count(Object(CDbCriteria))
+#4 C:\xampp\htdocs\framework\web\CActiveDataProvider.php(228): CActiveRecord->count(Object(CDbCriteria))
+#5 C:\xampp\htdocs\framework\web\CDataProvider.php(224): CActiveDataProvider->calculateTotalItemCount()
+#6 C:\xampp\htdocs\framework\web\CActiveDataProvider.php(178): CDataProvider->getTotalItemCount()
+#7 C:\xampp\htdocs\framework\web\CDataProvider.php(168): CActiveDataProvider->fetchData()
+#8 C:\xampp\htdocs\framework\zii\widgets\CBaseListView.php(111): CDataProvider->getData()
+#9 C:\xampp\htdocs\framework\zii\widgets\grid\CGridView.php(339): CBaseListView->init()
+#10 C:\xampp\htdocs\geocaching\protected\extensions\bootstrap\widgets\TbGridView.php(68): CGridView->init()
+#11 C:\xampp\htdocs\framework\web\CBaseController.php(147): TbGridView->init()
+#12 C:\xampp\htdocs\framework\web\CBaseController.php(172): CBaseController->createWidget('bootstrap.widge...', Array)
+#13 C:\xampp\htdocs\geocaching\protected\views\stash\index.php(27): CBaseController->widget('bootstrap.widge...', Array)
+#14 C:\xampp\htdocs\framework\web\CBaseController.php(126): require('C:\xampp\htdocs...')
+#15 C:\xampp\htdocs\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\xampp\htdocs...', Array, true)
+#16 C:\xampp\htdocs\framework\web\CController.php(869): CBaseController->renderFile('C:\xampp\htdocs...', Array, true)
+#17 C:\xampp\htdocs\framework\web\CController.php(782): CController->renderPartial('index', Array, true)
+#18 C:\xampp\htdocs\geocaching\protected\controllers\StashController.php(158): CController->render('index', Array)
+#19 C:\xampp\htdocs\framework\web\actions\CInlineAction.php(49): StashController->actionIndex()
+#20 C:\xampp\htdocs\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#21 C:\xampp\htdocs\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#22 C:\xampp\htdocs\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#23 C:\xampp\htdocs\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#24 C:\xampp\htdocs\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#25 C:\xampp\htdocs\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#26 C:\xampp\htdocs\framework\web\CController.php(291): CFilterChain->run()
+#27 C:\xampp\htdocs\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#28 C:\xampp\htdocs\framework\web\CWebApplication.php(282): CController->run('index')
+#29 C:\xampp\htdocs\framework\web\CWebApplication.php(141): CWebApplication->runController('stash/index')
+#30 C:\xampp\htdocs\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#31 C:\xampp\htdocs\geocaching\index.php(13): CApplication->run()
+#32 {main}
+REQUEST_URI=/stash/index
+HTTP_REFERER=http://geocaching.localhost/stash/view?id=39
+---
+2014/01/29 13:42:49 [error] [system.db.CDbCommand] Не удалось выполнить CDbCommand::fetchColumn(): SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Approved' in 'where clause'. Выполнявшийся SQL-запрос: SELECT COUNT(DISTINCT `t`.`id`) FROM `tbl_stash` `t`  WHERE (status=Approved).
+in C:\xampp\htdocs\geocaching\protected\extensions\bootstrap\widgets\TbGridView.php (68)
+in C:\xampp\htdocs\geocaching\protected\views\stash\index.php (27)
+in C:\xampp\htdocs\geocaching\protected\controllers\StashController.php (158)
+2014/01/29 13:42:49 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand не удалось исполнить SQL-запрос: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Approved' in 'where clause'. The SQL statement executed was: SELECT COUNT(DISTINCT `t`.`id`) FROM `tbl_stash` `t`  WHERE (status=Approved)' in C:\xampp\htdocs\framework\db\CDbCommand.php:543
+Stack trace:
+#0 C:\xampp\htdocs\framework\db\CDbCommand.php(433): CDbCommand->queryInternal('fetchColumn', 0, Array)
+#1 C:\xampp\htdocs\framework\db\ar\CActiveFinder.php(759): CDbCommand->queryScalar()
+#2 C:\xampp\htdocs\framework\db\ar\CActiveFinder.php(151): CJoinElement->count(Object(CDbCriteria))
+#3 C:\xampp\htdocs\framework\db\ar\CActiveRecord.php(1605): CActiveFinder->count(Object(CDbCriteria))
+#4 C:\xampp\htdocs\framework\web\CActiveDataProvider.php(228): CActiveRecord->count(Object(CDbCriteria))
+#5 C:\xampp\htdocs\framework\web\CDataProvider.php(224): CActiveDataProvider->calculateTotalItemCount()
+#6 C:\xampp\htdocs\framework\web\CActiveDataProvider.php(178): CDataProvider->getTotalItemCount()
+#7 C:\xampp\htdocs\framework\web\CDataProvider.php(168): CActiveDataProvider->fetchData()
+#8 C:\xampp\htdocs\framework\zii\widgets\CBaseListView.php(111): CDataProvider->getData()
+#9 C:\xampp\htdocs\framework\zii\widgets\grid\CGridView.php(339): CBaseListView->init()
+#10 C:\xampp\htdocs\geocaching\protected\extensions\bootstrap\widgets\TbGridView.php(68): CGridView->init()
+#11 C:\xampp\htdocs\framework\web\CBaseController.php(147): TbGridView->init()
+#12 C:\xampp\htdocs\framework\web\CBaseController.php(172): CBaseController->createWidget('bootstrap.widge...', Array)
+#13 C:\xampp\htdocs\geocaching\protected\views\stash\index.php(27): CBaseController->widget('bootstrap.widge...', Array)
+#14 C:\xampp\htdocs\framework\web\CBaseController.php(126): require('C:\xampp\htdocs...')
+#15 C:\xampp\htdocs\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\xampp\htdocs...', Array, true)
+#16 C:\xampp\htdocs\framework\web\CController.php(869): CBaseController->renderFile('C:\xampp\htdocs...', Array, true)
+#17 C:\xampp\htdocs\framework\web\CController.php(782): CController->renderPartial('index', Array, true)
+#18 C:\xampp\htdocs\geocaching\protected\controllers\StashController.php(158): CController->render('index', Array)
+#19 C:\xampp\htdocs\framework\web\actions\CInlineAction.php(49): StashController->actionIndex()
+#20 C:\xampp\htdocs\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#21 C:\xampp\htdocs\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#22 C:\xampp\htdocs\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#23 C:\xampp\htdocs\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#24 C:\xampp\htdocs\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#25 C:\xampp\htdocs\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#26 C:\xampp\htdocs\framework\web\CController.php(291): CFilterChain->run()
+#27 C:\xampp\htdocs\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#28 C:\xampp\htdocs\framework\web\CWebApplication.php(282): CController->run('index')
+#29 C:\xampp\htdocs\framework\web\CWebApplication.php(141): CWebApplication->runController('stash/index')
+#30 C:\xampp\htdocs\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#31 C:\xampp\htdocs\geocaching\index.php(13): CApplication->run()
+#32 {main}
+REQUEST_URI=/stash/index
+HTTP_REFERER=http://geocaching.localhost/stash/view?id=39
+---
+2014/01/29 13:46:38 [error] [system.db.CDbCommand] Не удалось выполнить CDbCommand::fetchColumn(): SQLSTATE[HY093]: Invalid parameter number: no parameters were bound. Выполнявшийся SQL-запрос: SELECT COUNT(DISTINCT `t`.`id`) FROM `tbl_stash` `t`  WHERE (status=:Approved).
+in C:\xampp\htdocs\geocaching\protected\extensions\bootstrap\widgets\TbGridView.php (68)
+in C:\xampp\htdocs\geocaching\protected\views\stash\index.php (27)
+in C:\xampp\htdocs\geocaching\protected\controllers\StashController.php (158)
+2014/01/29 13:46:38 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand не удалось исполнить SQL-запрос: SQLSTATE[HY093]: Invalid parameter number: no parameters were bound. The SQL statement executed was: SELECT COUNT(DISTINCT `t`.`id`) FROM `tbl_stash` `t`  WHERE (status=:Approved)' in C:\xampp\htdocs\framework\db\CDbCommand.php:543
+Stack trace:
+#0 C:\xampp\htdocs\framework\db\CDbCommand.php(433): CDbCommand->queryInternal('fetchColumn', 0, Array)
+#1 C:\xampp\htdocs\framework\db\ar\CActiveFinder.php(759): CDbCommand->queryScalar()
+#2 C:\xampp\htdocs\framework\db\ar\CActiveFinder.php(151): CJoinElement->count(Object(CDbCriteria))
+#3 C:\xampp\htdocs\framework\db\ar\CActiveRecord.php(1605): CActiveFinder->count(Object(CDbCriteria))
+#4 C:\xampp\htdocs\framework\web\CActiveDataProvider.php(228): CActiveRecord->count(Object(CDbCriteria))
+#5 C:\xampp\htdocs\framework\web\CDataProvider.php(224): CActiveDataProvider->calculateTotalItemCount()
+#6 C:\xampp\htdocs\framework\web\CActiveDataProvider.php(178): CDataProvider->getTotalItemCount()
+#7 C:\xampp\htdocs\framework\web\CDataProvider.php(168): CActiveDataProvider->fetchData()
+#8 C:\xampp\htdocs\framework\zii\widgets\CBaseListView.php(111): CDataProvider->getData()
+#9 C:\xampp\htdocs\framework\zii\widgets\grid\CGridView.php(339): CBaseListView->init()
+#10 C:\xampp\htdocs\geocaching\protected\extensions\bootstrap\widgets\TbGridView.php(68): CGridView->init()
+#11 C:\xampp\htdocs\framework\web\CBaseController.php(147): TbGridView->init()
+#12 C:\xampp\htdocs\framework\web\CBaseController.php(172): CBaseController->createWidget('bootstrap.widge...', Array)
+#13 C:\xampp\htdocs\geocaching\protected\views\stash\index.php(27): CBaseController->widget('bootstrap.widge...', Array)
+#14 C:\xampp\htdocs\framework\web\CBaseController.php(126): require('C:\xampp\htdocs...')
+#15 C:\xampp\htdocs\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\xampp\htdocs...', Array, true)
+#16 C:\xampp\htdocs\framework\web\CController.php(869): CBaseController->renderFile('C:\xampp\htdocs...', Array, true)
+#17 C:\xampp\htdocs\framework\web\CController.php(782): CController->renderPartial('index', Array, true)
+#18 C:\xampp\htdocs\geocaching\protected\controllers\StashController.php(158): CController->render('index', Array)
+#19 C:\xampp\htdocs\framework\web\actions\CInlineAction.php(49): StashController->actionIndex()
+#20 C:\xampp\htdocs\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#21 C:\xampp\htdocs\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#22 C:\xampp\htdocs\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#23 C:\xampp\htdocs\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#24 C:\xampp\htdocs\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#25 C:\xampp\htdocs\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#26 C:\xampp\htdocs\framework\web\CController.php(291): CFilterChain->run()
+#27 C:\xampp\htdocs\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#28 C:\xampp\htdocs\framework\web\CWebApplication.php(282): CController->run('index')
+#29 C:\xampp\htdocs\framework\web\CWebApplication.php(141): CWebApplication->runController('stash/index')
+#30 C:\xampp\htdocs\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#31 C:\xampp\htdocs\geocaching\index.php(13): CApplication->run()
+#32 {main}
+REQUEST_URI=/stash/index
+HTTP_REFERER=http://geocaching.localhost/stash/view?id=39
+---
+2014/01/29 13:46:49 [error] [system.db.CDbCommand] Не удалось выполнить CDbCommand::fetchColumn(): SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Approved' in 'where clause'. Выполнявшийся SQL-запрос: SELECT COUNT(DISTINCT `t`.`id`) FROM `tbl_stash` `t`  WHERE (status=Approved).
+in C:\xampp\htdocs\geocaching\protected\extensions\bootstrap\widgets\TbGridView.php (68)
+in C:\xampp\htdocs\geocaching\protected\views\stash\index.php (27)
+in C:\xampp\htdocs\geocaching\protected\controllers\StashController.php (158)
+2014/01/29 13:46:49 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand не удалось исполнить SQL-запрос: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Approved' in 'where clause'. The SQL statement executed was: SELECT COUNT(DISTINCT `t`.`id`) FROM `tbl_stash` `t`  WHERE (status=Approved)' in C:\xampp\htdocs\framework\db\CDbCommand.php:543
+Stack trace:
+#0 C:\xampp\htdocs\framework\db\CDbCommand.php(433): CDbCommand->queryInternal('fetchColumn', 0, Array)
+#1 C:\xampp\htdocs\framework\db\ar\CActiveFinder.php(759): CDbCommand->queryScalar()
+#2 C:\xampp\htdocs\framework\db\ar\CActiveFinder.php(151): CJoinElement->count(Object(CDbCriteria))
+#3 C:\xampp\htdocs\framework\db\ar\CActiveRecord.php(1605): CActiveFinder->count(Object(CDbCriteria))
+#4 C:\xampp\htdocs\framework\web\CActiveDataProvider.php(228): CActiveRecord->count(Object(CDbCriteria))
+#5 C:\xampp\htdocs\framework\web\CDataProvider.php(224): CActiveDataProvider->calculateTotalItemCount()
+#6 C:\xampp\htdocs\framework\web\CActiveDataProvider.php(178): CDataProvider->getTotalItemCount()
+#7 C:\xampp\htdocs\framework\web\CDataProvider.php(168): CActiveDataProvider->fetchData()
+#8 C:\xampp\htdocs\framework\zii\widgets\CBaseListView.php(111): CDataProvider->getData()
+#9 C:\xampp\htdocs\framework\zii\widgets\grid\CGridView.php(339): CBaseListView->init()
+#10 C:\xampp\htdocs\geocaching\protected\extensions\bootstrap\widgets\TbGridView.php(68): CGridView->init()
+#11 C:\xampp\htdocs\framework\web\CBaseController.php(147): TbGridView->init()
+#12 C:\xampp\htdocs\framework\web\CBaseController.php(172): CBaseController->createWidget('bootstrap.widge...', Array)
+#13 C:\xampp\htdocs\geocaching\protected\views\stash\index.php(27): CBaseController->widget('bootstrap.widge...', Array)
+#14 C:\xampp\htdocs\framework\web\CBaseController.php(126): require('C:\xampp\htdocs...')
+#15 C:\xampp\htdocs\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\xampp\htdocs...', Array, true)
+#16 C:\xampp\htdocs\framework\web\CController.php(869): CBaseController->renderFile('C:\xampp\htdocs...', Array, true)
+#17 C:\xampp\htdocs\framework\web\CController.php(782): CController->renderPartial('index', Array, true)
+#18 C:\xampp\htdocs\geocaching\protected\controllers\StashController.php(158): CController->render('index', Array)
+#19 C:\xampp\htdocs\framework\web\actions\CInlineAction.php(49): StashController->actionIndex()
+#20 C:\xampp\htdocs\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#21 C:\xampp\htdocs\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#22 C:\xampp\htdocs\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#23 C:\xampp\htdocs\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#24 C:\xampp\htdocs\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#25 C:\xampp\htdocs\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#26 C:\xampp\htdocs\framework\web\CController.php(291): CFilterChain->run()
+#27 C:\xampp\htdocs\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#28 C:\xampp\htdocs\framework\web\CWebApplication.php(282): CController->run('index')
+#29 C:\xampp\htdocs\framework\web\CWebApplication.php(141): CWebApplication->runController('stash/index')
+#30 C:\xampp\htdocs\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#31 C:\xampp\htdocs\geocaching\index.php(13): CApplication->run()
+#32 {main}
+REQUEST_URI=/stash/index
+HTTP_REFERER=http://geocaching.localhost/stash/view?id=39
+---
+2014/01/29 14:01:06 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Invalid request. Please do not repeat this request again.' in C:\xampp\htdocs\geocaching\protected\controllers\StashController.php:184
+Stack trace:
+#0 C:\xampp\htdocs\framework\web\actions\CInlineAction.php(49): StashController->actionApprove()
+#1 C:\xampp\htdocs\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#2 C:\xampp\htdocs\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#3 C:\xampp\htdocs\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#4 C:\xampp\htdocs\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#5 C:\xampp\htdocs\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#6 C:\xampp\htdocs\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#7 C:\xampp\htdocs\framework\web\CController.php(291): CFilterChain->run()
+#8 C:\xampp\htdocs\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 C:\xampp\htdocs\framework\web\CWebApplication.php(282): CController->run('approve')
+#10 C:\xampp\htdocs\framework\web\CWebApplication.php(141): CWebApplication->runController('stash/approve')
+#11 C:\xampp\htdocs\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#12 C:\xampp\htdocs\geocaching\index.php(13): CApplication->run()
+#13 {main}
+REQUEST_URI=/stash/approve?id=38
+HTTP_REFERER=http://geocaching.localhost/stash/admin
+---
+2014/01/29 14:03:20 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Invalid request. Please do not repeat this request again.' in C:\xampp\htdocs\geocaching\protected\controllers\StashController.php:184
+Stack trace:
+#0 [internal function]: StashController->actionApprove('38')
+#1 C:\xampp\htdocs\framework\web\actions\CAction.php(108): ReflectionMethod->invokeArgs(Object(StashController), Array)
+#2 C:\xampp\htdocs\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(StashController), Object(ReflectionMethod), Array)
+#3 C:\xampp\htdocs\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 C:\xampp\htdocs\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#5 C:\xampp\htdocs\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#6 C:\xampp\htdocs\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#7 C:\xampp\htdocs\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#8 C:\xampp\htdocs\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#9 C:\xampp\htdocs\framework\web\CController.php(291): CFilterChain->run()
+#10 C:\xampp\htdocs\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 C:\xampp\htdocs\framework\web\CWebApplication.php(282): CController->run('approve')
+#12 C:\xampp\htdocs\framework\web\CWebApplication.php(141): CWebApplication->runController('stash/approve')
+#13 C:\xampp\htdocs\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#14 C:\xampp\htdocs\geocaching\index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/stash/approve?id=38
+HTTP_REFERER=http://geocaching.localhost/stash/admin
+---
+2014/01/29 14:09:26 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Invalid request. Please do not repeat this request again.' in C:\xampp\htdocs\geocaching\protected\controllers\StashController.php:184
+Stack trace:
+#0 C:\xampp\htdocs\framework\web\actions\CInlineAction.php(49): StashController->actionApprove()
+#1 C:\xampp\htdocs\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#2 C:\xampp\htdocs\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#3 C:\xampp\htdocs\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#4 C:\xampp\htdocs\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#5 C:\xampp\htdocs\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#6 C:\xampp\htdocs\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#7 C:\xampp\htdocs\framework\web\CController.php(291): CFilterChain->run()
+#8 C:\xampp\htdocs\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 C:\xampp\htdocs\framework\web\CWebApplication.php(282): CController->run('approve')
+#10 C:\xampp\htdocs\framework\web\CWebApplication.php(141): CWebApplication->runController('stash/approve')
+#11 C:\xampp\htdocs\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#12 C:\xampp\htdocs\geocaching\index.php(13): CApplication->run()
+#13 {main}
+REQUEST_URI=/stash/approve?id=38
+HTTP_REFERER=http://geocaching.localhost/stash/admin
+---
+2014/01/29 14:13:15 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Системе не удалось найти запрашиваемое действие "<a href="".' in C:\xampp\htdocs\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\framework\web\CController.php(270): CController->missingAction('<a href="')
+#1 C:\xampp\htdocs\framework\web\CWebApplication.php(282): CController->run('<a href="')
+#2 C:\xampp\htdocs\framework\web\CWebApplication.php(141): CWebApplication->runController('stash/<a href="')
+#3 C:\xampp\htdocs\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\geocaching\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/stash/%3Ca%20href=%22
+HTTP_REFERER=http://geocaching.localhost/stash/admin
+---
+2014/01/29 14:14:21 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Системе не удалось найти запрашиваемое действие "<a href="".' in C:\xampp\htdocs\framework\web\CController.php:483
+Stack trace:
+#0 C:\xampp\htdocs\framework\web\CController.php(270): CController->missingAction('<a href="')
+#1 C:\xampp\htdocs\framework\web\CWebApplication.php(282): CController->run('<a href="')
+#2 C:\xampp\htdocs\framework\web\CWebApplication.php(141): CWebApplication->runController('stash/<a href="')
+#3 C:\xampp\htdocs\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 C:\xampp\htdocs\geocaching\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/stash/%3Ca%20href=%22
+HTTP_REFERER=http://geocaching.localhost/stash/admin
+---
+2014/01/29 14:14:32 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Invalid request. Please do not repeat this request again.' in C:\xampp\htdocs\geocaching\protected\controllers\StashController.php:184
+Stack trace:
+#0 C:\xampp\htdocs\framework\web\actions\CInlineAction.php(49): StashController->actionApprove()
+#1 C:\xampp\htdocs\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#2 C:\xampp\htdocs\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#3 C:\xampp\htdocs\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#4 C:\xampp\htdocs\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#5 C:\xampp\htdocs\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#6 C:\xampp\htdocs\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#7 C:\xampp\htdocs\framework\web\CController.php(291): CFilterChain->run()
+#8 C:\xampp\htdocs\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 C:\xampp\htdocs\framework\web\CWebApplication.php(282): CController->run('approve')
+#10 C:\xampp\htdocs\framework\web\CWebApplication.php(141): CWebApplication->runController('stash/approve')
+#11 C:\xampp\htdocs\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#12 C:\xampp\htdocs\geocaching\index.php(13): CApplication->run()
+#13 {main}
+REQUEST_URI=/stash/approve
+HTTP_REFERER=http://geocaching.localhost/stash/admin
+---
+2014/01/29 14:37:36 [error] [php] Undefined variable: model (C:\xampp\htdocs\framework\base\CComponent.php(612) : eval()'d code:1)
+Stack trace:
+#0 C:\xampp\htdocs\framework\zii\widgets\grid\CButtonColumn.php(319): CButtonColumn->renderButton()
+#1 C:\xampp\htdocs\framework\zii\widgets\grid\CGridColumn.php(151): CButtonColumn->renderDataCellContent()
+#2 C:\xampp\htdocs\framework\zii\widgets\grid\CGridView.php(616): CButtonColumn->renderDataCell()
+#3 C:\xampp\htdocs\framework\zii\widgets\grid\CGridView.php(572): CGridView->renderTableRow()
+#4 C:\xampp\htdocs\framework\zii\widgets\grid\CGridView.php(482): CGridView->renderTableBody()
+#5 C:\xampp\htdocs\framework\zii\widgets\CBaseListView.php(167): CGridView->renderItems()
+#6 unknown(0): CGridView->renderSection()
+#7 C:\xampp\htdocs\framework\zii\widgets\CBaseListView.php(150): preg_replace_callback()
+#8 C:\xampp\htdocs\framework\zii\widgets\CBaseListView.php(135): CGridView->renderContent()
+#9 C:\xampp\htdocs\framework\web\CBaseController.php(173): CGridView->run()
+#10 C:\xampp\htdocs\geocaching\protected\views\stash\admin.php(82): StashController->widget()
+#11 C:\xampp\htdocs\framework\web\CBaseController.php(126): require()
+#12 C:\xampp\htdocs\framework\web\CBaseController.php(95): StashController->renderInternal()
+#13 C:\xampp\htdocs\framework\web\CController.php(869): StashController->renderFile()
+#14 C:\xampp\htdocs\framework\web\CController.php(782): StashController->renderPartial()
+#15 C:\xampp\htdocs\geocaching\protected\controllers\StashController.php(174): StashController->render()
+#16 C:\xampp\htdocs\framework\web\actions\CInlineAction.php(49): StashController->actionAdmin()
+#17 C:\xampp\htdocs\framework\web\CController.php(308): CInlineAction->runWithParams()
+#18 C:\xampp\htdocs\framework\web\filters\CFilterChain.php(133): StashController->runAction()
+#19 C:\xampp\htdocs\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#20 C:\xampp\htdocs\framework\web\CController.php(1145): CAccessControlFilter->filter()
+#21 C:\xampp\htdocs\framework\web\filters\CInlineFilter.php(58): StashController->filterAccessControl()
+#22 C:\xampp\htdocs\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter()
+#23 C:\xampp\htdocs\framework\web\CController.php(291): CFilterChain->run()
+#24 C:\xampp\htdocs\framework\web\CController.php(265): StashController->runActionWithFilters()
+#25 C:\xampp\htdocs\framework\web\CWebApplication.php(282): StashController->run()
+#26 C:\xampp\htdocs\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#27 C:\xampp\htdocs\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#28 C:\xampp\htdocs\geocaching\index.php(13): CWebApplication->run()
+REQUEST_URI=/stash/admin
+in C:\xampp\htdocs\geocaching\protected\views\stash\admin.php (82)
+in C:\xampp\htdocs\geocaching\protected\controllers\StashController.php (174)
+in C:\xampp\htdocs\geocaching\index.php (13)
+2014/01/29 14:45:46 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Invalid request. Please do not repeat this request again.' in C:\xampp\htdocs\geocaching\protected\controllers\StashController.php:184
+Stack trace:
+#0 C:\xampp\htdocs\framework\web\actions\CInlineAction.php(49): StashController->actionApprove()
+#1 C:\xampp\htdocs\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#2 C:\xampp\htdocs\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#3 C:\xampp\htdocs\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#4 C:\xampp\htdocs\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#5 C:\xampp\htdocs\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#6 C:\xampp\htdocs\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#7 C:\xampp\htdocs\framework\web\CController.php(291): CFilterChain->run()
+#8 C:\xampp\htdocs\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 C:\xampp\htdocs\framework\web\CWebApplication.php(282): CController->run('approve')
+#10 C:\xampp\htdocs\framework\web\CWebApplication.php(141): CWebApplication->runController('stash/approve')
+#11 C:\xampp\htdocs\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#12 C:\xampp\htdocs\geocaching\index.php(13): CApplication->run()
+#13 {main}
+REQUEST_URI=/stash/approve?id=38
+HTTP_REFERER=http://geocaching.localhost/stash/admin
+---
+2014/01/29 14:48:24 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Invalid request. Please do not repeat this request again.' in C:\xampp\htdocs\geocaching\protected\controllers\StashController.php:184
+Stack trace:
+#0 C:\xampp\htdocs\framework\web\actions\CInlineAction.php(49): StashController->actionApprove()
+#1 C:\xampp\htdocs\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#2 C:\xampp\htdocs\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#3 C:\xampp\htdocs\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#4 C:\xampp\htdocs\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#5 C:\xampp\htdocs\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#6 C:\xampp\htdocs\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#7 C:\xampp\htdocs\framework\web\CController.php(291): CFilterChain->run()
+#8 C:\xampp\htdocs\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 C:\xampp\htdocs\framework\web\CWebApplication.php(282): CController->run('approve')
+#10 C:\xampp\htdocs\framework\web\CWebApplication.php(141): CWebApplication->runController('stash/approve')
+#11 C:\xampp\htdocs\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#12 C:\xampp\htdocs\geocaching\index.php(13): CApplication->run()
+#13 {main}
+REQUEST_URI=/stash/approve?id=38
+HTTP_REFERER=http://geocaching.localhost/stash/admin
+---
+2014/01/29 14:50:32 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Invalid request. Please do not repeat this request again.' in C:\xampp\htdocs\geocaching\protected\controllers\StashController.php:184
+Stack trace:
+#0 [internal function]: StashController->actionApprove('38')
+#1 C:\xampp\htdocs\framework\web\actions\CAction.php(108): ReflectionMethod->invokeArgs(Object(StashController), Array)
+#2 C:\xampp\htdocs\framework\web\actions\CInlineAction.php(47): CAction->runWithParamsInternal(Object(StashController), Object(ReflectionMethod), Array)
+#3 C:\xampp\htdocs\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#4 C:\xampp\htdocs\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#5 C:\xampp\htdocs\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#6 C:\xampp\htdocs\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#7 C:\xampp\htdocs\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#8 C:\xampp\htdocs\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#9 C:\xampp\htdocs\framework\web\CController.php(291): CFilterChain->run()
+#10 C:\xampp\htdocs\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 C:\xampp\htdocs\framework\web\CWebApplication.php(282): CController->run('approve')
+#12 C:\xampp\htdocs\framework\web\CWebApplication.php(141): CWebApplication->runController('stash/approve')
+#13 C:\xampp\htdocs\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#14 C:\xampp\htdocs\geocaching\index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/stash/approve?id=38
+HTTP_REFERER=http://geocaching.localhost/stash/admin
+---
+2014/01/29 15:34:48 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Invalid request. Please do not repeat this request again.' in C:\xampp\htdocs\geocaching\protected\controllers\StashController.php:184
+Stack trace:
+#0 C:\xampp\htdocs\framework\web\actions\CInlineAction.php(49): StashController->actionApprove()
+#1 C:\xampp\htdocs\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#2 C:\xampp\htdocs\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#3 C:\xampp\htdocs\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#4 C:\xampp\htdocs\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#5 C:\xampp\htdocs\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#6 C:\xampp\htdocs\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#7 C:\xampp\htdocs\framework\web\CController.php(291): CFilterChain->run()
+#8 C:\xampp\htdocs\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 C:\xampp\htdocs\framework\web\CWebApplication.php(282): CController->run('approve')
+#10 C:\xampp\htdocs\framework\web\CWebApplication.php(141): CWebApplication->runController('stash/approve')
+#11 C:\xampp\htdocs\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#12 C:\xampp\htdocs\geocaching\index.php(13): CApplication->run()
+#13 {main}
+REQUEST_URI=/stash/approve?id=38
+HTTP_REFERER=http://geocaching.localhost/stash/admin
+---
+2014/01/30 09:20:12 [warning] [application] Не удалось присвоить небезопасный атрибут "id" класса "Stash".
+in C:\xampp\htdocs\geocaching\protected\controllers\StashController.php (169)
+in C:\xampp\htdocs\geocaching\index.php (13)
+2014/01/30 10:06:14 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Invalid request. Please do not repeat this request again.' in C:\xampp\htdocs\geocaching\protected\controllers\StashController.php:184
+Stack trace:
+#0 C:\xampp\htdocs\framework\web\actions\CInlineAction.php(49): StashController->actionApprove()
+#1 C:\xampp\htdocs\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#2 C:\xampp\htdocs\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#3 C:\xampp\htdocs\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#4 C:\xampp\htdocs\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#5 C:\xampp\htdocs\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#6 C:\xampp\htdocs\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#7 C:\xampp\htdocs\framework\web\CController.php(291): CFilterChain->run()
+#8 C:\xampp\htdocs\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 C:\xampp\htdocs\framework\web\CWebApplication.php(282): CController->run('approve')
+#10 C:\xampp\htdocs\framework\web\CWebApplication.php(141): CWebApplication->runController('stash/approve')
+#11 C:\xampp\htdocs\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#12 C:\xampp\htdocs\geocaching\index.php(13): CApplication->run()
+#13 {main}
+REQUEST_URI=/stash/approve?id=38
+HTTP_REFERER=http://geocaching.localhost/stash/admin
+---
+2014/01/30 10:08:29 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Invalid request. Please do not repeat this request again.' in C:\xampp\htdocs\geocaching\protected\controllers\StashController.php:184
+Stack trace:
+#0 C:\xampp\htdocs\framework\web\actions\CInlineAction.php(49): StashController->actionApprove()
+#1 C:\xampp\htdocs\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#2 C:\xampp\htdocs\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#3 C:\xampp\htdocs\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#4 C:\xampp\htdocs\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#5 C:\xampp\htdocs\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#6 C:\xampp\htdocs\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#7 C:\xampp\htdocs\framework\web\CController.php(291): CFilterChain->run()
+#8 C:\xampp\htdocs\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#9 C:\xampp\htdocs\framework\web\CWebApplication.php(282): CController->run('approve')
+#10 C:\xampp\htdocs\framework\web\CWebApplication.php(141): CWebApplication->runController('stash/approve')
+#11 C:\xampp\htdocs\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#12 C:\xampp\htdocs\geocaching\index.php(13): CApplication->run()
+#13 {main}
+REQUEST_URI=/stash/approve?id=38
+HTTP_REFERER=http://geocaching.localhost/stash/admin
+---
+2014/01/30 10:14:35 [error] [exception.CException] exception 'CException' with message 'Не определено свойство "Stash.pendingCommentCount".' in C:\xampp\htdocs\framework\base\CComponent.php:130
+Stack trace:
+#0 C:\xampp\htdocs\framework\db\ar\CActiveRecord.php(145): CComponent->__get('pendingCommentC...')
+#1 C:\xampp\htdocs\geocaching\protected\components\views\userMenu.php(36): CActiveRecord->__get('pendingCommentC...')
+#2 C:\xampp\htdocs\framework\web\CBaseController.php(130): require('C:\xampp\htdocs...')
+#3 C:\xampp\htdocs\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\xampp\htdocs...', NULL, false)
+#4 C:\xampp\htdocs\framework\web\widgets\CWidget.php(244): CBaseController->renderFile('C:\xampp\htdocs...', NULL, false)
+#5 C:\xampp\htdocs\geocaching\protected\components\UserMenu.php(15): CWidget->render('userMenu')
+#6 C:\xampp\htdocs\framework\zii\widgets\CPortlet.php(97): UserMenu->renderContent()
+#7 C:\xampp\htdocs\framework\web\CBaseController.php(173): CPortlet->run()
+#8 C:\xampp\htdocs\geocaching\protected\views\layouts\column2.php(11): CBaseController->widget('UserMenu')
+#9 C:\xampp\htdocs\framework\web\CBaseController.php(126): require('C:\xampp\htdocs...')
+#10 C:\xampp\htdocs\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\xampp\htdocs...', Array, true)
+#11 C:\xampp\htdocs\framework\web\CController.php(784): CBaseController->renderFile('C:\xampp\htdocs...', Array, true)
+#12 C:\xampp\htdocs\geocaching\protected\controllers\StashController.php(174): CController->render('admin', Array)
+#13 C:\xampp\htdocs\framework\web\actions\CInlineAction.php(49): StashController->actionAdmin()
+#14 C:\xampp\htdocs\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#15 C:\xampp\htdocs\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#16 C:\xampp\htdocs\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#17 C:\xampp\htdocs\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#18 C:\xampp\htdocs\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#19 C:\xampp\htdocs\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#20 C:\xampp\htdocs\framework\web\CController.php(291): CFilterChain->run()
+#21 C:\xampp\htdocs\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#22 C:\xampp\htdocs\framework\web\CWebApplication.php(282): CController->run('admin')
+#23 C:\xampp\htdocs\framework\web\CWebApplication.php(141): CWebApplication->runController('stash/admin')
+#24 C:\xampp\htdocs\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#25 C:\xampp\htdocs\geocaching\index.php(13): CApplication->run()
+#26 {main}
+REQUEST_URI=/stash/admin
+HTTP_REFERER=http://geocaching.localhost/stash/index
+---
+2014/01/30 10:22:05 [warning] [application] Не удалось присвоить небезопасный атрибут "id" класса "Stash".
+in C:\xampp\htdocs\geocaching\protected\controllers\StashController.php (169)
+in C:\xampp\htdocs\geocaching\index.php (13)
+2014/01/30 10:22:05 [warning] [application] Не удалось присвоить небезопасный атрибут "create_date" класса "Stash".
+in C:\xampp\htdocs\geocaching\protected\controllers\StashController.php (169)
+in C:\xampp\htdocs\geocaching\index.php (13)
+2014/01/30 10:22:15 [warning] [application] Не удалось присвоить небезопасный атрибут "id" класса "Stash".
+in C:\xampp\htdocs\geocaching\protected\controllers\StashController.php (169)
+in C:\xampp\htdocs\geocaching\index.php (13)
+2014/01/30 10:22:15 [warning] [application] Не удалось присвоить небезопасный атрибут "create_date" класса "Stash".
+in C:\xampp\htdocs\geocaching\protected\controllers\StashController.php (169)
+in C:\xampp\htdocs\geocaching\index.php (13)
+2014/01/30 10:23:30 [warning] [application] Не удалось присвоить небезопасный атрибут "id" класса "Stash".
+in C:\xampp\htdocs\geocaching\protected\controllers\StashController.php (169)
+in C:\xampp\htdocs\geocaching\index.php (13)
+2014/01/30 10:23:30 [warning] [application] Не удалось присвоить небезопасный атрибут "create_date" класса "Stash".
+in C:\xampp\htdocs\geocaching\protected\controllers\StashController.php (169)
+in C:\xampp\htdocs\geocaching\index.php (13)
+2014/01/30 10:23:35 [warning] [application] Не удалось присвоить небезопасный атрибут "id" класса "Stash".
+in C:\xampp\htdocs\geocaching\protected\controllers\StashController.php (169)
+in C:\xampp\htdocs\geocaching\index.php (13)
+2014/01/30 10:23:35 [warning] [application] Не удалось присвоить небезопасный атрибут "create_date" класса "Stash".
+in C:\xampp\htdocs\geocaching\protected\controllers\StashController.php (169)
+in C:\xampp\htdocs\geocaching\index.php (13)
