@@ -43,7 +43,21 @@
     </div>
 
     <div class="nav">
-        <?php echo CHtml::link('Permalink', $data->url); ?> |
+
+        <?php
+        Yii::app()->clientScript->registerScript('answer',"js:bootbox.prompt('What is the answer?', function(result){var url = jQuery(this).attr('href'); jQuery.post(url, {answer: 'result'} )})");
+
+        $this->widget('bootstrap.widgets.TbButton',
+            array(
+                'label' => 'Answer the question',
+                'type' => 'success',
+                'url' =>'Yii::app()->createUrl("stash/answerTheQuestion",array("id"=>$data->id))',
+                'htmlOptions' => array(
+                    'style' => 'margin-left:3px',
+                    'onclick' => 'answer',
+                ),
+            )
+        ); ?>
         <?php echo CHtml::link("Comments ({$data->commentCount})", array('view', 'id' => $data->id)); ?>
         |
         Last updated

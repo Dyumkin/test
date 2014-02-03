@@ -17,8 +17,12 @@
  * @property string $other_information
  * @property string $create_date
  * @property integer $city_id
+ * The followings are the available model relations:
+ * @property Notepad[] $notepads
+ * @property Stash[] $stashes
  * @property City $city
  * @property Country $country
+ * @property Profile[] $profiles
  */
 class User extends CActiveRecord
 {
@@ -85,6 +89,7 @@ class User extends CActiveRecord
             'stashes' => array(self::HAS_MANY, 'Stash', 'user_id'),
             'notepads' => array(self::HAS_MANY, 'Notepad', 'user_id'),
             'cities' => array(self::BELONGS_TO, 'City', 'city_id'),
+            'profiles' => array(self::HAS_MANY, 'Profile', 'user_id'),
         );
     }
 
@@ -187,6 +192,12 @@ class User extends CActiveRecord
         }
 
         parent::afterFind();
+    }
+
+    protected function afterDelete()
+    {
+        parent::afterDelete();
+        Profile::model()->deleteAll('user_id=' . $this->id);
     }
 
     /**

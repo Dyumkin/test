@@ -84,6 +84,8 @@ class StashController extends Controller
             $model->attributes = $_POST['Stash'];
 
             if ($model->save()) {
+                $massage = 'Thank you for creating stash "'.$model->getStashLink().'" Your stash will be posted once it is approved.';
+                $this->saveToProfile($massage);
                 if($model->galleryAdded == 1)
                 {
                     $this->redirect(array('gallery', 'id' => $model->id));
@@ -98,6 +100,45 @@ class StashController extends Controller
         ));
     }
 
+    public function saveToProfile($massage, $user_id = NULL, $find_stash = NULL)
+    {
+        $profile = new Profile;
+        if (!empty($user_id)) {
+            $profile->user_id = $user_id;
+        } else {
+            $profile->user_id = Yii::app()->user->id;
+        }
+        if(!empty($find_stash))
+        {
+            $profile->find_stash = $find_stash;
+        }
+        $profile->massage = $massage;
+        $profile->date = time();
+        $profile->save();
+    }
+
+
+    public function answerTheQuestion($id)
+    {
+        if (Yii::app()->request->isPostRequest) {
+            if(isset($_POST['answer']))
+            {
+                $model = $this->loadModel($id);
+                $answer = $_POST['answer'];
+                if($model->answer == $answer){
+                    $massage = 'You successful visit the stash "'.$model->getStashLink().'"';
+                    $this->saveToProfile($massage, NULL, $model->id);
+                }else{
+                    $this->saveToProfile('You get bad answer on stash "'.$model->getStashLink().'"');
+                }
+            }else{
+                throw new CHttpException(400, 'Invalid POST request.');
+            }
+        }else
+        {
+            throw new CHttpException(400, 'Invalid request. Please do not repeat this request again.');
+        }
+    }
     /**
      * Updates a particular model.
      * If update is successful, the browser will be redirected to the 'view' page.
@@ -178,8 +219,10 @@ class StashController extends Controller
     public function actionApprove()
     {
         if (Yii::app()->request->isPostRequest) {
-            $status = $this->loadModel();
-            $status->approve();
+            $model = $this->loadModel();
+            $model->approve();
+            $massage = 'Your Stash "'.$model->getStashLink().'" will be successful approve';
+            $this->saveToProfile($massage,$model->user_id);
             $this->redirect(array('admin'));
         } else {
             throw new CHttpException(400, 'Invalid request. Please do not repeat this request again.');

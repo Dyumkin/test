@@ -81,14 +81,17 @@ class UserController extends Controller
     public function actionCreate()
     {
         $model = new User;
-
+        $profile = new Profile;
         // Uncomment the following line if AJAX validation is needed
         // $this->performAjaxValidation($model);
 
         if (isset($_POST['User'])) {
             $model->attributes = $_POST['User'];
             if ($model->save()) {
-                $this->redirect(array('view', 'id' => $model->id));
+                $profile->user_id = $model->id;
+                $profile->massage = 'Thanks for registered';
+                $profile->date = new CDbExpression('NOW()');
+                $this->redirect(array('profile/index', 'id' => $model->id));
             }
         }
 

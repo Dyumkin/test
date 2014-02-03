@@ -246,7 +246,7 @@ class Stash extends CActiveRecord
             if ($this->isNewRecord) {
                 $this->create_date = $this->update_date = time();
                 $this->user_id = Yii::app()->user->id;
-                $this->status = Stash::STATUS_APPROVED;
+                $this->status = Stash::STATUS_PENDING;
             } else {
                 $this->update_date = time();
             }
@@ -295,6 +295,12 @@ class Stash extends CActiveRecord
     public function getPendingStashCount()
     {
         return $this->count('status=' . self::STATUS_PENDING);
+    }
+
+    public function getStashLink()
+    {
+        $pathToStash = Yii::app()->createUrl('stash/view', array('id' => $this->id));
+        return CHtml::link(CHtml::encode($this->stash_name), $pathToStash);
     }
     /**
      * Retrieves a list of models based on the current search/filter conditions.

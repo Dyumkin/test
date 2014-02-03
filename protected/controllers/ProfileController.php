@@ -12,21 +12,27 @@ class ProfileController extends Controller
         );
     }
 
-	public function actionIndex()
-	{
-        $id = Yii::app()->user->id;
-        $this->render('index', array(
-            'model' => $this->loadModel($id),
-        ));
-	}
-
-	public function filters()
-	{
-		// return the filter configuration for this controller, e.g.:
+    public function filters()
+    {
+        // return the filter configuration for this controller, e.g.:
         return array(
             'accessControl', // perform access control for CRUD operations
         );
+    }
+
+	public function actionIndex()
+	{
+        if(Yii::app()->user->isGuest){
+            $this->redirect('site/login');
+        }
+        $id = Yii::app()->user->id;
+        $user = User::model()->findByPk($id);
+        $this->render('index', array(
+            'model' => $this->loadModel($id),
+            'user' => $user,
+        ));
 	}
+
 
     public function accessRules()
     {
@@ -63,7 +69,7 @@ class ProfileController extends Controller
 
     public function loadModel($id)
     {
-        $model = User::model()->findByPk($id);
+        $model = Profile::model()->findAllByAttributes(array('user_id' =>$id));
         if ($model === null) {
             throw new CHttpException(404, 'The requested page does not exist.');
         }
