@@ -1,7 +1,7 @@
 <?php
 /* @var $this ProfileController */
-/* @var $model Profile */
-/* @var $user User */
+/* @var $model User */
+/* @var $massage Massage */
 
 $this->breadcrumbs=array(
 	'Profile',
@@ -16,15 +16,15 @@ $this->menu = array(
 );
 ?>
 <h1><?php echo 'Hello ' . Yii::app()->user->name ?></h1>
-<?php if ($user->preview->hasImage())
-    echo CHtml::image($user->preview->getUrl('preview'), 'Preview image version');
+<?php if ($model->preview->hasImage())
+    echo CHtml::image($model->preview->getUrl('preview'), 'Preview image version');
 else
     echo CHtml::image(Yii::app()->request->baseUrl . '/images/avatar/no_avatar.jpg', 'no image uploaded');
 ?>
 <div class="row">
     <div class="span4 offset2">
         <?php $this->widget('bootstrap.widgets.TbDetailView', array(
-            'data' => $user,
+            'data' => $model,
             'attributes' => array(
                 'username',
                 'e_mail',
@@ -42,5 +42,5 @@ else
 </div>
 
 <?php $this->renderPartial('_massages', array(
-    'model' => $model,
+    'model' => $massage,
 )); ?>

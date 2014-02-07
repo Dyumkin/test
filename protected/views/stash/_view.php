@@ -45,19 +45,42 @@
     <div class="nav">
 
         <?php
-        Yii::app()->clientScript->registerScript('answer',"js:bootbox.prompt('What is the answer?', function(result){var url = jQuery(this).attr('href'); jQuery.post(url, {answer: 'result'} )})");
-
+        if(!Yii::app()->user->isGuest){
         $this->widget('bootstrap.widgets.TbButton',
             array(
                 'label' => 'Answer the question',
                 'type' => 'success',
-                'url' =>'Yii::app()->createUrl("stash/answerTheQuestion",array("id"=>$data->id))',
                 'htmlOptions' => array(
                     'style' => 'margin-left:3px',
-                    'onclick' => 'answer',
+                    'onclick' => 'js:bootbox.prompt("What is the answer?", function(result){
+                    function getUrlVars() {
+                    var vars = {};
+                    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+                        vars[key] = value;
+                    });
+                    return vars;
+                }
+                    var id = getUrlVars()["id"];
+
+                    jQuery.ajax({
+                        type: "GET",
+                        url: "answerTheQuestion",
+                        data: {
+                            id: id,
+                            answer: result,
+                        },
+                        error: function(jqXHR,textStatus,errorThrown){
+                        alert(errorThrown);
+                        },
+                        success: function(data){
+                            js:bootbox.alert(data);
+                          }
+                        });
+                        })'
                 ),
             )
-        ); ?>
+        );
+        }?>
         <?php echo CHtml::link("Comments ({$data->commentCount})", array('view', 'id' => $data->id)); ?>
         |
         Last updated

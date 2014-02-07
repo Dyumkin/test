@@ -26,10 +26,9 @@ class ProfileController extends Controller
             $this->redirect('site/login');
         }
         $id = Yii::app()->user->id;
-        $user = User::model()->findByPk($id);
         $this->render('index', array(
             'model' => $this->loadModel($id),
-            'user' => $user,
+            'massage' => $this->loadMassage($id),
         ));
 	}
 
@@ -69,12 +68,20 @@ class ProfileController extends Controller
 
     public function loadModel($id)
     {
-        $model = Profile::model()->findAllByAttributes(array('user_id' =>$id));
+        $model = User::model()->findByPk($id);
         if ($model === null) {
             throw new CHttpException(404, 'The requested page does not exist.');
         }
         return $model;
     }
 
+    public function loadMassage($addressee_id)
+    {
+        $model = Massage::model()->findAllByAttributes(array('user_addressee_id' => $addressee_id));
+        if ($model === null) {
+            throw new CHttpException(404, 'The requested page does not exist.');
+        }
+        return $model;
+    }
 
 }

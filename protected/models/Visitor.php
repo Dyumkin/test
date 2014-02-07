@@ -1,29 +1,26 @@
 <?php
 
 /**
- * This is the model class for table "{{profile}}".
+ * This is the model class for table "{{visitor}}".
  *
- * The followings are the available columns in table '{{profile}}':
+ * The followings are the available columns in table '{{visitor}}':
  * @property integer $id
  * @property integer $user_id
- * @property string $massage
  * @property integer $stash_id
  * @property integer $date
- * @property integer $find_stash
  *
  * The followings are the available model relations:
- * @property Stash $findStash
  * @property Stash $stash
  * @property User $user
  */
-class Profile extends CActiveRecord
+class Visitor extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
 	{
-		return '{{profile}}';
+		return '{{visitor}}';
 	}
 
 	/**
@@ -34,12 +31,11 @@ class Profile extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('user_id', 'required'),
-			array('user_id, stash_id, date, find_stash', 'numerical', 'integerOnly'=>true),
-			array('massage', 'safe'),
+			array('user_id, stash_id, date', 'required'),
+			array('user_id, stash_id, date', 'numerical', 'integerOnly'=>true),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, user_id, massage, stash_id, find_stash', 'safe', 'on'=>'search'),
+			array('id, user_id, stash_id, date', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -51,8 +47,7 @@ class Profile extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-            'findStash' => array(self::BELONGS_TO, 'Stash', 'find_stash'),
-            'stash' => array(self::BELONGS_TO, 'Stash', 'stash_id'),
+			'stash' => array(self::BELONGS_TO, 'Stash', 'stash_id'),
 			'user' => array(self::BELONGS_TO, 'User', 'user_id'),
 		);
 	}
@@ -65,10 +60,8 @@ class Profile extends CActiveRecord
 		return array(
 			'id' => 'ID',
 			'user_id' => 'User',
-			'massage' => 'Massage',
 			'stash_id' => 'Stash',
-            'date' => 'Date',
-            'find_stash' => 'Find Stash',
+			'date' => 'Date',
 		);
 	}
 
@@ -92,10 +85,8 @@ class Profile extends CActiveRecord
 
 		$criteria->compare('id',$this->id);
 		$criteria->compare('user_id',$this->user_id);
-		$criteria->compare('massage',$this->massage,true);
-		$criteria->compare('stash_id',$this->stash_id,true);
-        $criteria->compare('date',$this->date);
-        $criteria->compare('find_stash',$this->find_stash);
+		$criteria->compare('stash_id',$this->stash_id);
+		$criteria->compare('date',$this->date);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -106,7 +97,7 @@ class Profile extends CActiveRecord
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
-	 * @return Profile the static model class
+	 * @return Visitor the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{

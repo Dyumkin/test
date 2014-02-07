@@ -39,7 +39,7 @@ class StashController extends Controller
                 'users' => array('*'),
             ),
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
-                'actions'=>array('create','update','newComment','gallery'),
+                'actions'=>array('create','update','newComment','gallery','answerTheQuestion'),
                 'users' => array('@'),
             ),
 
@@ -118,27 +118,28 @@ class StashController extends Controller
     }
 
 
-    public function answerTheQuestion($id)
+    public function  actionAnswerTheQuestion($id,$answer)
     {
-        if (Yii::app()->request->isPostRequest) {
-            if(isset($_POST['answer']))
+        if (Yii::app()->request->isAjaxRequest) {
+            if(!empty($answer) && !empty($id))
             {
                 $model = $this->loadModel($id);
-                $answer = $_POST['answer'];
                 if($model->answer == $answer){
                     $massage = 'You successful visit the stash "'.$model->getStashLink().'"';
                     $this->saveToProfile($massage, NULL, $model->id);
+                    echo "Your answer is correct";
                 }else{
-                    $this->saveToProfile('You get bad answer on stash "'.$model->getStashLink().'"');
+                    echo "You give a bad answer";
                 }
             }else{
-                throw new CHttpException(400, 'Invalid POST request.');
+                throw new CHttpException(400, 'Invalid request.');
             }
         }else
         {
             throw new CHttpException(400, 'Invalid request. Please do not repeat this request again.');
         }
     }
+
     /**
      * Updates a particular model.
      * If update is successful, the browser will be redirected to the 'view' page.

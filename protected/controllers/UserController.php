@@ -81,16 +81,16 @@ class UserController extends Controller
     public function actionCreate()
     {
         $model = new User;
-        $profile = new Profile;
         // Uncomment the following line if AJAX validation is needed
         // $this->performAjaxValidation($model);
 
         if (isset($_POST['User'])) {
             $model->attributes = $_POST['User'];
             if ($model->save()) {
-                $profile->user_id = $model->id;
-                $profile->massage = 'Thanks for registered';
-                $profile->date = new CDbExpression('NOW()');
+                $sender = $model->findByAttributes(array('username' =>'admin'));
+                $addressee = $model->id;
+                $massage = 'Thanks for registered';
+                $this->saveMassage($sender->id,$addressee,$massage);
                 $this->redirect(array('profile/index', 'id' => $model->id));
             }
         }
@@ -98,6 +98,16 @@ class UserController extends Controller
         $this->render('create', array(
             'model' => $model
         ));
+    }
+
+    public function saveMassage($sender_id,$addressee_id, $massage)
+    {
+        $model = new Massage();
+        $model->user_sender_id = $sender_id;
+        $model->user_addressee_id = $addressee_id;
+        $model->massage = $massage;
+        $model->date = time();
+        $model->save();
     }
 
     /**

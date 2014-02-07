@@ -1,6 +1,6 @@
 <?php
 /* @var $this ProfileController */
-/* @var $model Profile */
+/* @var $model Massage */
 ?>
 
 <div class="massage">

@@ -22,7 +22,9 @@
  * @property Stash[] $stashes
  * @property City $city
  * @property Country $country
- * @property Profile[] $profiles
+ * @property Visitor[] $visitors
+ * @property Massage[] $massages_addressee
+ * @property Massage[] $massages_sender
  */
 class User extends CActiveRecord
 {
@@ -86,10 +88,13 @@ class User extends CActiveRecord
         // NOTE: you may need to adjust the relation name and the related
         // class name for the relations automatically generated below.
         return array(
+            'massages_addressee' => array(self::HAS_MANY, 'Massage', 'user_addressee_id'),
+            'massages_sender' => array(self::HAS_MANY, 'Massage', 'user_sender_id'),
             'stashes' => array(self::HAS_MANY, 'Stash', 'user_id'),
             'notepads' => array(self::HAS_MANY, 'Notepad', 'user_id'),
             'cities' => array(self::BELONGS_TO, 'City', 'city_id'),
             'profiles' => array(self::HAS_MANY, 'Profile', 'user_id'),
+            'visitors' => array(self::HAS_MANY, 'Visitor', 'user_id'),
         );
     }
 
@@ -197,7 +202,7 @@ class User extends CActiveRecord
     protected function afterDelete()
     {
         parent::afterDelete();
-        Profile::model()->deleteAll('user_id=' . $this->id);
+        Massage::model()->deleteAll('user_addressee_id=' . $this->id);
     }
 
     /**
