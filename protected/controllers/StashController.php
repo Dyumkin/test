@@ -84,8 +84,10 @@ class StashController extends Controller
             $model->attributes = $_POST['Stash'];
 
             if ($model->save()) {
+                $sender = User::model()->findByAttributes(array('username' =>'admin'));
+                $addressee_id = Yii::app()->user->id;
                 $massage = 'Thank you for creating stash "'.$model->getStashLink().'" Your stash will be posted once it is approved.';
-                $this->saveToProfile($massage);
+                $this->saveMassage($sender->id,$addressee_id,$massage);
                 if($model->galleryAdded == 1)
                 {
                     $this->redirect(array('gallery', 'id' => $model->id));
@@ -100,21 +102,14 @@ class StashController extends Controller
         ));
     }
 
-    public function saveToProfile($massage, $user_id = NULL, $find_stash = NULL)
+    public function saveMassage($sender_id,$addressee_id, $massage)
     {
-        $profile = new Profile;
-        if (!empty($user_id)) {
-            $profile->user_id = $user_id;
-        } else {
-            $profile->user_id = Yii::app()->user->id;
-        }
-        if(!empty($find_stash))
-        {
-            $profile->find_stash = $find_stash;
-        }
-        $profile->massage = $massage;
-        $profile->date = time();
-        $profile->save();
+        $model = new Massage();
+        $model->user_sender_id = $sender_id;
+        $model->user_addressee_id = $addressee_id;
+        $model->massage = $massage;
+        $model->date = time();
+        $model->save();
     }
 
 
@@ -125,8 +120,10 @@ class StashController extends Controller
             {
                 $model = $this->loadModel($id);
                 if($model->answer == $answer){
+                    $sender = User::model()->findByAttributes(array('username' =>'admin'));
+                    $addressee_id = Yii::app()->user->id;
                     $massage = 'You successful visit the stash "'.$model->getStashLink().'"';
-                    $this->saveToProfile($massage, NULL, $model->id);
+                    $this->saveMassage($sender->id,$addressee_id,$massage);
                     echo "Your answer is correct";
                 }else{
                     echo "You give a bad answer";
@@ -222,8 +219,9 @@ class StashController extends Controller
         if (Yii::app()->request->isPostRequest) {
             $model = $this->loadModel();
             $model->approve();
+            $sender = User::model()->findByAttributes(array('username' =>'admin'));
             $massage = 'Your Stash "'.$model->getStashLink().'" will be successful approve';
-            $this->saveToProfile($massage,$model->user_id);
+            $this->saveMassage($sender->id,$model->user_id,$massage);
             $this->redirect(array('admin'));
         } else {
             throw new CHttpException(400, 'Invalid request. Please do not repeat this request again.');
