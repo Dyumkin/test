@@ -18,6 +18,14 @@ class UserController extends Controller
             'update' => 'application.components.actions.UpdateUser',
 
             'saveImageAttachment' => 'application.extensions.imageAttachment.ImageAttachmentAction',
+
+            'captcha'=>array(
+                'class'     =>'CCaptchaAction',
+                'maxLength' => 6,
+                'minLength' => 3,
+                'foreColor' => 0x667e9a,
+                'testLimit' => 2,
+            ),
         );
     }
 
@@ -41,12 +49,9 @@ class UserController extends Controller
     public function accessRules()
     {
         return array(
-           /* array('allow', // allow all users to perform 'index' and 'view' actions
-                'actions' => array('index', 'view'),
-                'users' => array('@'),
-            ),*/
+
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
-                'actions' => array('index', 'view','create', 'widget.UpdateCity', 'widget.UpdateRegion','saveImageAttachment'),
+                'actions' => array('index', 'view','create', 'widget.UpdateCity', 'widget.UpdateRegion','saveImageAttachment','registration'),
                 'users' => array('*'),
             ),
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -56,6 +61,10 @@ class UserController extends Controller
             array('allow', // allow admin user to perform 'admin' and 'delete' actions
                 'actions' => array('admin', 'delete'),
                 'users' => array('admin'),
+            ),
+            array('deny',
+                'actions' => array('registration'),
+                'users' => array('@'),
             ),
             array('deny', // deny all users
                 'users' => array('*'),
@@ -80,7 +89,7 @@ class UserController extends Controller
      */
     public function actionCreate()
     {
-        $model = new User;
+        $model = new User('create');
         // Uncomment the following line if AJAX validation is needed
         // $this->performAjaxValidation($model);
 
@@ -152,7 +161,54 @@ class UserController extends Controller
         ));
     }
 
+    public function actionRegistration()
+    {
+        $user = new User('registration');
 
+        /*
+        * Ajax валидация
+        */
+        //$this->performAjaxValidation($user);
+
+        if (isset($_POST['User'])) {
+            $user->attributes = $_POST['User'];
+
+            $user->activationKey = substr(md5(uniqid(rand(), true)), 0, rand(10, 15));
+            $user->status = '0';
+
+            if ($user->save()) {
+                $role = new AuthAssignment();
+                $role->itemname = 'User';
+                $role->userid = $user->id;
+
+                if ($role->save()) {
+                    $this->render("registrationOk");
+                    // $this->activationKey($user);
+                }
+            }
+        }
+
+        $this->render('registration', array('model' => $user));
+
+    }
+
+    /**
+     * Отправление кода активации
+     *
+     * @param $model User
+     * @return boolean
+     */
+    protected function activationKey($model) {
+        $email = Yii::app()->email;
+
+        $email->to = $model->e_mail;
+
+        $email->subject = 'Код активации аккаунта для сайта '.Yii::app()->name;
+
+        $email->message = 'Код активации аккаунта: <a href="'.Yii::app()->request->hostInfo.'/user/default/activation/key/'.$model->activationKey.'">'.$model->activationKey.'</a>';
+
+        $email->send();
+    }
 
     /**
      * Returns the data model based on the primary key given in the GET variable.

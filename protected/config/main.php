@@ -34,6 +34,8 @@ return array(
         'application.extensions.EGMap.*',
         'application.extensions.galleryManager.*',
         'application.extensions.galleryManager.models.*',
+        'application.modules.srbac.controllers.SBaseController',
+        'application.modules.srbac.views.*',
     ),
 
     'theme'=>'bootstrap', // requires you to copy the theme under your themes directory
@@ -50,6 +52,33 @@ return array(
 			'ipFilters'=>array('127.0.0.1','::1'),
 		),
 
+        'srbac'   => array(
+            // Модель для работы с таблицой пользователей
+            'userclass' => 'User',
+            // Уникальный идентификатор пользователя
+            'userid'    => 'id',
+            // Название поля содержащего имя пользователя
+            'username'  => 'username',
+            // В режиме отладки все пользователи могут управлять правилами доступа
+            'debug'     => true,
+            // Колличество пунктов выводимых на 1 странице
+            'pageSize'  => 20,
+            // Название роли супер пользователя
+            'superUser' => 'Authority',
+            // Файл стилей для модуля
+            'css'       => 'srbac.css',
+            // Сообщение для не авторизированных пользователей, попытавшихся получить доступ к закрытым для них разделам сайта
+            'notAuthorizedView' => 'application.views.site.unauthorized',
+            // Операции разрещенные польщователю
+            'userActions'          => array('Show','View','List','Index'),
+            //
+            'listBoxNumberOfLines' => 15,
+            // Путь к картинкам
+            'imagesPath'           => 'application.modules.srbac.images',
+            //
+            'imagesPack'           => 'noia',
+            //
+            'iconText'             => true,),
 	),
 
 
@@ -111,9 +140,13 @@ return array(
             'tablePrefix' => 'tbl_'
 		),
 
-        'authManager'=>array(
-            'class'=>'CDbAuthManager',
-            'connectionID'=>'db',
+        'authManager' => array(
+            'class'  => 'CDbAuthManager',
+            'connectionID'     => 'db',
+            'itemTable'          => 'AuthItem',
+            'itemChildTable'    => 'AuthItemChild',
+            'assignmentTable' => 'AuthAssignment',
+            'defaultRoles'       =>  array('Guest'),
         ),
 
 		'errorHandler'=>array(

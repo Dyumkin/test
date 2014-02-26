@@ -26,7 +26,7 @@ $this->breadcrumbs = array(
             <?php echo $form->textFieldRow($model, 'username'); ?>
             <?php echo $form->passwordFieldRow($model, 'password', array('placeholder' => 'Password')); ?>
 
-        <a href="<?= Yii::app()->createUrl('user/create'); ?>">Registration</a>
+        <a href="<?= Yii::app()->createUrl('user/registration'); ?>">Registration</a>
 
             <?php echo $form->checkBoxRow($model, 'rememberMe'); ?>
 

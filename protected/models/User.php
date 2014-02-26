@@ -17,6 +17,8 @@
  * @property string $other_information
  * @property string $create_date
  * @property integer $city_id
+ * @property string $activationKey
+ * @property string $status
  * The followings are the available model relations:
  * @property Notepad[] $notepads
  * @property Stash[] $stashes
@@ -45,6 +47,8 @@ class User extends CActiveRecord
 
     public $avaImg;
 
+   // public $captcha;
+
     /**
      * @return string the associated database table name
      */
@@ -61,19 +65,20 @@ class User extends CActiveRecord
         // NOTE: you should only define rules for those attributes that
         // will receive user inputs.
         return array(
-            array('username, password, e_mail, verifyPassword', 'required','on'=>'create'),
+            array('username, password, e_mail, verifyPassword', 'required','on'=>'create, registration'),
+           // array('captcha', 'required', 'on'=>'create, registration'),
             array('username, name, first_name, last_name', 'length', 'max' => 60),
-            array('username', 'unique'),
-            array('e_mail', 'unique'),
+            array('username, e_mail', 'unique'),
             array('password, verifyPassword, birthday', 'safe', 'on' => 'update'),
             array('password, e_mail', 'length', 'max' => 32),
-            array('verifyPassword', 'compare', 'compareAttribute' => 'password', 'message' => 'Retype Password is incorrect','on'=>'create'),
+            array('verifyPassword', 'compare', 'compareAttribute' => 'password', 'message' => 'Retype Password is incorrect','on'=>'create, registration'),
             array('sex', 'length', 'max' => 7),
             array('phone', 'length', 'max' => 18),
             array('birthday, other_information', 'safe'),
             array('birthday', 'date', 'format'=>'dd.MM.yyyy'),
             array('city_id' , 'numerical', 'integerOnly'=>true),
             array('avaImg', 'file', 'types' => 'png, gif, jpg', 'allowEmpty' => true),
+           // array('captcha',  'captcha', 'allowEmpty' => !extension_loaded('gd'), 'on'=>'registration'),
             // The following rule is used by search().
             // @todo Please remove those attributes that should not be searched.
             array('id, username, password, e_mail, name, first_name, last_name, sex, birthday, phone, other_information', 'safe', 'on' => 'search'),
@@ -93,7 +98,7 @@ class User extends CActiveRecord
             'stashes' => array(self::HAS_MANY, 'Stash', 'user_id'),
             'notepads' => array(self::HAS_MANY, 'Notepad', 'user_id'),
             'cities' => array(self::BELONGS_TO, 'City', 'city_id'),
-            'profiles' => array(self::HAS_MANY, 'Profile', 'user_id'),
+            //'profiles' => array(self::HAS_MANY, 'Profile', 'user_id'),
             'visitors' => array(self::HAS_MANY, 'Visitor', 'user_id'),
         );
     }
@@ -117,6 +122,7 @@ class User extends CActiveRecord
             'other_information' => 'Other Information',
             'create_date' => 'Create Date',
             'city_id' => 'Place',
+            'captcha'   => 'Введите код с картинки:',
         );
     }
 
@@ -125,9 +131,9 @@ class User extends CActiveRecord
         if (parent::beforeSave()) {
             if ($this->isNewRecord) {
                 $this->create_date = new CDbExpression('NOW()');
-                if (!empty($this->password) && ($this->password == $this->verifyPassword)) {
+               // if (!empty($this->password) && ($this->password == $this->verifyPassword)) {
                     $this->password = crypt($this->password, Yii::app()->params['cryptSalt']);
-                }
+               // }
             }
             if (!empty($this->birthday)){
                 $this->birthday =strtotime($this->birthday);
