@@ -1,4 +1,17 @@
 <?php
+/* @var $this StashController */
+/* @var $model Stash */
+?>
+
+
+
+<?php if ($model->commentCount >= 1): ?>
+    <h3>
+        <?php echo $model->commentCount > 1 ? $model->commentCount . ' comments' : 'One comment'; ?>
+    </h3>
+<?php endif; ?>
+
+<?php
 /* @var $comments Notepad */
 foreach ($comments as $comment):
     ?>
@@ -29,3 +42,18 @@ foreach ($comments as $comment):
 
     </div><!-- comment -->
 <?php endforeach; ?>
+
+<?php if (!Yii::app()->user->isGuest): ?>
+    <h3>Leave a Comment</h3>
+
+    <?php if (Yii::app()->user->hasFlash('commentSubmitted')): ?>
+        <div class="flash-success">
+            <?php echo Yii::app()->user->getFlash('commentSubmitted'); ?>
+        </div>
+    <?php else: ?>
+        <?php $this->renderPartial('/notepad/_form', array(
+            'model' => $notepad,
+        )); ?>
+    <?php endif; ?>
+
+<?php endif; ?>

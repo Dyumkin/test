@@ -116,7 +116,7 @@ class Notepad extends CActiveRecord
     {
         if (parent::beforeSave()) {
             if ($this->isNewRecord) {
-                $this->comment_date = time();
+                $this->comment_date = new CDbExpression('NOW()');
                 $this->user_id = Yii::app()->user->id;
             }
             return true;

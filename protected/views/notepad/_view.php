@@ -44,7 +44,7 @@ Yii::app()->getClientScript()->registerScript('delete', $deleteJS);
         <?php endif; ?>
         <?php echo CHtml::link('Update', array('notepad/update', 'id' => $data->id)); ?> |
         <?php echo CHtml::link('Delete', array('notepad/delete', 'id' => $data->id), array('class' => 'delete')); ?> |
-        <?php echo date('F j, Y \a\t h:i a', $data->comment_date); ?>
+        <?php echo $data->comment_date; ?>
     </div>
 
     <div class="content">

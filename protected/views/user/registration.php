@@ -8,10 +8,6 @@ $this->breadcrumbs = array(
     'Registration',
 );
 
-$this->menu = array(
-    array('label' => 'List User', 'url' => array('index')),
-    array('label' => 'Manage User', 'url' => array('admin')),
-);
 ?>
 
     <h1>Registration</h1>

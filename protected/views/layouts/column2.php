@@ -1,24 +1,26 @@
 <?php /* @var $this Controller */ ?>
 <?php $this->beginContent('//layouts/main'); ?>
-    <div class="span-19">
-        <div id="content">
+    <div id="content-wrap">
+        <div id="main">
             <?php echo $content; ?>
         </div>
         <!-- content -->
-    </div>
-    <div class="span-5 last">
+
         <div id="sidebar">
-            <?php if (Yii::app()->user->name == 'admin') $this->widget('UserMenu'); ?>
+            <?php if (Yii::app()->user->name == 'admin') $this->widget('AdminMenu'); ?>
             <?php
-            $this->beginWidget('zii.widgets.CPortlet', array(
-                'title' => 'Operations',
-            ));
-            $this->widget('bootstrap.widgets.TbMenu', array(
-                'type' => 'list',
-                'items' => $this->menu,
-                'htmlOptions' => array('class' => 'operations'),
-            ));
-            $this->endWidget();
+            if (!Yii::app()->user->isGuest) {
+                $this->beginWidget('zii.widgets.CPortlet', array(
+                    'title' => '<h1>Operations</h1>',
+                    //        'htmlOptions' => array('id' => 'sidebar'),
+                ));
+
+                $this->widget('zii.widgets.CMenu', array(
+                    'items' => $this->menu,
+                    'htmlOptions' => array('class' => 'sidemenu'),
+                ));
+                $this->endWidget();
+            }
             ?>
 
             <?php
@@ -26,6 +28,16 @@
                 echo $this->clips['infoBox'];
             }
             ?>
+
+            <h1>Search</h1>
+
+            <form method="post" id="search" action="http://www.free-css.com/">
+                <p>
+                    <input name="search_query" class="textbox" type="text"/>
+                    <input name="search" class="searchbutton" value="Search" type="submit"/>
+                </p>
+            </form>
+
         </div>
         <!-- sidebar -->
     </div>

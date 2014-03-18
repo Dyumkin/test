@@ -9,7 +9,7 @@ $this->breadcrumbs = array(
 
 ?>
 
-<h1>View User #<?php echo $model->username; ?></h1>
+<h1>View User: <?php echo $model->username; ?></h1>
 
 <?php if ($model->preview->hasImage())
     echo CHtml::image($model->preview->getUrl('preview'), 'Preview image version');

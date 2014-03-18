@@ -22,9 +22,9 @@ $this->breadcrumbs = array(
     array(
         'options' => array(
             'fullpage' => 'js:true',
-            'width' => '800',
-            'resize_maxWidth' => '900',
-            'resize_minWidth' => '820',
+            'width' => '700',
+            'resize_maxWidth' => '800',
+            'resize_minWidth' => '700',
             'customConfig' => '/js/ckeditor-config/config.js',
         )
     )); ?>

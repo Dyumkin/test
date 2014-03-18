@@ -54,6 +54,20 @@
 
         <?php echo $form->textAreaRow($model, 'other_information', array('rows' => 6, 'cols' => 50)); ?>
 
+
+
+            <?php echo $form->labelEx($model,'verifyCode'); ?>
+
+                <?php $this->widget('CCaptcha',array('captchaAction' => '/user/captcha','showRefreshButton'=>false,)); ?>
+                <?php echo $form->textFieldRow($model,'verifyCode'); ?>
+
+            <div class="hint">Please enter the letters as they are shown in the image above.
+                <br/>Letters are not case-sensitive.</div>
+            <?php echo $form->error($model,'verifyCode'); ?>
+
+
+
+
     <?php echo TbHtml::formActions(array(
         TbHtml::submitButton($model->isNewRecord ? 'Create' : 'Save', array('color' => TbHtml::BUTTON_COLOR_PRIMARY)),
         TbHtml::resetButton('Reset'),

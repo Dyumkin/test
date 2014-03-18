@@ -19,12 +19,11 @@ class UserController extends Controller
 
             'saveImageAttachment' => 'application.extensions.imageAttachment.ImageAttachmentAction',
 
+            // captcha action renders the CAPTCHA image displayed on the contact page
             'captcha'=>array(
-                'class'     =>'CCaptchaAction',
-                'maxLength' => 6,
-                'minLength' => 3,
-                'foreColor' => 0x667e9a,
-                'testLimit' => 2,
+                'class'=>'CCaptchaAction',
+                'backColor'=>0xFFFFFF,
+                'testLimit' => 1,
             ),
         );
     }
@@ -51,7 +50,7 @@ class UserController extends Controller
         return array(
 
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
-                'actions' => array('index', 'view','create', 'widget.UpdateCity', 'widget.UpdateRegion','saveImageAttachment','registration'),
+                'actions' => array('index', 'view', 'widget.UpdateCity', 'widget.UpdateRegion','saveImageAttachment','registration','captcha'),
                 'users' => array('*'),
             ),
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -59,7 +58,7 @@ class UserController extends Controller
                 'users' => array('admin'),
             ),
             array('allow', // allow admin user to perform 'admin' and 'delete' actions
-                'actions' => array('admin', 'delete'),
+                'actions' => array('admin', 'delete','create'),
                 'users' => array('admin'),
             ),
             array('deny',
@@ -164,7 +163,7 @@ class UserController extends Controller
     public function actionRegistration()
     {
         $user = new User('registration');
-
+        $this->createAction('captcha')->getVerifyCode(true);
         /*
         * Ajax валидация
         */

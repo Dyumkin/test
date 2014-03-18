@@ -5,14 +5,16 @@
 
 <?php
     $this->beginWidget('zii.widgets.CPortlet', array(
-        'title' => $data->stash_name,
+        'title' => '<h1>'.$data->stash_name.'</h1>',
     ));
     $this->widget('bootstrap.widgets.TbDetailView', array(
         'data' => $data,
+        'type' => 'bordered',
+        'htmlOptions' => array('text-align' => 'center'),
         'attributes' => array(
             'type',
             //'class',
-            'attribute',
+            //'attribute',
             'season',
             'complexity',
             'latitude',

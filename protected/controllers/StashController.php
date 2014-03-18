@@ -61,11 +61,11 @@ class StashController extends Controller
     public function actionView($id)
     {
         $stash = $this->loadModel($id);
-        $comment = $this->newComment($stash);
+        $notepad = $this->newComment($stash);
 
         $this->render('view', array(
             'model' => $stash,
-            'comment' => $comment,
+            'notepad' => $notepad,
         ));
     }
 
