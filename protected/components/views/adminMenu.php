@@ -9,38 +9,38 @@ $this->widget(
         'htmlOptions' => array('class' => 'sidemenu'),
         'items' => array(
             array(
-                'label' => 'Update site content',
+                'label' => 'Редактирование контента',
                 'itemOptions' => array('class' => 'nav-header')
             ),
             array(
-                'label' => 'History',
+                'label' => 'История',
                 'url' => array('site/update', 'attribute' => 'history'),
             ),
             array(
-                'label' => 'Rules',
+                'label' => 'Правила игры',
                 'url' =>  array('site/update', 'attribute' => 'rules'),
             ),
             array(
-                'label' => 'Advices',
+                'label' => 'Советы игрокам',
                 'url' => array('site/update', 'attribute' => 'advices'),
             ),
             array(
-                'label' => 'Manage user',
+                'label' => 'Управление пользователями',
                 'itemOptions' => array('class' => 'nav-header')
             ),
-            array('label' => 'User manager', 'url' => array('user/admin')),
+            array('label' => 'Игроки', 'url' => array('user/admin')),
             array(
-                'label' => 'Stash manage',
+                'label' => 'Управление тайниками',
                 'itemOptions' => array('class' => 'nav-header')
             ),
-            array('label' => 'Approve Stashes'. ' (' . Stash::model()->pendingStashCount . ')',
+            array('label' => 'Утвердить тайник'. ' (' . Stash::model()->pendingStashCount . ')',
                 'url' => array('stash/admin')
             ),
-            array('label' => 'Approve Comments'. ' (' . Notepad::model()->pendingCommentCount . ')',
+            array('label' => 'Утвердить запись в блокноте'. ' (' . Notepad::model()->pendingCommentCount . ')',
                 'url' => array('notepad/index'),
             ),
             '',
-            array('label' => 'Logout', 'url' => array('site/logout')),
+            array('label' => 'Выход', 'url' => array('site/logout')),
 
         )
     )

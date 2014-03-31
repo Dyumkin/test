@@ -34,8 +34,8 @@ class WidgetProvider extends CWidget {
 
         echo TbHtml::dropDownListControlGroup('country_id', '', $countries,
             array(
-                'label' => 'Location/Nearest location',
-                'prompt' => 'Select Country',
+                'label' => 'Ближайшая местность',
+                'prompt' => 'Выберете страну',
                 'ajax' => array(
                     'type' => 'POST',
                     'url' => $ownerController->createUrl('user/widget.UpdateRegion'),
@@ -53,7 +53,7 @@ class WidgetProvider extends CWidget {
 
         echo TbHtml::dropDownListControlGroup('region_id', '', array(),
             array(
-                'prompt' => 'Select Region',
+                'prompt' => 'Выберете регион',
                 'ajax' => array(
                     'type' => 'POST',
                     'url' => $ownerController->createUrl('user/widget.UpdateCity'),
@@ -61,7 +61,7 @@ class WidgetProvider extends CWidget {
                     'data' => array('region_id' => 'js:this.value'),
                 )));
 
-        echo TbHtml::activeDropDownListControlGroup($this->model, 'city_id', array(), array('prompt' => 'Select City', 'label' => false));
+        echo TbHtml::activeDropDownListControlGroup($this->model, 'city_id', array(), array('prompt' => 'Выберете город', 'label' => false));
 
     }
 

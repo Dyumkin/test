@@ -52,8 +52,8 @@ class SiteContent extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'name' => 'Name',
-			'content' => 'Content',
+			'name' => 'Имя',
+			'content' => 'Содержание',
 		);
 	}
 

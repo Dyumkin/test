@@ -7,7 +7,7 @@
 if(!Yii::app()->user->isGuest){
     $this->widget('bootstrap.widgets.TbButton',
         array(
-            'label' => 'Answer the question',
+            'label' => 'Ответить на вопрос',
             'type' => 'success',
             'htmlOptions' => array(
                 'style' => 'margin-left:3px',

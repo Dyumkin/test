@@ -7,7 +7,7 @@
 
 <?php if ($model->commentCount >= 1): ?>
     <h3>
-        <?php echo $model->commentCount > 1 ? $model->commentCount . ' comments' : 'One comment'; ?>
+        <?php echo $model->commentCount > 1 ? $model->commentCount . ' записи' : 'Одна запись'; ?>
     </h3>
 <?php endif; ?>
 
@@ -29,7 +29,7 @@ foreach ($comments as $comment):
 
 
         <div class="author">
-            <?php echo $comment->getUserLink(); ?> says:
+            <?php echo $comment->getUserLink(); ?> :
         </div>
 
         <div class="time">
@@ -44,7 +44,7 @@ foreach ($comments as $comment):
 <?php endforeach; ?>
 
 <?php if (!Yii::app()->user->isGuest): ?>
-    <h3>Leave a Comment</h3>
+    <h3>Оставить запись</h3>
 
     <?php if (Yii::app()->user->hasFlash('commentSubmitted')): ?>
         <div class="flash-success">

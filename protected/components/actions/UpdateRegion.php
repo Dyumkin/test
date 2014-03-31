@@ -14,12 +14,12 @@ class UpdateRegion extends CAction{
         $data = Region::model()->findAll('country_id=:country_id', array(':country_id' => (int)$_POST['country_id']));
 
         $data = CHtml::listData($data, 'region_id', 'name');
-        $dropDownRegion = "<option value=''>Select Region</option>";
+        $dropDownRegion = "<option value=''>Выберете регион</option>";
         foreach ($data as $value => $name) {
             $dropDownRegion .= CHtml::tag('option', array('value' => $value), CHtml::encode($name), true);
         }
 
-        $dropDownCity = "<option value='null'>Select City</option>";
+        $dropDownCity = "<option value='null'>Выберете город</option>";
 
         echo CJSON::encode(array(
             'dropDownRegion' => $dropDownRegion,

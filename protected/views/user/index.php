@@ -3,11 +3,11 @@
 /* @var $dataProvider CActiveDataProvider */
 
 $this->breadcrumbs = array(
-    'Users',
+    'Игроки',
 );
 ?>
 
-<h1>Users</h1>
+<h1>Игроки</h1>
 
 <?php $this->widget('bootstrap.widgets.TbGridView', array(
     'type' => 'bordered',

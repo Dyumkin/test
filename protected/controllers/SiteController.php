@@ -164,7 +164,7 @@ class SiteController extends Controller
     {
         $model = SiteContent::model()->findByAttributes(array('name' => $attribute));
         if ($model === null) {
-            throw new CHttpException(404, 'The requested page does not exist.');
+            throw new CHttpException(404, 'Запрашиваемой страницы не существует.');
         }
         return $model;
     }

@@ -58,10 +58,10 @@ class Region extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'region_id' => 'Region',
-			'country_id' => 'Country',
-			'city_id' => 'City',
-			'name' => 'Name',
+			'region_id' => 'Регион',
+			'country_id' => 'Страна',
+			'city_id' => 'Город',
+			'name' => 'Имя',
 		);
 	}
 

@@ -145,7 +145,7 @@ class StashController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->loadModel($id);
-
+        if(Yii::app()->user->id == $model->user_id){
         // Uncomment the following line if AJAX validation is needed
         // $this->performAjaxValidation($model);
 
@@ -159,6 +159,9 @@ class StashController extends Controller
         $this->render('update', array(
             'model' => $model,
         ));
+        } else {
+            throw new CHttpException(403,'You do not have permission to perform the specified action.');
+        }
     }
 
     /**

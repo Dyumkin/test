@@ -5,10 +5,10 @@
 
 <?php $this->pageTitle = $model->stash_name; ?>
 
-<h2>Product galley</h2>
+<h2>Галлерея тайника</h2>
 <?php
 if ($model->galleryBehavior->getGallery() === null) {
-    echo '<p>Before add photos to product gallery, you need to save product</p>';
+    echo '<p>Перед добавлением фотографии в галерею, необходимо сохранить тайник</p>';
 } else {
     $this->widget('GalleryManager', array(
         'gallery' => $model->galleryBehavior->getGallery(),
@@ -20,7 +20,7 @@ if ($model->galleryBehavior->getGallery() === null) {
 $this->widget(
     'bootstrap.widgets.TbButton',
     array(
-        'label' => 'Go to view',
+        'label' => 'Перейти для просмотра',
         'url' => Yii::app()->createUrl('stash/view', array(
                 'id' => $model->id,
             )),

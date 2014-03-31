@@ -4,12 +4,12 @@
 /* @var $countries array */
 
 $this->breadcrumbs = array(
-    'Users' => array('index'),
-    'Registration',
+    'Игроки' => array('index'),
+    'Регистрация',
 );
 
 ?>
 
-    <h1>Registration</h1>
+    <h1>Регистрация</h1>
 
 <?php $this->renderPartial('_form', array('model' => $model)); ?>

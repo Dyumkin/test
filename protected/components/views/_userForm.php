@@ -10,7 +10,7 @@
     'htmlOptions' => array('enctype' => 'multipart/form-data'),
 )); ?>
 
-<p class="note">Fields with <span class="required">*</span> are required.</p>
+    <p class="note">Поля с <span class="required">*</span> являются обезательными для заполнения.</p>
 
 <?php echo $form->errorSummary($model); ?>
 
@@ -37,10 +37,10 @@
 <?php echo $form->datepickerRow($model, 'birthday', array(
     'prepend' => '<i class="icon-calendar"></i>',
     'options' => array(
-        'format' => 'dd.mm.yyyy',
+        'format' => 'dd.MM.yyyy',
         'language' => 'ru',
         'autoclose' => 'true',
-        'startDate' => '1,1,1920',
+        'startDate' => '1,1,1930',
         'endDate' => 'now()',
         'startView' => 2,
     ),

@@ -5,7 +5,7 @@
 
 $this->breadcrumbs = array(
     $model->name => array('pages/index'),
-    'Update',
+    'Обновление',
 );
 ?>
 
@@ -15,7 +15,7 @@ $this->breadcrumbs = array(
     'enableClientValidation' => true,
 )); ?>
 
-    <h1 class="text-center">Update Content <?php echo $model->name; ?></h1>
+    <h1 class="text-center">Изменение содержания <?php echo $model->name; ?></h1>
 
 <?php echo $form->ckEditorRow($model,
     'content',
@@ -30,7 +30,7 @@ $this->breadcrumbs = array(
     )); ?>
 
 <?php echo TbHtml::formActions(array(
-    TbHtml::submitButton('Save', array('color' => TbHtml::BUTTON_COLOR_PRIMARY)),
+    TbHtml::submitButton('Сохранить', array('color' => TbHtml::BUTTON_COLOR_PRIMARY)),
 )); ?>
 
 <?php $this->endWidget(); ?>

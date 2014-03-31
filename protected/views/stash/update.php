@@ -2,12 +2,12 @@
 /* @var $this StashController */
 /* @var $model Stash */
 $this->breadcrumbs = array(
-    'Stashes' => array('index'),
+    'Тайники' => array('index'),
     $model->stash_name => $model->url,
-    'Update',
+    'Обновление',
 );
 ?>
 
-    <h1>Update <i><?php echo CHtml::encode($model->stash_name); ?></i></h1>
+    <h1>Изменения тайника <i><?php echo CHtml::encode($model->stash_name); ?></i></h1>
 
 <?php echo $this->renderPartial('_form', array('model' => $model)); ?>

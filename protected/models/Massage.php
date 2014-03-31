@@ -61,10 +61,10 @@ class Massage extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'user_sender_id' => 'User Sender',
-			'user_addressee_id' => 'User Addressee',
-			'massage' => 'Massage',
-			'date' => 'Date',
+			'user_sender_id' => 'Отправитель',
+			'user_addressee_id' => 'Адресат',
+			'massage' => 'Сообщение',
+			'date' => 'Дата',
 		);
 	}
 

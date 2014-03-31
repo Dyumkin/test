@@ -168,7 +168,7 @@ class NotepadController extends Controller
             $comment->approve();
             $this->redirect(array('index'));
         } else {
-            throw new CHttpException(400, 'Invalid request. Please do not repeat this request again.');
+            throw new CHttpException(400, 'Неверный запрос. Пожалуйста, не повторяйте этот запрос снова.');
         }
     }
 
@@ -187,7 +187,7 @@ class NotepadController extends Controller
                 $this->_model = Notepad::model()->findbyPk($_GET['id']);
             }
             if ($this->_model === null) {
-                throw new CHttpException(404, 'The requested page does not exist.');
+                throw new CHttpException(404, 'Запрашиваемой страницы не существует.');
             }
         }
         return $this->_model;

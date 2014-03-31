@@ -4,7 +4,7 @@
 /* @var $massage Massage */
 
 $this->breadcrumbs=array(
-	'Profile',
+	'Личный кабинет',
 );
 
 $this->menu = array(
@@ -15,7 +15,7 @@ $this->menu = array(
     array('label' => 'Founding Stashes', 'url' => array('profile/')),
 );
 ?>
-<h1><?php echo 'Hello ' . Yii::app()->user->name ?></h1>
+<h1><?php echo 'Здраствуй ' . Yii::app()->user->name ?></h1>
 <?php if ($model->preview->hasImage())
     echo CHtml::image($model->preview->getUrl('preview'), 'Preview image version');
 else

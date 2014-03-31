@@ -3,13 +3,13 @@
 /* @var $model User */
 
 $this->breadcrumbs = array(
-    'Users' => array('index'),
+    'Игроки' => array('index'),
     $model->username => array('profile/index', 'id' => $model->id),
-    'Update',
+    'Обновление',
 );
 
 ?>
 
-    <h1>Update User <?php echo $model->id; ?></h1>
+    <h1>Изменение персональных данных игрока <?php echo $model->username; ?></h1>
 
 <?php $this->renderPartial('_form', array('model' => $model)); ?>

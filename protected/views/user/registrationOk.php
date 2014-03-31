@@ -1,6 +1,7 @@
 <?php
-$this->breadcrumbs=array(
-    "Регистрация",
+$this->breadcrumbs = array(
+    'Игроки' => array('index'),
+    'Регистрация',
 );
 ?>
 

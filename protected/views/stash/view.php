@@ -3,7 +3,7 @@
 /* @var $model Stash */
 
 $this->breadcrumbs = array(
-    'Stashes' => array('index'),
+    'Тайники' => array('index'),
     $model->stash_name,
 );
 ?>
@@ -28,12 +28,12 @@ $this->breadcrumbs = array(
 <?php
 $this->widget('zii.widgets.jui.CJuiAccordion', array(
     'panels' => array(
-        'Photos' => $this->renderPartial('_gallery', array('model' => $model), true),
-        'NotePad' => $this->renderPartial('_comments', array(
+        'Фото' => $this->renderPartial('_gallery', array('model' => $model), true),
+        'Блокнот' => $this->renderPartial('_comments', array(
             'model' => $model,
             'notepad' => $notepad,
             'comments' => $model->comments), true),
-        'Actions' => $this->renderPartial('_actions', array('model' => $model), true),
+        'Действия' => $this->renderPartial('_actions', array('model' => $model), true),
     ),
 // additional javascript options for the accordion plugin
     'options' => array(

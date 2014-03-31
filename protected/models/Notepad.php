@@ -64,10 +64,10 @@ class Notepad extends CActiveRecord
     {
         return array(
             'id' => 'ID',
-            'comment' => 'Comment',
-            'comment_date' => 'Comment Date',
-            'user_id' => 'User',
-            'stash_id' => 'Stash',
+            'comment' => 'Запись',
+            'comment_date' => 'Время записи',
+            'user_id' => 'Игрок',
+            'stash_id' => 'Тайник',
         );
     }
 

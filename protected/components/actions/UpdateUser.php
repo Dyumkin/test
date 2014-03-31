@@ -20,7 +20,7 @@ class UpdateUser extends CAction
         if ($model = User::model()->findByPk($id)) {
             return $model;
         } else {
-            throw new CHttpException(404, 'The requested page does not exist.');
+            throw new CHttpException(404, 'Запрашиваемой страницы не существует.');
         }
     }
 
@@ -30,6 +30,7 @@ class UpdateUser extends CAction
     public function run($id)
     {
         $model = $this->loadModel($id);
+        if (Yii::app()->user->id == $model->id){
         $view = 'application.components.views.updateUser';
 
         // Uncomment the following line if AJAX validation is needed
@@ -45,5 +46,8 @@ class UpdateUser extends CAction
         $this->getController()->render($view, array(
             'model' => $model,
         ));
+        }else {
+            throw new CHttpException(403,'У вас недостаточно прав для выполнения указаного действия');
+        }
     }
 }

@@ -3,7 +3,7 @@
 /* @var $model SiteContent */
 
 $this->breadcrumbs = array(
-    'Rules',
+    'Правила игры',
 );
 ?>
 

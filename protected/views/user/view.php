@@ -3,18 +3,18 @@
 /* @var $model User */
 
 $this->breadcrumbs = array(
-    'Users' => array('index'),
+    'Игроки' => array('index'),
     $model->username,
 );
 
 ?>
 
-<h1>View User: <?php echo $model->username; ?></h1>
+<h1>Игрок: <?php echo $model->username; ?></h1>
 
 <?php if ($model->preview->hasImage())
-    echo CHtml::image($model->preview->getUrl('preview'), 'Preview image version');
+    echo CHtml::image($model->preview->getUrl('preview'), 'Предварительное изображение');
 else
-    echo CHtml::image(Yii::app()->request->baseUrl. '/images/avatar/no_avatar.jpg' ,'no image uploaded');
+    echo CHtml::image(Yii::app()->request->baseUrl. '/images/avatar/no_avatar.jpg' ,'нет загруженых изображений');
 ?>
 
 <div class="row">

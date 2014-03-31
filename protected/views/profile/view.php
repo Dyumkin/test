@@ -3,8 +3,8 @@
 /* @var $dataProvider Stash */
 
 $this->breadcrumbs = array(
-    'Profile' => array('index'),
-    'Creating stashes',
+    'Личный кабинет' => array('index'),
+    'Созданые тайники',
 );
 
 $this->menu = array(
@@ -16,7 +16,7 @@ $this->menu = array(
 );
 ?>
 
-<h1>Stashes</h1>
+<h1>Созданые тайники</h1>
 <?php
 $this->widget('bootstrap.widgets.TbGridView', array(
     'type' => 'bordered',

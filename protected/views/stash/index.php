@@ -11,12 +11,12 @@ $this->menu = array(
 );
 
 $this->breadcrumbs = array(
-    'Stashes',
+    'Тайники',
 );
 
 ?>
 
-<h1>Stashes</h1>
+<h1>Тайники</h1>
 
 <?php $this->widget('bootstrap.widgets.TbGridView', array(
     'type' => 'bordered',

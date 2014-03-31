@@ -110,19 +110,19 @@ class User extends CActiveRecord
     {
         return array(
             'id' => 'ID',
-            'username' => 'Username',
-            'password' => 'Password',
+            'username' => 'Логин',
+            'password' => 'Пароль',
             'e_mail' => 'E Mail',
-            'name' => 'Name',
-            'first_name' => 'First Name',
-            'last_name' => 'Last Name',
-            'sex' => 'Sex',
-            'birthday' => 'Birthday',
-            'phone' => 'Phone',
-            'other_information' => 'Other Information',
-            'create_date' => 'Create Date',
-            'city_id' => 'Place',
-            'verifyCode'   => 'Verification Code',
+            'name' => 'Имя',
+            'first_name' => 'Фамилия',
+            'last_name' => 'Отчество',
+            'sex' => 'Пол',
+            'birthday' => 'Дата рождения',
+            'phone' => 'Телефон',
+            'other_information' => 'Другая информация',
+            'create_date' => 'Дата регистрации',
+            'city_id' => 'Город',
+            'verifyCode'   => 'Код подтверждения',
         );
     }
 
@@ -195,7 +195,7 @@ class User extends CActiveRecord
 
     protected function afterFind()
     {
-        $this->birthday = Yii::app()->dateFormatter->formatDateTime($this->birthday, 'long', '');
+        //$this->birthday = Yii::app()->dateFormatter->formatDateTime($this->birthday, 'long', '');
 
         if (!empty($this->city_id)) {
             $this->userPlace = City::model()->with('region', 'country')->findByPk($this->city_id);

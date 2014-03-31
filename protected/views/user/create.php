@@ -4,8 +4,8 @@
 /* @var $countries array */
 
 $this->breadcrumbs = array(
-    'Users' => array('index'),
-    'Create',
+    'Игроки' => array('index'),
+    'Создание',
 );
 
 $this->menu = array(

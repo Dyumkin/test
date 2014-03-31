@@ -3,8 +3,8 @@
 /* @var $model User */
 
 $this->breadcrumbs = array(
-    'Profile' => array('index'),
-    'Update',
+    'Личный кабинет' => array('index'),
+    'Обновление',
 );
 
 $this->menu = array(
@@ -17,6 +17,6 @@ $this->menu = array(
 
 ?>
 
-    <h1>Update User <?php echo $model->username; ?></h1>
+    <h1>Изменение персональных данных <?php echo $model->username; ?></h1>
 
 <?php $this->renderPartial('application.components.views._userForm', array('model' => $model)); ?>

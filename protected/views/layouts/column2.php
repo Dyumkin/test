@@ -11,7 +11,7 @@
             <?php
             if (!Yii::app()->user->isGuest) {
                 $this->beginWidget('zii.widgets.CPortlet', array(
-                    'title' => '<h1>Operations</h1>',
+                    'title' => '<h1>Меню</h1>',
                     //        'htmlOptions' => array('id' => 'sidebar'),
                 ));
 
@@ -29,7 +29,7 @@
             }
             ?>
 
-            <h1>Search</h1>
+            <h1>Поиск</h1>
 
             <form method="post" id="search" action="http://www.free-css.com/">
                 <p>

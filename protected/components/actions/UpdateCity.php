@@ -14,7 +14,7 @@ class UpdateCity extends CAction {
         $data = City::model()->findAll('region_id=:region_id', array(':region_id' => (int)$_POST['region_id']));
 
         $data = CHtml::listData($data, 'city_id', 'name');
-        echo "<option value=''>Select City</option>";
+        echo "<option value=''>Выберете город</option>";
         foreach ($data as $value => $name) {
             echo CHtml::tag('option', array('value' => $value), CHtml::encode($name), true);
         }

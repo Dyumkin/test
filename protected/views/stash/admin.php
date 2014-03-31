@@ -3,8 +3,8 @@
 /* @var $model Stash */
 
 $this->breadcrumbs = array(
-    'Stashes' => array('index'),
-    'Manage',
+    'Тайники' => array('index'),
+    'Управление',
 );
 
 $this->menu = array(
@@ -39,15 +39,15 @@ jQuery('#stash-grid a.approve').live('click',function() {
 ");
 ?>
 
-<h1>Manage Stashes</h1>
+<h1>Управление тайниками</h1>
 
 <p>
-    You may optionally enter a comparison operator (<b>&lt;</b>, <b>&lt;=</b>, <b>&gt;</b>, <b>&gt;=</b>, <b>
+    Вы можете дополнительно ввести оператор сравнения (<b>&lt;</b>, <b>&lt;=</b>, <b>&gt;</b>, <b>&gt;=</b>, <b>
         &lt;&gt;</b>
-    or <b>=</b>) at the beginning of each of your search values to specify how the comparison should be done.
+    или <b>=</b>) в начале каждого из ваших условий поиска, чтобы указать, как сравнение должно быть сделано.
 </p>
 
-<?php echo CHtml::link('Advanced Search', '#', array('class' => 'search-button')); ?>
+<?php echo CHtml::link('Расширенный поиск', '#', array('class' => 'search-button')); ?>
 <div class="search-form" style="display:none">
     <?php $this->renderPartial('_search', array(
         'model' => $model,
@@ -84,7 +84,7 @@ jQuery('#stash-grid a.approve').live('click',function() {
             'template'=>'{view}{update}{approve}{delete}',
             'buttons'=>array(
                 'approve' => array(
-                    'label' => 'Approve Stash',
+                    'label' => 'Утвердить тайник',
                     'imageUrl' => '/images/system/green_checkmark.png',
                     'url' =>'Yii::app()->createUrl("stash/approve",array("id"=>$data->id))',
                     'options'=>array('class'=>'approve'),

@@ -11,7 +11,7 @@
     'enableClientValidation' => true,
 )); ?>
 
-    <p class="note">Fields with <span class="required">*</span> are required.</p>
+<p class="note">Поля с <span class="required">*</span> являются обезательными для заполнения.</p>
 
     <?php echo $form->errorSummary($model); ?>
 

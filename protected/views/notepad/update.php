@@ -3,12 +3,12 @@
 /* @var $model Notepad */
 
 $this->breadcrumbs = array(
-    'Notepads' => array('index'),
+    'Блокнот' => array('index'),
     $model->id => array('view', 'id' => $model->id),
-    'Update',
+    'Редактирование записи',
 );
 ?>
 
-    <h1>Update Notepad <?php echo $model->id; ?></h1>
+    <h1>Редактировать запись<?php echo $model->id; ?></h1>
 
 <?php $this->renderPartial('_form', array('model' => $model)); ?>

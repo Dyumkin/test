@@ -61,7 +61,7 @@ class Visitor extends CActiveRecord
 			'id' => 'ID',
 			'user_id' => 'User',
 			'stash_id' => 'Stash',
-			'date' => 'Date',
+			'date' => 'Дата',
 		);
 	}
 

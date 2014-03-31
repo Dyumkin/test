@@ -70,7 +70,7 @@ class ProfileController extends Controller
     {
         $model = User::model()->findByPk($id);
         if ($model === null) {
-            throw new CHttpException(404, 'The requested page does not exist.');
+            throw new CHttpException(404, 'Запрашиваемой страницы не существует.');
         }
         return $model;
     }
@@ -79,7 +79,7 @@ class ProfileController extends Controller
     {
         $model = Massage::model()->findAllByAttributes(array('user_addressee_id' => $addressee_id));
         if ($model === null) {
-            throw new CHttpException(404, 'The requested page does not exist.');
+            throw new CHttpException(404, 'Запрашиваемой страницы не существует.');
         }
         return $model;
     }

@@ -3,8 +3,8 @@
 /* @var $model Stash */
 
 $this->breadcrumbs = array(
-    'Stashes' => array('profile/index'),
-    'Create',
+    'Тайники' => array('profile/index'),
+    'Создание',
 );
 
 $this->menu = array(
@@ -16,6 +16,6 @@ $this->menu = array(
 );
 ?>
 
-    <h1>Create Stash</h1>
+    <h1>Создание тайника</h1>
 
 <?php $this->renderPartial('_form', array('model' => $model)); ?>
