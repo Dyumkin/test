@@ -1,0 +1,42 @@
+body {
+  background-color: #f6f6f6;
+}
+
+div {
+  display: block;
+}
+
+.content-wrapper {
+  position: relative;
+}
+
+.subpage-slide {
+  position: absolute;
+  background-image: url(../images/ah.jpg);
+  top:10;
+  left:0;
+  right:0;
+  width: 100%;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;        
+  background-size: cover;
+  z-index: -1;
+  height: 100%;
+  max-height: 750px;
+}
+
+.body-content {
+  margin-top:105px;
+}
+
+.header-logo {
+  display: block;
+  position: relative;
+  margin: 0 auto;
+  padding-top:90px;
+}
+
+.bg-white {
+  background-color: #ffffff;
+}
