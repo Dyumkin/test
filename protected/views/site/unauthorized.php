@@ -1,4 +1,4 @@
 <?php
 
-echo "GO TO HELL";
+echo "Неверная авторизация";
 ?>

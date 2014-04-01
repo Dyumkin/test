@@ -8,8 +8,8 @@ $this->breadcrumbs = array(
 );
 
 $this->menu = array(
-    array('label' => 'List Stash', 'url' => array('index')),
-    array('label' => 'Create Stash', 'url' => array('create')),
+    array('label' => 'Список тайников', 'url' => array('index')),
+    array('label' => 'Создать тайник', 'url' => array('create')),
 );
 
 Yii::app()->clientScript->registerScript('search', "

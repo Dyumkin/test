@@ -8,11 +8,11 @@ $this->breadcrumbs=array(
 );
 
 $this->menu = array(
-    array('label' => 'Profile', 'url' => array('index'), 'itemOptions' => array('class' => 'active')),
-    array('label' => 'Edit personal data', 'url' => array('profile/update', 'id' => Yii::app()->user->id)),
-    array('label' => 'View create stashes', 'url' => array('profile/view')),
-    array('label' => 'Create Stashes', 'url' => array('stash/create')),
-    array('label' => 'Founding Stashes', 'url' => array('profile/')),
+    array('label' => 'Личный кабинет', 'url' => array('profile/index')),
+    array('label' => 'Изменение персональных данных', 'url' => array('profile/update', 'id' => Yii::app()->user->id)),
+    array('label' => 'Посмотреть созданые тайники', 'url' => array('profile/view')),
+    array('label' => 'Создать тайник', 'url' => array('stash/create')),
+    array('label' => 'Посещённые тайники', 'url' => array('profile/')),
 );
 ?>
 <h1><?php echo 'Здраствуй ' . Yii::app()->user->name ?></h1>

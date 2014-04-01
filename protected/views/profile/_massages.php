@@ -4,7 +4,7 @@
 ?>
 
 <div class="massage">
-    <h3>Your massages</h3>
+    <h3>Сообщения</h3>
     <?php foreach ($model as $massage): ?>
         <div class="alert-success">
             <div class="time">
