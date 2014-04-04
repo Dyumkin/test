@@ -47,7 +47,7 @@ class User extends CActiveRecord
 
     public $avaImg;
 
-    public $verifyCode;
+    //public $verifyCode;
 
     /**
      * @return string the associated database table name
@@ -66,7 +66,7 @@ class User extends CActiveRecord
         // will receive user inputs.
         return array(
             array('username, password, e_mail, verifyPassword', 'required','on'=>'create, registration'),
-            array('verifyCode', 'required', 'on'=>'create, registration'),
+            //array('verifyCode', 'required', 'on'=>'create, registration'),
             array('username, name, first_name, last_name', 'length', 'max' => 60),
             array('username, e_mail', 'unique'),
             array('password, verifyPassword, birthday', 'safe', 'on' => 'update'),
@@ -78,7 +78,7 @@ class User extends CActiveRecord
             array('birthday', 'date', 'format'=>'dd.MM.yyyy'),
             array('city_id' , 'numerical', 'integerOnly'=>true),
             array('avaImg', 'file', 'types' => 'png, gif, jpg', 'allowEmpty' => true),
-            array('verifyCode', 'captcha', 'allowEmpty'=>!CCaptcha::checkRequirements()),
+            //array('verifyCode', 'captcha', 'allowEmpty'=>!CCaptcha::checkRequirements()),
             // The following rule is used by search().
             // @todo Please remove those attributes that should not be searched.
             array('id, username, password, e_mail, name, first_name, last_name, sex, birthday, phone, other_information', 'safe', 'on' => 'search'),

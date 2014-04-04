@@ -20,11 +20,11 @@ class UserController extends Controller
             'saveImageAttachment' => 'application.extensions.imageAttachment.ImageAttachmentAction',
 
             // captcha action renders the CAPTCHA image displayed on the contact page
-            'captcha'=>array(
+/*            'captcha'=>array(
                 'class'=>'CCaptchaAction',
                 'backColor'=>0xFFFFFF,
                 'testLimit' => 1,
-            ),
+            ),*/
         );
     }
 
@@ -50,7 +50,7 @@ class UserController extends Controller
         return array(
 
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
-                'actions' => array('index', 'view', 'widget.UpdateCity', 'widget.UpdateRegion','saveImageAttachment','registration','captcha'),
+                'actions' => array('index', 'view', 'widget.UpdateCity', 'widget.UpdateRegion','saveImageAttachment','registration'/*,'captcha'*/),
                 'users' => array('*'),
             ),
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -163,7 +163,7 @@ class UserController extends Controller
     public function actionRegistration()
     {
         $user = new User('registration');
-        $this->createAction('captcha')->getVerifyCode(true);
+        //$this->createAction('captcha')->getVerifyCode(true);
         /*
         * Ajax валидация
         */

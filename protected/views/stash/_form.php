@@ -21,13 +21,13 @@
 
     <?php echo $form->checkBoxListRow($model, 'class', $model->classOptions); ?>
 
-    <?php echo $form->textFieldRow($model, 'attribute', array('size' => 60, 'maxlength' => 255)); ?>
+    <?php /*echo $form->textFieldRow($model, 'attribute', array('size' => 60, 'maxlength' => 255)); */?>
 
     <?php echo $form->radioButtonListRow($model, 'season', $model->seasonOptions); ?>
 
     <?php echo $form->dropDownListRow($model, 'complexity', range(0,5)); ?>
 
-    <?php $this->widget('WidgetProvider', array('model' => $model)); ?>
+    <?php /*$this->widget('WidgetProvider', array('model' => $model)); */?>
 
     <?php echo $form->textFieldRow($model, 'latitude', array('size' => 60, 'maxlength' => 255)); ?>
 

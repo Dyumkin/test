@@ -32,12 +32,12 @@
 
 <?php echo $form->dropDownListRow($model, 'sex', $model->genderOptions, array('empty' => 'Select a gender')); ?>
 
-<?php $this->widget('WidgetProvider', array('model' => $model)); ?>
+<?php /*$this->widget('WidgetProvider', array('model' => $model)); */?>
 
 <?php echo $form->datepickerRow($model, 'birthday', array(
     'prepend' => '<i class="icon-calendar"></i>',
     'options' => array(
-        'format' => 'dd.MM.yyyy',
+        'format' => 'dd.mm.yyyy',
         'language' => 'ru',
         'autoclose' => 'true',
         'startDate' => '1,1,1930',

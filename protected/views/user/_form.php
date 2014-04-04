@@ -34,13 +34,13 @@
 
         <?php echo $form->dropDownListRow($model, 'sex',$model->genderOptions,array('empty' => 'Select a gender') ); ?>
 
-        <?php $this->widget('WidgetProvider', array('model' => $model)); ?>
+        <?php /*$this->widget('WidgetProvider', array('model' => $model)); */?>
 
 
         <?php echo $form->datepickerRow($model,'birthday',array(
             'prepend'=>'<i class="icon-calendar"></i>',
             'options' => array(
-                'format' => 'dd.MM.yyyy',
+                'format' => 'dd.mm.yyyy',
                 'language' => 'ru',
                 'autoclose'=>'true',
                 'startDate'=>'1,1,1930',
@@ -56,14 +56,14 @@
 
 
 
-            <?php echo $form->labelEx($model,'verifyCode'); ?>
+            <?php /*echo $form->labelEx($model,'verifyCode'); */?><!--
 
-                <?php $this->widget('CCaptcha',array('captchaAction' => '/user/captcha','showRefreshButton'=>false,)); ?>
-                <?php echo $form->textFieldRow($model,'verifyCode'); ?>
+                <?php /*$this->widget('CCaptcha',array('captchaAction' => '/user/captcha','showRefreshButton'=>false,)); */?>
+                <?php /*echo $form->textFieldRow($model,'verifyCode'); */?>
 
             <div class="hint">Please enter the letters as they are shown in the image above.
                 <br/>Letters are not case-sensitive.</div>
-            <?php echo $form->error($model,'verifyCode'); ?>
+            --><?php /*echo $form->error($model,'verifyCode'); */?>
 
 
 
