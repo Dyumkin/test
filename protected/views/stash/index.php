@@ -22,7 +22,12 @@ $this->breadcrumbs = array(
     'type' => 'bordered',
     'dataProvider' => $dataProvider,
     'columns' => array(
-        'stash_name',
+        'stash_name' => array(
+            'name' => 'stash_name',
+            'type'=>'html',
+            'value' => 'CHtml::link(CHtml::encode($data->stash_name),
+                         array("stash/view","id" => $data->id))',
+        ),
         'type',
         'season',
         'complexity',

@@ -2,6 +2,9 @@
 
 class SiteController extends Controller
 {
+
+    public $layout = '//layouts/column2';
+
 	/**
 	 * Declares class-based actions.
 	 */
@@ -68,9 +71,26 @@ class SiteController extends Controller
 	 */
 	public function actionIndex()
 	{
-		// renders the view file 'protected/views/site/index.php'
-		// using the default layout 'protected/views/layouts/main.php'
-		$this->render('index');
+        $stashCriteria = new CDbCriteria(array(
+            'condition' => 'status=' . Stash::STATUS_APPROVED,
+            'order' => 'create_date DESC',
+            'limit' => 8,
+        ));
+
+        $data = Stash::model()->findAll($stashCriteria);
+
+        $notepadCriteria = new CDbCriteria(array(
+            'condition' => 'status=' . Notepad::STATUS_APPROVED,
+            'order' => 'comment_date DESC',
+            'limit' => 8,
+        ));
+
+        $notepad = Notepad::model()->findAll($notepadCriteria);
+
+		$this->render('index', array(
+        'data' => $data,
+        'notepad' => $notepad,
+    ));
 	}
 
 	/**

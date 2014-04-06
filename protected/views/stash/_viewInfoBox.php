@@ -22,6 +22,6 @@
 
         ),
     ));
-    echo CHtml::link(CHtml::encode('View in Map'), $data->getMapUrl());
+    echo CHtml::link(CHtml::encode('Показать на карте'), $data->getMapUrl());
     $this->endWidget();
 ?>
