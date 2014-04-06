@@ -7,6 +7,8 @@ $this->breadcrumbs = array(
     $model->name => array('pages/index'),
     'Обновление',
 );
+
+$this->layout = '//layouts/column1';
 ?>
 
 <?php $form = $this->beginWidget('bootstrap.widgets.TbActiveForm', array(
