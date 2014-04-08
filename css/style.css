@@ -338,3 +338,22 @@ blockquote {
 .textArea-span{
     width: 540px;
 }
+
+.massage {
+    height: 200px;
+    overflow: scroll;
+}
+
+#massage{
+    border: solid 1px black;
+    position: relative;
+    margin-bottom: 10px;
+    padding: 0px 0px 0px 10px;
+}
+
+hr {
+    border: none; /* Убираем границу */
+    background-color: green; /* Цвет линии */
+    height: 2px; /* Толщина линии */
+    margin: 10px 0px 0px 0px;
+}
