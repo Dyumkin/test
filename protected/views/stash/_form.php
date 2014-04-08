@@ -38,7 +38,7 @@
         array(
             'options' => array(
                 'fullpage' => 'js:true',
-                'width' => '456',
+                'width' => '554',
                 'resize_maxWidth' => '570',
                 'resize_minWidth' => '320',
                 'customConfig' => '/js/ckeditor-config/config.js',
@@ -50,20 +50,20 @@
     array(
         'options' => array(
             'fullpage' => 'js:true',
-            'width' => '456',
+            'width' => '554',
             'resize_maxWidth' => '570',
             'resize_minWidth' => '320',
             'customConfig' => '/js/ckeditor-config/config.js',
         )
     )); ?>
 
-    <?php echo $form->textAreaRow($model, 'other_information', array('class' => 'span5', 'rows' => 3)); ?>
+    <?php echo $form->textAreaRow($model, 'other_information', array('class' => 'textArea-span', 'rows' => 3)); ?>
 
-    <?php echo $form->textAreaRow($model, 'content', array('class' => 'span5', 'rows' => 3)); ?>
+    <?php echo $form->textAreaRow($model, 'content', array('class' => 'textArea-span', 'rows' => 3)); ?>
 
-    <?php echo $form->textAreaRow($model, 'question', array('class' => 'span5', 'rows' => 3)); ?>
+    <?php echo $form->textAreaRow($model, 'question', array('class' => 'textArea-span', 'rows' => 3)); ?>
 
-    <?php echo $form->textAreaRow($model, 'answer', array('class' => 'span5', 'rows' => 3)); ?>
+    <?php echo $form->textAreaRow($model, 'answer', array('class' => 'textArea-span', 'rows' => 3)); ?>
 
     <?php echo $form->checkBoxRow($model, 'galleryAdded'); ?>
 

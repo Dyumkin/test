@@ -63,7 +63,7 @@ $this->pageTitle=Yii::app()->name;
         <?php $i=1;
                 foreach ($data as $stash) {
                 $table = '<tr class="info"><td>'.$i.'</td>'
-                .'<td>'.CHtml::link(CHtml::encode($stash['stash_name']), $stash->getUrl()) . ' от ' . $stash->user->username . ' (' . $stash['create_date'] . ')</td></tr>';
+                .'<td>'.CHtml::link(CHtml::encode($stash['stash_name']), $stash->getUrl()) . ' от ' . $stash->user->username . ' (' . $stash['createStashDate'] . ')</td></tr>';
                     $i++;
                     echo $table;
         }

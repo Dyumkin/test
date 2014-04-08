@@ -62,7 +62,7 @@ jQuery('#stash-grid a.approve').live('click',function() {
         'id',
         'stash_name',
         'status',
-        'create_date',
+        'createStashDate',
         /*
                 'type',
                 'class',
