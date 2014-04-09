@@ -49,6 +49,8 @@ class User extends CActiveRecord
 
     //public $verifyCode;
 
+    public $_birthday;
+
     /**
      * @return string the associated database table name
      */
@@ -75,7 +77,7 @@ class User extends CActiveRecord
             array('sex', 'length', 'max' => 7),
             array('phone', 'length', 'max' => 18),
             array('birthday, other_information', 'safe'),
-            array('birthday', 'date', 'format'=>'dd.MM.yyyy'),
+            array('birthday', 'date', 'format'=>'dd.mm.yyyy'),
             array('city_id' , 'numerical', 'integerOnly'=>true),
             array('avaImg', 'file', 'types' => 'png, gif, jpg', 'allowEmpty' => true),
             //array('verifyCode', 'captcha', 'allowEmpty'=>!CCaptcha::checkRequirements()),
@@ -118,6 +120,7 @@ class User extends CActiveRecord
             'last_name' => 'Отчество',
             'sex' => 'Пол',
             'birthday' => 'Дата рождения',
+            '_birthday' => 'Дата рождения',
             'phone' => 'Телефон',
             'other_information' => 'Другая информация',
             'create_date' => 'Дата регистрации',
@@ -131,28 +134,14 @@ class User extends CActiveRecord
         if (parent::beforeSave()) {
             if ($this->isNewRecord) {
                 $this->create_date = new CDbExpression('NOW()');
-               // if (!empty($this->password) && ($this->password == $this->verifyPassword)) {
-                    $this->password = crypt($this->password, Yii::app()->params['cryptSalt']);
-               // }
+                $this->password = crypt($this->password, Yii::app()->params['cryptSalt']);
             }
-            if (!empty($this->birthday)){
-                $this->birthday =strtotime($this->birthday);
-            }
-
             return true;
         }
 
 
         return false;
     }
-
-    /*
-        public function beforeValidate()
-        {
-             $this->birthday = $this->year_of_birth . '-' . $this->month_of_birth . '-' . $this->day_of_birth;
-            return parent::beforeValidate();
-        }
-    */
 
     public function behaviors()
     {
@@ -189,13 +178,21 @@ class User extends CActiveRecord
         ));
     }
 
+    public function getUrl()
+    {
+        return Yii::app()->createUrl('user/view', array(
+            'id' => $this->id,
+        ));
+    }
+
     public function getGenderOptions(){
         return array_combine(self::$genderMap, self::$genderMap);
     }
 
     protected function afterFind()
     {
-        //$this->birthday = Yii::app()->dateFormatter->formatDateTime($this->birthday, 'long', '');
+        $this->birthday = Yii::app()->dateFormatter->format('dd.MM.yyyy', $this->birthday);
+        $this->_birthday = Yii::app()->dateFormatter->formatDateTime($this->birthday, 'long', '');
 
         if (!empty($this->city_id)) {
             $this->userPlace = City::model()->with('region', 'country')->findByPk($this->city_id);

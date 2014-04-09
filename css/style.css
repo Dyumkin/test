@@ -310,14 +310,17 @@ blockquote {
 .hide  { display: none; }
 .gray  { color: #CCC; }
 
-.comments {
+.comment {
 	color: #333; 
 	background: #FFF;
-	text-align: right; 
 	border-top: 1px dashed #EFF0F1;
 	border-bottom: 1px dashed #EFF0F1; 
 	padding: 5px 0;
 	margin-top: 20px;
+}
+
+.comment-content{
+    margin-top: 10px;
 }
 
 .info_box
@@ -333,4 +336,32 @@ blockquote {
     border-bottom-right-radius: 10px;
     border-bottom-left-radius: 10px;
     padding: 10px;
+}
+
+.span-input{
+    width: 178px;
+}
+
+
+.textArea-span{
+    width: 540px;
+}
+
+.massage {
+    height: 200px;
+    overflow: scroll;
+}
+
+#massage{
+    border: solid 1px black;
+    position: relative;
+    margin-bottom: 10px;
+    padding: 0px 0px 0px 10px;
+}
+
+hr {
+    border: none; /* Убираем границу */
+    background-color: green; /* Цвет линии */
+    height: 2px; /* Толщина линии */
+    margin: 10px 0px 0px 0px;
 }

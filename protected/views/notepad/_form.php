@@ -17,12 +17,12 @@
     )); ?>
 
 
-        <?php echo $form->textAreaRow($model, 'comment', array('rows' => 3, 'cols' => 50)); ?>
+        <?php echo $form->textAreaRow($model, 'comment', array('rows' => 3, 'cols' => 50, 'class' => 'textArea-span')); ?>
         <?php echo $form->error($model, 'comment'); ?>
 
 <br>
 <br>
-        <?php echo TbHtml::submitButton($model->isNewRecord ? 'Submit' : 'Save',array('color' => TbHtml::BUTTON_COLOR_PRIMARY)); ?>
+        <?php echo TbHtml::submitButton($model->isNewRecord ? 'Отправить' : 'Сохранить',array('color' => TbHtml::BUTTON_COLOR_PRIMARY)); ?>
 
 
     <?php $this->endWidget(); ?>

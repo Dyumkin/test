@@ -95,10 +95,6 @@ class UserController extends Controller
         if (isset($_POST['User'])) {
             $model->attributes = $_POST['User'];
             if ($model->save()) {
-                $sender = $model->findByAttributes(array('username' =>'admin'));
-                $addressee = $model->id;
-                $massage = 'Thanks for registered';
-                $this->saveMassage($sender->id,$addressee,$massage);
                 $this->redirect(array('profile/index', 'id' => $model->id));
             }
         }
@@ -181,6 +177,12 @@ class UserController extends Controller
                 $role->userid = $user->id;
 
                 if ($role->save()) {
+                    $sender = $user->findByAttributes(array('username' =>'admin'));
+                    $addressee = $user->id;
+                    $massage = 'Поздравляю! Вы стали участином игры. Ознакомится с правилами игры можно в разделе '.
+                        CHtml::link(CHtml::encode('"Правила игры"'), Yii::app()->createUrl('site/rules'));
+                    $this->saveMassage($sender->id,$addressee,$massage);
+
                     $this->redirect(Yii::app()->createUrl('profile/index'));
                     // $this->activationKey($user);
                 }
@@ -220,7 +222,7 @@ class UserController extends Controller
     {
         $model = User::model()->findByPk($id);
         if ($model === null) {
-            throw new CHttpException(404, 'The requested page does not exist.');
+            throw new CHttpException(404, 'Запрашиваемой страницы не существует.');
         }
         return $model;
     }

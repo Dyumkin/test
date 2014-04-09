@@ -27,7 +27,7 @@ else
         'first_name',
         'last_name',
         'sex',
-        'birthday',
+        '_birthday',
         'userPlace',
         'e_mail',
         'phone',

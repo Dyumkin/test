@@ -86,7 +86,7 @@ class StashController extends Controller
             if ($model->save()) {
                 $sender = User::model()->findByAttributes(array('username' =>'admin'));
                 $addressee_id = Yii::app()->user->id;
-                $massage = 'Thank you for creating stash "'.$model->getStashLink().'" Your stash will be posted once it is approved.';
+                $massage = 'Спасибо за создание тайника "'.$model->getStashLink().'" Ваш тайник будет размещена, как только он будет одобрен администратором.';
                 $this->saveMassage($sender->id,$addressee_id,$massage);
                 if($model->galleryAdded == 1)
                 {
@@ -122,18 +122,18 @@ class StashController extends Controller
                 if($model->answer == $answer){
                     $sender = User::model()->findByAttributes(array('username' =>'admin'));
                     $addressee_id = Yii::app()->user->id;
-                    $massage = 'You successful visit the stash "'.$model->getStashLink().'"';
+                    $massage = 'Тайник "'.$model->getStashLink().'" засчитывается как посещённый.';
                     $this->saveMassage($sender->id,$addressee_id,$massage);
-                    echo "Your answer is correct";
+                    echo "Ваш ответ правильный!";
                 }else{
-                    echo "You give a bad answer";
+                    echo "Вы дали неверный ответ";
                 }
             }else{
-                throw new CHttpException(400, 'Invalid request.');
+                throw new CHttpException(400, 'Неверный запрос. Пожалуйста, не повторяйте этот запрос снова.');
             }
         }else
         {
-            throw new CHttpException(400, 'Invalid request. Please do not repeat this request again.');
+            throw new CHttpException(400, 'Неверный запрос. Пожалуйста, не повторяйте этот запрос снова.');
         }
     }
 
@@ -142,6 +142,7 @@ class StashController extends Controller
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id the ID of the model to be updated
      */
+
     public function actionUpdate($id)
     {
         $model = $this->loadModel($id);
@@ -160,7 +161,7 @@ class StashController extends Controller
             'model' => $model,
         ));
         } else {
-            throw new CHttpException(403,'You do not have permission to perform the specified action.');
+            throw new CHttpException(403,'У вас недостаточно прав для выполнения указанного действия.');
         }
     }
 
@@ -223,11 +224,11 @@ class StashController extends Controller
             $model = $this->loadModel();
             $model->approve();
             $sender = User::model()->findByAttributes(array('username' =>'admin'));
-            $massage = 'Your Stash "'.$model->getStashLink().'" will be successful approve';
+            $massage = 'Ваш тайник "'.$model->getStashLink().'" был утверждён администратором';
             $this->saveMassage($sender->id,$model->user_id,$massage);
             $this->redirect(array('admin'));
         } else {
-            throw new CHttpException(400, 'Invalid request. Please do not repeat this request again.');
+            throw new CHttpException(400, 'Неверный запрос. Пожалуйста, не повторяйте этот запрос снова.');
         }
     }
 
@@ -251,7 +252,7 @@ class StashController extends Controller
                 $this->_model = Stash::model()->findByPk($_GET['id'], $condition);
             }
             if ($this->_model === null) {
-                throw new CHttpException(404, 'The requested page does not exist.');
+                throw new CHttpException(404, 'Запрашиваемой страницы не существует.');
             }
         }
         return $this->_model;
@@ -287,7 +288,7 @@ class StashController extends Controller
             }
             if ($stash->addComment($comment)) {
                 if ($comment->status == Notepad::STATUS_PENDING) {
-                    Yii::app()->user->setFlash('commentSubmitted', 'Thank you for your comment. Your comment will be posted once it is approved.');
+                    Yii::app()->user->setFlash('commentSubmitted', 'Спасибо за вашу запись. Ваша запись будет размещена после её утверждения администратором.');
                 }
                 $this->refresh();
             }
@@ -307,7 +308,7 @@ class StashController extends Controller
                 'longitude' => $coordinate->longitude,
             );
             }else{
-                throw new CHttpException(404, 'The requested coordinates does not exist in base.');
+                throw new CHttpException(404, 'Запрашиваемой страницы не существует.');
             }
 
         }

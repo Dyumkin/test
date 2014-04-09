@@ -13,7 +13,7 @@
 
                 <address>
                     Создан
-                    <strong> <?php echo $data->user->username . '</strong><br>' . $data->createStashDate; ?><br>
+                    <strong> <?php echo CHtml::link(CHtml::encode($data->user->username), $data->user->getUrl()) . '</strong><br>' . $data->createStashDate; ?><br>
                         Обнавлён (<?php echo $data->update_date ?>)
                 </address>
             </div>
