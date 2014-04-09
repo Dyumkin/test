@@ -28,4 +28,4 @@ if(!empty($existPhoto) && $model->gallery_id != "0") : ?>
         ));
         ?>
     </section>
-<?php endif; ?>
+<?php else: { echo 'Фотографии к данному тайнику отсутствуют';} endif; ?>

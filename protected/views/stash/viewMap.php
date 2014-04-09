@@ -36,7 +36,7 @@ $this->breadcrumbs = array(
     foreach ($model->findAll() as $attribute) {
         $infoBox = new EGMapInfoBox('<div class="info_box">
             <h4 class="text-center">' . $attribute['stash_name'] . '</h4>
-            <div class="text-left">Создан игроком '.$attribute->user->username.': '.$attribute['create_date'].'</div><br>
+            <div class="text-left">Создан игроком '.$attribute->user->username.': '.$attribute['createStashDate'].'</div><br>
             <div>'.$attribute['place_description'].'</div>
             <div>'.CHtml::link(CHtml::encode('View Stash'), $attribute->getUrl()).'</div>
         </div>');

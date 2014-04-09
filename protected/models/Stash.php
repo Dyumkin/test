@@ -82,6 +82,8 @@ class Stash extends CActiveRecord
 
     public $galleryAdded;
 
+    public $createStashDate;
+
     public function tableName()
     {
         return '{{stash}}';
@@ -102,6 +104,7 @@ class Stash extends CActiveRecord
             array('class', 'inArrayValidator', 'range' => array_keys($this->getClassOptions())),
             array('attribute, season', 'length', 'max' => 255),
             array('other_information, gallery_id', 'safe'),
+            array('create_date', 'safe', 'on' => 'update'),
             // The following rule is used by search().
             // @todo Please remove those attributes that should not be searched.
             array('stash_name, type, class, attribute, season, complexity, stash_description, place_description, other_information, content, question, status', 'safe', 'on' => 'search'),
@@ -144,7 +147,7 @@ class Stash extends CActiveRecord
             'question' => 'Контрольный вопрос',
             'status' => 'Статус',
             'user_id' => 'Игрок',
-            'create_date' => 'Дата создания',
+            'createStashDate' => 'Дата создания',
             'update_date' => 'Дата изменения',
             'stashPlace' => 'Ближайшая местность',
             'latitude' => 'Широта',
@@ -264,7 +267,8 @@ class Stash extends CActiveRecord
     }
 
     protected function afterFind() {
-        $this->create_date = Yii::app()->dateFormatter->formatDateTime($this->create_date, 'long','');
+        $this->createStashDate = Yii::app()->dateFormatter->formatDateTime($this->create_date, 'long','');
+        //$this->create_date = Yii::app()->dateFormatter->formatDateTime($this->create_date, 'long','');
         $this->update_date = Yii::app()->dateFormatter->formatDateTime($this->update_date, 'long','');
         $this->unserializeItems();
 

@@ -2,15 +2,17 @@
 /* @var $this ProfileController */
 /* @var $model Massage */
 ?>
-
-<div class="massage">
-    <h3>Сообщения</h3>
-    <?php foreach ($model as $massage): ?>
-        <div class="alert-success">
-            <div class="time">
-                <?php echo Yii::app()->dateFormatter->formatDateTime($massage->date, 'full'); ?>
+<div id="massage">
+    <h3 class="text-center">Сообщения</h3>
+    <div class="massage">
+        <?php foreach ($model as $massage): ?>
+            <div class="alert-info">
+                <div class="time">
+                    <?php echo Yii::app()->dateFormatter->formatDateTime($massage->date, 'full'); ?>
+                </div>
+                <?php echo $massage->massage; ?>
+                <hr>
             </div>
-            <?php echo $massage->massage; ?>
-        </div>
-    <?php endforeach; ?>
+        <?php endforeach; ?>
+    </div>
 </div>
