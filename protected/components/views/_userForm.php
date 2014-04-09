@@ -22,7 +22,7 @@
 
 <?php echo $form->textFieldRow($model, 'username'); ?>
 
-<?php echo $form->textFieldRow($model, 'e_mail', array('prepend' => '@')); ?>
+<?php echo $form->textFieldRow($model, 'e_mail', array('prepend' => '@', 'class'=>'span-input')); ?>
 
 <?php echo $form->textFieldRow($model, 'name', array('size' => 60, 'maxlength' => 60)); ?>
 
@@ -30,11 +30,12 @@
 
 <?php echo $form->textFieldRow($model, 'last_name', array('size' => 60, 'maxlength' => 60)); ?>
 
-<?php echo $form->dropDownListRow($model, 'sex', $model->genderOptions, array('empty' => 'Select a gender')); ?>
+<?php echo $form->dropDownListRow($model, 'sex', $model->genderOptions, array('empty' => 'Выберите пол')); ?>
 
 <?php /*$this->widget('WidgetProvider', array('model' => $model)); */?>
 
 <?php echo $form->datepickerRow($model, 'birthday', array(
+    'class'=>'span-input',
     'prepend' => '<i class="icon-calendar"></i>',
     'options' => array(
         'format' => 'dd.mm.yyyy',
@@ -53,8 +54,8 @@
 <?php echo $form->textAreaRow($model, 'other_information', array('rows' => 6, 'cols' => 50)); ?>
 
 <?php echo TbHtml::formActions(array(
-    TbHtml::submitButton($model->isNewRecord ? 'Create' : 'Save', array('color' => TbHtml::BUTTON_COLOR_PRIMARY)),
-    TbHtml::resetButton('Reset'),
+    TbHtml::submitButton($model->isNewRecord ? 'Создать' : 'Сохранить', array('color' => TbHtml::BUTTON_COLOR_PRIMARY)),
+    TbHtml::resetButton('Сбросить'),
 )); ?>
 
 <?php $this->endWidget(); ?>

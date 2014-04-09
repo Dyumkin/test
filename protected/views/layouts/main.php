@@ -39,7 +39,7 @@
                         array('label' => 'Тайники', 'items' => array(
                             array('label' => 'Тайники', 'url' => array('/stash/index')),
                             array('label' => 'Карта тайников', 'url' => array('/stash/viewMap')),
-                            array('label' => 'Список', 'url' => array('/site/list')),
+                            //array('label' => 'Список', 'url' => array('/site/list')),
                         ),
                         ),
                         array('label' => 'Контакт', 'url' => array('/site/contact')),

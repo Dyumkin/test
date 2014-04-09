@@ -40,20 +40,20 @@ class Stash extends CActiveRecord
     const STATUS_PENDING = 1;
     const STATUS_APPROVED = 2;
 
-    const TYPE_TRADITIONAL = 'Traditional';
-    const TYPE_VIRTUAL = 'Virtual';
-    const TYPE_STEPPED_TRADITIONAL = 'Stepped traditional';
-    const TYPE_STEPPED_VIRTUAL = 'Stepped virtual';
+    const TYPE_TRADITIONAL = 'Традиционный';
+    const TYPE_VIRTUAL = 'Виртуальный';
+    const TYPE_STEPPED_TRADITIONAL = 'Пошаговый традиционный';
+    const TYPE_STEPPED_VIRTUAL = 'Пошаговый виртуальный';
 
-    const CLASS_ARCHAEOLOGICAL = 'Archaeological';
-    const CLASS_ARCHITECTURAL = 'Architectural';
-    const CLASS_HISTORICAL = 'Historical';
-    const CLASS_LOGICAL = 'Logical';
-    const CLASS_NATURAL = 'Natural';
-    const CLASS_EXTREME = 'Extreme';
+    const CLASS_ARCHAEOLOGICAL = 'Археологический';
+    const CLASS_ARCHITECTURAL = 'Архитектурный';
+    const CLASS_HISTORICAL = 'Исторический';
+    const CLASS_LOGICAL = 'Логический';
+    const CLASS_NATURAL = 'Природный';
+    const CLASS_EXTREME = 'Экстремальный';
 
-    const SEASON_WINTER = 'Not available in winter';
-    const SEASON_ALL = 'Available year-round';
+    const SEASON_WINTER = 'Не доступен зимой';
+    const SEASON_ALL = 'Доступен круглый год';
 
     protected static $typesMap = array(
         self::TYPE_TRADITIONAL,

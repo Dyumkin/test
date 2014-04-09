@@ -31,8 +31,8 @@
 class User extends CActiveRecord
 {
 
-    const SEX_MALE = 'Male';
-    const SEX_FEMALE = 'Female';
+    const SEX_MALE = 'Мужской';
+    const SEX_FEMALE = 'Женский';
 
     protected static $genderMap = array(
         self::SEX_MALE,
@@ -109,9 +109,9 @@ class User extends CActiveRecord
     public function attributeLabels()
     {
         return array(
-            'id' => 'ID',
-            'username' => 'Логин',
+            'username' => 'Псевдоним',
             'password' => 'Пароль',
+            'verifyPassword' => 'Повторите пароль',
             'e_mail' => 'E Mail',
             'name' => 'Имя',
             'first_name' => 'Фамилия',

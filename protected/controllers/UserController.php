@@ -181,7 +181,7 @@ class UserController extends Controller
                 $role->userid = $user->id;
 
                 if ($role->save()) {
-                    $this->render("registrationOk");
+                    $this->redirect(Yii::app()->createUrl('profile/index'));
                     // $this->activationKey($user);
                 }
             }

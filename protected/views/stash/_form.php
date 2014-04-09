@@ -17,7 +17,7 @@
 
     <?php echo $form->textFieldRow($model, 'stash_name', array('size' => 60, 'maxlength' => 60)); ?>
 
-    <?php echo $form->dropDownListRow($model, 'type', $model->typeOptions, array('empty' => 'Select a stash type')); ?>
+    <?php echo $form->dropDownListRow($model, 'type', $model->typeOptions, array('empty' => 'Выберите тип тайника')); ?>
 
     <?php echo $form->checkBoxListRow($model, 'class', $model->classOptions); ?>
 
@@ -68,8 +68,8 @@
     <?php echo $form->checkBoxRow($model, 'galleryAdded'); ?>
 
     <?php echo TbHtml::formActions(array(
-        TbHtml::submitButton($model->isNewRecord ? 'Create' : 'Save', array('color' => TbHtml::BUTTON_COLOR_PRIMARY)),
-        TbHtml::resetButton('Reset'),
+        TbHtml::submitButton($model->isNewRecord ? 'Создать' : 'Сохранить', array('color' => TbHtml::BUTTON_COLOR_PRIMARY)),
+        TbHtml::resetButton('Сбросить'),
     )); ?>
 
     <?php $this->endWidget(); ?>

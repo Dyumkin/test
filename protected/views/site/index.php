@@ -5,6 +5,10 @@
 
 $this->pageTitle=Yii::app()->name;
 ?>
+<script>jQuery(document).ready(function () {
+        $('.carousel').carousel('cycle');
+    });</script>
+
 <h1>Добро пожаловать на игру <i><?php echo CHtml::encode(Yii::app()->name); ?></i></h1>
 
 <div id="myCarousel" class="carousel slide">
