@@ -21,6 +21,7 @@ $this->breadcrumbs = array(
     <?php
     $gMap = new EGMap();
     $gMap->setJsName('map');
+    $gMap->mapTypeId = EGMap::TYPE_HYBRID;
     $gMap->width = '100%';
     $gMap->height = 600;
 
@@ -37,7 +38,7 @@ $this->breadcrumbs = array(
         $infoBox = new EGMapInfoBox('<div class="info_box">
             <h4 class="text-center">' . $attribute['stash_name'] . '</h4>
             <div class="text-left">Создан игроком '.$attribute->user->username.': '.$attribute['createStashDate'].'</div><br>
-            <div>'.$attribute['place_description'].'</div>
+            <div>'.$this->snippet($attribute['place_description']).'</div>
             <div>'.CHtml::link(CHtml::encode('View Stash'), $attribute->getUrl()).'</div>
         </div>');
 
