@@ -328,4 +328,18 @@ class StashController extends Controller
             Yii::app()->end();
         }
     }
+
+    public function  snippet($text, $maxchar=400, $allowTags=false, $onlyText=false){
+
+        ($allowTags===false) ? $allowTags = '<p><br>' :    $allowTags = $allowTags.'<p><br>';
+        ($onlyText===false) ? $text = strip_tags($text, $allowTags) : $text = strip_tags($text);
+
+        if(iconv_strlen($text, 'utf-8') > $maxchar ){
+            $text = iconv_substr($text, 0, $maxchar, 'utf-8' );
+            $text = preg_replace('@(.*)\s[^\s]*$@s', '\\1...', $text);
+        }
+        $text = trim($text);
+
+        return $text;
+    }
 }

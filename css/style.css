@@ -138,7 +138,7 @@ blockquote {
 	position: relative;
    clear:left;
    width: 1000px;
-	height: 135px; 
+	height: 200px;
 	margin: 0; padding: 0;
 	background: #000 url(../images/headerbg.jpg) no-repeat left bottom;			
 }
@@ -151,7 +151,8 @@ blockquote {
 	text-transform: none;
 	
 	/* change the values of top and right to adjust the position of the logo*/
-	top: 36px; right: 35px;	
+    top: 58px;
+    right: 35px;
 }
 #header h2#slogan {
 	position: absolute;
@@ -162,7 +163,8 @@ blockquote {
 	color: #FFF;
 	
 	/* change the values of top and right to adjust the position of the slogan*/
-	top: 85px; right:35px;		
+	top: 110px;
+    right:35px;
 }
 
 /* menu tabs */
