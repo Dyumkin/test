@@ -4,14 +4,15 @@
 ?>
 
 <?php
-if(!Yii::app()->user->isGuest){
-    $this->widget('bootstrap.widgets.TbButton',
-        array(
-            'label' => 'Ответить на вопрос',
-            'type' => 'success',
-            'htmlOptions' => array(
-                'style' => 'margin-left:3px',
-                'onclick' => 'js:bootbox.prompt("What is the answer?", function(result){
+if (!Yii::app()->user->isGuest) {
+    if (Yii::app()->user->id != $model->user_id) {
+        $this->widget('bootstrap.widgets.TbButton',
+            array(
+                'label' => 'Ответить на вопрос',
+                'type' => 'success',
+                'htmlOptions' => array(
+                    'style' => 'margin-left:3px',
+                    'onclick' => 'js:bootbox.prompt("Введите ответ на контрольный вопрос", function(result){
                     function getUrlVars() {
                     var vars = {};
                     var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
@@ -36,7 +37,8 @@ if(!Yii::app()->user->isGuest){
                           }
                         });
                         })'
-            ),
-        )
-    );
+                ),
+            )
+        );
+    }
 }?>

@@ -344,7 +344,7 @@ class Stash extends CActiveRecord
         $criteria->compare('longitude', $this->longitude, true);
 
         $sort = new CSort();
-        $sort->defaultOrder = 'create_date DESC';
+        $sort->defaultOrder = 'status ASC';
 
         return new CActiveDataProvider($this, array(
             'criteria' => $criteria,

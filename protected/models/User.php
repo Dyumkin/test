@@ -51,6 +51,10 @@ class User extends CActiveRecord
 
     public $_birthday;
 
+    public $createStashCount;
+
+    public $foundStashCount;
+
     /**
      * @return string the associated database table name
      */
@@ -77,7 +81,7 @@ class User extends CActiveRecord
             array('sex', 'length', 'max' => 7),
             array('phone', 'length', 'max' => 18),
             array('birthday, other_information', 'safe'),
-            //array('birthday', 'date', 'format'=>'dd.mm.yyyy'),
+            array('birthday', 'date', 'format'=>'dd.mm.yyyy'),
             array('city_id' , 'numerical', 'integerOnly'=>true),
             array('avaImg', 'file', 'types' => 'png, gif, jpg', 'allowEmpty' => true),
             //array('verifyCode', 'captcha', 'allowEmpty'=>!CCaptcha::checkRequirements()),
@@ -126,6 +130,8 @@ class User extends CActiveRecord
             'create_date' => 'Дата регистрации',
             'city_id' => 'Город',
             'verifyCode'   => 'Код подтверждения',
+            'createStashCount' => 'Количество созданый тайников',
+            'foundStashCount' => 'Количество найденых тайников',
         );
     }
 
@@ -193,10 +199,20 @@ class User extends CActiveRecord
         return array_combine(self::$genderMap, self::$genderMap);
     }
 
+    protected function getCreateStashCount(){
+        $this->createStashCount = Stash::model()->count('user_id=:user_id AND status='.Stash::STATUS_APPROVED,array(':user_id' => $this->id));
+    }
+
+    protected function getFoundStashCount(){
+        $this->foundStashCount = Visitor::model()->count('user_id=:user_id',array(':user_id' => $this->id));
+    }
+
     protected function afterFind()
     {
-        //$this->birthday = date('dd.mm.yyyy', $this->birthday);
-        //$this->_birthday = Yii::app()->dateFormatter->formatDateTime($this->birthday, 'long', '');
+        $this->birthday = Yii::app()->dateFormatter->format('dd.MM.yyyy', $this->birthday);
+        $this->_birthday = Yii::app()->dateFormatter->formatDateTime($this->birthday, 'long', '');
+        $this->getCreateStashCount();
+        $this->getFoundStashCount();
 
         if (!empty($this->city_id)) {
             $this->userPlace = City::model()->with('region', 'country')->findByPk($this->city_id);

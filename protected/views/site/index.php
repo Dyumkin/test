@@ -82,7 +82,7 @@ $this->pageTitle=Yii::app()->name;
             <?php $i=1;
             foreach ($notepad as $comment) {
                 $table = '<tr class="info"><td>'.$i.'</td>'
-                    .'<td>'.CHtml::link(CHtml::encode($comment->stash->stash_name), $comment->stash->getUrl()) . ' от ' . $comment->user->username . ' (' . $comment['comment_date'] . ')</td></tr>';
+                    .'<td>'.CHtml::link(CHtml::encode($comment->stash->stash_name), $comment->stash->getUrl()) . ' от ' . $comment->user->username . ' (' . Yii::app()->dateFormatter->formatDateTime($comment['comment_date'], 'long'). ')</td></tr>';
                 $i++;
                 echo $table;
             }

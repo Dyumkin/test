@@ -112,8 +112,17 @@ class StashController extends Controller
         $model->save();
     }
 
+    protected function visitStash($userId, $stashId)
+    {
+        $model = new Visitor();
+        $model->user_id = $userId;
+        $model->stash_id = $stashId;
+        $model->date = time();
+        $model->save();
+    }
 
-    public function  actionAnswerTheQuestion($id,$answer)
+
+    public function actionAnswerTheQuestion($id,$answer)
     {
         if (Yii::app()->request->isAjaxRequest) {
             if(!empty($answer) && !empty($id))
@@ -122,8 +131,11 @@ class StashController extends Controller
                 if($model->answer == $answer){
                     $sender = User::model()->findByAttributes(array('username' =>'admin'));
                     $addressee_id = Yii::app()->user->id;
-                    $massage = 'Тайник "'.$model->getStashLink().'" засчитывается как посещённый.';
+                    $massage = 'Тайник "'.$model->getStashLink().'" засчитан как посещённый.';
                     $this->saveMassage($sender->id,$addressee_id,$massage);
+
+                    $this->visitStash(Yii::app()->user->id, $model->id);
+
                     echo "Ваш ответ правильный!";
                 }else{
                     echo "Вы дали неверный ответ";
@@ -146,7 +158,7 @@ class StashController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->loadModel($id);
-        if(Yii::app()->user->id == $model->user_id){
+        if(Yii::app()->user->id == $model->user_id || Yii::app()->user->name == 'admin'){
         // Uncomment the following line if AJAX validation is needed
         // $this->performAjaxValidation($model);
 

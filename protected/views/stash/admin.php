@@ -61,8 +61,18 @@ jQuery('#stash-grid a.approve').live('click',function() {
     'columns' => array(
         'id',
         'stash_name',
-        'status',
+        'status' => array(
+            'name' => 'status',
+            'value' => '$data->status',
+            'sortable'=>true,
+        ),
         'createStashDate',
+        'user_id' => array(
+            'name' => 'user_id',
+            'type' => 'html',
+            'value' => '$data->user->username',
+
+        ),
         /*
                 'type',
                 'class',

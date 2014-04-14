@@ -1,6 +1,7 @@
 <?php
 /* @var $this StashController */
 /* @var $model Stash */
+/* @var $notepad NotePad */
 
 $this->breadcrumbs = array(
     'Тайники' => array('index'),
