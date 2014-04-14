@@ -14,8 +14,15 @@ $this->breadcrumbs = array(
     'dataProvider' => $dataProvider,
    // 'filter' => $dataProvider,
     'columns' => array(
-        'username',
+        'username' => array(
+            'name' => 'username',
+            'type'=>'html',
+            'value' => 'CHtml::link(CHtml::encode($data->username),
+                         array("user/view","id" => $data->id))',
+        ),
         'create_date',
+        'createStashCount',
+        'foundStashCount',
         array(
             'class'=>'bootstrap.widgets.TbButtonColumn',
             'template'=>'{view}',

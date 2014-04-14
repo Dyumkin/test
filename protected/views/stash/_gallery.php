@@ -19,7 +19,6 @@
 $existPhoto = $model->galleryBehavior->getGalleryPhotos();
 if(!empty($existPhoto) && $model->gallery_id != "0") : ?>
     <section id="photo">
-        <h3>Фото</h3>
         <?php
         $this->widget('GalleryViewer', array(
             'gallery' => $model->galleryBehavior->getGallery(),

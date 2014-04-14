@@ -33,6 +33,8 @@ else
         'phone',
         'other_information',
         'create_date',
+        'createStashCount',
+        'foundStashCount',
     ),
 )); ?>
     </div>

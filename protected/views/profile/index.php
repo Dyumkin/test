@@ -12,7 +12,7 @@ $this->menu = array(
     array('label' => 'Изменение персональных данных', 'url' => array('profile/update', 'id' => Yii::app()->user->id)),
     array('label' => 'Посмотреть созданые тайники', 'url' => array('profile/view')),
     array('label' => 'Создать тайник', 'url' => array('stash/create')),
-    array('label' => 'Посещённые тайники', 'url' => array('profile/')),
+    array('label' => 'Посещённые тайники', 'url' => array('profile/viewFoundStash')),
 );
 ?>
 <h1><?php echo 'Здраствуй ' . Yii::app()->user->name ?></h1>
@@ -36,6 +36,8 @@ else
                 'e_mail',
                 'phone',
                 'other_information',
+                'createStashCount',
+                'foundStashCount',
             ),
         )); ?>
     </div>

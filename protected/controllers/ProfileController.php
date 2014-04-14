@@ -38,7 +38,7 @@ class ProfileController extends Controller
         return array(
 
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
-                'actions' => array('index', 'view', 'update'),
+                'actions' => array('index', 'view', 'update', 'viewFoundStash'),
                 'users' => array('@'),
             ),
             array('deny', // deny all users
@@ -64,6 +64,27 @@ class ProfileController extends Controller
         $this->render('view', array(
             'dataProvider' => $dataProvider,
         ));
+    }
+
+    public function actionViewFoundStash()
+    {
+
+        $criteria = new CDbCriteria(array(
+            'condition' => 'user_id=' . Yii::app()->user->id,
+            'order' => 'date DESC',
+        ));
+
+        $dataProvider = new CActiveDataProvider('Visitor', array(
+            'pagination' => array(
+                'pageSize' => Yii::app()->params['postsPerPage'],
+            ),
+            'criteria' => $criteria,
+            'sort' => false,
+        ));
+        $this->render('found', array(
+            'dataProvider' => $dataProvider,
+        ));
+
     }
 
     public function loadModel($id)
