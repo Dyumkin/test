@@ -47,8 +47,8 @@
 
 
 
-        <?php echo $form->label($model, 'birthday'); ?>
-        <?php echo $form->textField($model, 'birthday'); ?>
+        <?php /*echo $form->label($model, 'birthday'); */?><!--
+        --><?php /*echo $form->textField($model, 'birthday'); */?>
 
 
 

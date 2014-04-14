@@ -39,7 +39,7 @@ $this->breadcrumbs = array(
             <h4 class="text-center">' . $attribute['stash_name'] . '</h4>
             <div class="text-left">Создан игроком '.$attribute->user->username.': '.$attribute['createStashDate'].'</div><br>
             <div>'.$this->snippet($attribute['place_description']).'</div>
-            <div>'.CHtml::link(CHtml::encode('View Stash'), $attribute->getUrl()).'</div>
+            <div>'.CHtml::link(CHtml::encode('Посмотреть тайник'), $attribute->getUrl()).'</div>
         </div>');
 
         $infoBox->pixelOffset = new EGMapSize('0', '-140');

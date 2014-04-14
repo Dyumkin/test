@@ -34,7 +34,7 @@
 
 <?php /*$this->widget('WidgetProvider', array('model' => $model)); */?>
 
-<?php echo $form->datepickerRow($model, 'birthday', array(
+<?php /*echo $form->datepickerRow($model, 'birthday', array(
     'class'=>'span-input',
     'prepend' => '<i class="icon-calendar"></i>',
     'options' => array(
@@ -47,7 +47,7 @@
     ),
 
 ));
-?>
+*/?>
 
 <?php echo $form->textFieldRow($model, 'phone', array('size' => 18, 'maxlength' => 18)); ?>
 
