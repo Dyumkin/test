@@ -174,7 +174,7 @@ return array(
 	// using Yii::app()->params['paramName']
 	'params'=>array(
 		// this is used in contact page
-		'adminEmail'=>'webmaster@example.com',
+		'adminEmail'=>'geostashing@yandex.ru',
         'cryptSalt' => 'blablabla=3df43587f',
         'postsPerPage'=>10,
         'commentNeedApproval'=>true,

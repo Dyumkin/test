@@ -81,7 +81,7 @@ class User extends CActiveRecord
             array('sex', 'length', 'max' => 7),
             array('phone', 'length', 'max' => 18),
             array('birthday, other_information', 'safe'),
-            array('birthday', 'date', 'format'=>'dd.mm.yyyy'),
+           // array('birthday', 'date', 'format'=>'dd.mm.yyyy'),
             array('city_id' , 'numerical', 'integerOnly'=>true),
             array('avaImg', 'file', 'types' => 'png, gif, jpg', 'allowEmpty' => true),
             //array('verifyCode', 'captcha', 'allowEmpty'=>!CCaptcha::checkRequirements()),
@@ -209,8 +209,8 @@ class User extends CActiveRecord
 
     protected function afterFind()
     {
-        $this->birthday = Yii::app()->dateFormatter->format('dd.MM.yyyy', $this->birthday);
-        $this->_birthday = Yii::app()->dateFormatter->formatDateTime($this->birthday, 'long', '');
+        //$this->birthday = Yii::app()->dateFormatter->format('dd.MM.yyyy', $this->birthday);
+        //$this->_birthday = Yii::app()->dateFormatter->formatDateTime($this->birthday, 'long', '');
         $this->getCreateStashCount();
         $this->getFoundStashCount();
 

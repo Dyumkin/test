@@ -1,15 +1,15 @@
 <?php
 /* @var $this SiteController */
 /* @var $model ContactForm */
-/* @var $form CActiveForm */
+/* @var $form TBActiveForm */
 
-$this->pageTitle=Yii::app()->name . ' - Contact Us';
+$this->pageTitle=Yii::app()->name . ' - Обратная связь';
 $this->breadcrumbs=array(
-	'Contact',
+	'Контакт',
 );
 ?>
 
-<h1>Contact Us</h1>
+<h1>Обратная связь</h1>
 
 <?php if(Yii::app()->user->hasFlash('contact')): ?>
 
@@ -20,44 +20,34 @@ $this->breadcrumbs=array(
 <?php else: ?>
 
 <p>
-If you have business inquiries or other questions, please fill out the following form to contact us. Thank you.
+    Если у вас есть деловое предложение или другие вопросы, пожалуйста, заполните следующую форму, чтобы связаться с нами. Спасибо.
 </p>
 
 <div class="form">
 
-<?php $form=$this->beginWidget('CActiveForm', array(
+<?php $form=$this->beginWidget('bootstrap.widgets.TbActiveForm', array(
 	'id'=>'contact-form',
+        'type' => 'horizontal',
 	'enableClientValidation'=>true,
 	'clientOptions'=>array(
 		'validateOnSubmit'=>true,
 	),
 )); ?>
 
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
+    <p class="note">Поля с <span class="required">*</span> являются обезательными для заполнения.</p>
 
 	<?php echo $form->errorSummary($model); ?>
 
-
-		<?php echo $form->labelEx($model,'name'); ?>
-		<?php echo $form->textField($model,'name'); ?>
+		<?php echo $form->textFieldRow($model,'name'); ?>
 		<?php echo $form->error($model,'name'); ?>
 
-
-
-		<?php echo $form->labelEx($model,'email'); ?>
-		<?php echo $form->textField($model,'email'); ?>
+		<?php echo $form->textFieldRow($model,'email'); ?>
 		<?php echo $form->error($model,'email'); ?>
 
-
-
-		<?php echo $form->labelEx($model,'subject'); ?>
-		<?php echo $form->textField($model,'subject',array('size'=>60,'maxlength'=>128)); ?>
+		<?php echo $form->textFieldRow($model,'subject',array('size'=>60,'maxlength'=>128)); ?>
 		<?php echo $form->error($model,'subject'); ?>
 
-
-
-		<?php echo $form->labelEx($model,'body'); ?>
-		<?php echo $form->textArea($model,'body',array('rows'=>6, 'cols'=>50)); ?>
+		<?php echo $form->textAreaRow($model,'body',array('rows'=>6, 'cols'=>50)); ?>
 		<?php echo $form->error($model,'body'); ?>
 
 
@@ -68,14 +58,14 @@ If you have business inquiries or other questions, please fill out the following
 		<?php $this->widget('CCaptcha'); ?>
 		<?php echo $form->textField($model,'verifyCode'); ?>
 		</div>
-		<div class="hint">Please enter the letters as they are shown in the image above.
-		<br/>Letters are not case-sensitive.</div>
+		<div class="hint">Пожалуйста, введите буквы, изображенные на картинке выше.
+		<br/>Буквы вводятся без учета регистра.</div>
 		<?php echo $form->error($model,'verifyCode'); ?>
 
 	<?php endif; ?>
 
 
-		<?php echo CHtml::submitButton('Submit'); ?>
+		<?php echo TbHtml::submitButton('Отправить'); ?>
 
 
 <?php $this->endWidget(); ?>
