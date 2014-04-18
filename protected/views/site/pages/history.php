@@ -7,7 +7,7 @@ $this->breadcrumbs = array(
 );
 ?>
 
-<h2 class="text-center">Геокешинг</h2>
+<h2 class="text-center">История</h2>
 <br>
 
     <?php echo $model->content; ?>

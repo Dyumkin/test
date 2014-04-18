@@ -22,6 +22,6 @@
 
         ),
     ));
-    echo CHtml::link(CHtml::encode('Показать на карте'), $data->getMapUrl());
+    echo CHtml::link(CHtml::encode('Показать на карте'), $data->getMapUrl(),array('vertical-align' => 'middle'));
     $this->endWidget();
 ?>
