@@ -31,6 +31,7 @@
  * @property Notepad[] $notepads
  * @property City $city
  * @property Visitor[] $visitors
+ * @property Planing[] $planings
  */
 class Stash extends CActiveRecord
 {
@@ -124,6 +125,7 @@ class Stash extends CActiveRecord
             'commentCount' => array(self::STAT, 'Notepad', 'stash_id', 'condition' => 'status=' . Notepad::STATUS_APPROVED),
             'cities' => array(self::BELONGS_TO, 'City', 'city_id'),
             'visitors' => array(self::HAS_MANY, 'Visitor', 'stash_id'),
+            'planings' => array(self::HAS_MANY, 'Planing', 'stash_id'),
         );
     }
 

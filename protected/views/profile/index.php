@@ -13,6 +13,7 @@ $this->menu = array(
     array('label' => 'Посмотреть созданые тайники', 'url' => array('profile/view')),
     array('label' => 'Создать тайник', 'url' => array('stash/create')),
     array('label' => 'Посещённые тайники', 'url' => array('profile/viewFoundStash')),
+    array('label' => 'Запланированные маршруты', 'url' => array('profile/planing')),
 );
 ?>
 <h1><?php echo 'Здраствуй ' . Yii::app()->user->name ?></h1>

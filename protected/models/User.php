@@ -27,6 +27,7 @@
  * @property Visitor[] $visitors
  * @property Massage[] $massages_addressee
  * @property Massage[] $massages_sender
+ * @property Planing[] $planings
  */
 class User extends CActiveRecord
 {
@@ -104,7 +105,7 @@ class User extends CActiveRecord
             'stashes' => array(self::HAS_MANY, 'Stash', 'user_id'),
             'notepads' => array(self::HAS_MANY, 'Notepad', 'user_id'),
             'cities' => array(self::BELONGS_TO, 'City', 'city_id'),
-            //'profiles' => array(self::HAS_MANY, 'Profile', 'user_id'),
+            'planings' => array(self::HAS_MANY, 'Planing', 'user_id'),
             'visitors' => array(self::HAS_MANY, 'Visitor', 'user_id'),
         );
     }

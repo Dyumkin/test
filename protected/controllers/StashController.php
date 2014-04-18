@@ -39,7 +39,7 @@ class StashController extends Controller
                 'users' => array('*'),
             ),
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
-                'actions'=>array('create','update','newComment','gallery','answerTheQuestion'),
+                'actions'=>array('create','update','newComment','gallery','answerTheQuestion', 'routePlanning'),
                 'users' => array('@'),
             ),
 
@@ -115,10 +115,15 @@ class StashController extends Controller
     protected function visitStash($userId, $stashId)
     {
         $model = new Visitor();
+        if (!$model->exists('user_id=' . $userId . ' AND stash_id=' . $stashId)) {
         $model->user_id = $userId;
         $model->stash_id = $stashId;
         $model->date = time();
         $model->save();
+            return true;
+        }else{
+            return false;
+        }
     }
 
 
@@ -132,11 +137,14 @@ class StashController extends Controller
                     $sender = User::model()->findByAttributes(array('username' =>'admin'));
                     $addressee_id = Yii::app()->user->id;
                     $massage = 'Тайник "'.$model->getStashLink().'" засчитан как посещённый.';
+
+                    if($this->visitStash(Yii::app()->user->id, $model->id)){
                     $this->saveMassage($sender->id,$addressee_id,$massage);
+                        echo "Ваш ответ правильный!";
+                    }else {
+                        echo 'Ваш ответ уже был засчитан';
+                    }
 
-                    $this->visitStash(Yii::app()->user->id, $model->id);
-
-                    echo "Ваш ответ правильный!";
                 }else{
                     echo "Вы дали неверный ответ";
                 }
@@ -146,6 +154,36 @@ class StashController extends Controller
         }else
         {
             throw new CHttpException(400, 'Неверный запрос. Пожалуйста, не повторяйте этот запрос снова.');
+        }
+    }
+
+    public function actionRoutePlanning($id)
+    {
+        if (Yii::app()->request->isAjaxRequest) {
+            $model = $this->loadModel($id);
+            if($this->planingStash($model->id)){
+                echo 'Тайник добавлен в запланированные маршруты';
+            }else{
+                echo 'Тайник уже был добавлен';
+            }
+        }else{
+            throw new CHttpException(400, 'Неверный запрос. Пожалуйста, не повторяйте этот запрос снова.');
+        }
+    }
+
+    protected function planingStash($stash_id)
+    {
+        $model = new Planing();
+        $user = Yii::app()->user->id;
+        if (!$model->exists('user_id=' . $user . ' AND stash_id=' . $stash_id)) {
+            $model->stash_id = $stash_id;
+            $model->user_id = $user;
+            $model->date = time();
+            $model->save();
+
+            return true;
+        }else{
+            return false;
         }
     }
 

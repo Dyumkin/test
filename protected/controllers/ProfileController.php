@@ -38,7 +38,7 @@ class ProfileController extends Controller
         return array(
 
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
-                'actions' => array('index', 'view', 'update', 'viewFoundStash'),
+                'actions' => array('index', 'view', 'update', 'viewFoundStash', 'planing'),
                 'users' => array('@'),
             ),
             array('deny', // deny all users
@@ -103,6 +103,25 @@ class ProfileController extends Controller
             throw new CHttpException(404, 'Запрашиваемой страницы не существует.');
         }
         return $model;
+    }
+
+    public function actionPlaning()
+    {
+        $criteria = new CDbCriteria(array(
+            'condition' => 'user_id=' . Yii::app()->user->id,
+            'order' => 'date DESC',
+        ));
+
+        $dataProvider = new CActiveDataProvider('Planing', array(
+            'pagination' => array(
+                'pageSize' => Yii::app()->params['postsPerPage'],
+            ),
+            'criteria' => $criteria,
+            'sort' => false,
+        ));
+        $this->render('planing', array(
+            'dataProvider' => $dataProvider,
+        ));
     }
 
 }

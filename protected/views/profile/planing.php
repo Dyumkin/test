@@ -1,10 +1,10 @@
 <?php
 /* @var $this ProfileController */
-/* @var $dataProvider Visitor */
+/* @var $dataProvider Planing */
 
 $this->breadcrumbs = array(
     'Личный кабинет' => array('index'),
-    'Найденные тайники',
+    'Запланированные маршруты',
 );
 
 $this->menu = array(
@@ -16,9 +16,8 @@ $this->menu = array(
 );
 ?>
 
-    <h1>Найденные тайники</h1>
+    <h1>Запланированные маршруты</h1>
 <?php
-
 $this->widget('bootstrap.widgets.TbGridView', array(
     'type' => 'bordered',
     'dataProvider' => $dataProvider,
