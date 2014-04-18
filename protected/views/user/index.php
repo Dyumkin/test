@@ -23,6 +23,7 @@ $this->breadcrumbs = array(
         'create_date',
         'createStashCount',
         'foundStashCount',
+        'points',
         array(
             'class'=>'bootstrap.widgets.TbButtonColumn',
             'template'=>'{view}',

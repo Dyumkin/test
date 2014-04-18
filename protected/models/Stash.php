@@ -34,9 +34,6 @@
  */
 class Stash extends CActiveRecord
 {
-    /**
-     * @return string the associated database table name
-     */
     const STATUS_PENDING = 1;
     const STATUS_APPROVED = 2;
 
@@ -44,6 +41,11 @@ class Stash extends CActiveRecord
     const TYPE_VIRTUAL = 'Виртуальный';
     const TYPE_STEPPED_TRADITIONAL = 'Пошаговый традиционный';
     const TYPE_STEPPED_VIRTUAL = 'Пошаговый виртуальный';
+
+    const POINT_TRADITIONAL = 2;
+    const POINT_VIRTUAL = 3;
+    const POINT_STEPPED_TRADITIONAL = 4;
+    const POINT_STEPPED_VIRTUAL = 5;
 
     const CLASS_ARCHAEOLOGICAL = 'Археологический';
     const CLASS_ARCHITECTURAL = 'Архитектурный';
@@ -84,6 +86,9 @@ class Stash extends CActiveRecord
 
     public $createStashDate;
 
+    /**
+     * @return string the associated database table name
+     */
     public function tableName()
     {
         return '{{stash}}';
