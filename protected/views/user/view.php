@@ -35,6 +35,7 @@ else
         'create_date',
         'createStashCount',
         'foundStashCount',
+        'points',
     ),
 )); ?>
     </div>

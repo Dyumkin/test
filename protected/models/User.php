@@ -56,6 +56,8 @@ class User extends CActiveRecord
 
     public $foundStashCount;
 
+    public $points = 0;
+
     /**
      * @return string the associated database table name
      */
@@ -133,6 +135,7 @@ class User extends CActiveRecord
             'verifyCode'   => 'Код подтверждения',
             'createStashCount' => 'Количество созданый тайников',
             'foundStashCount' => 'Количество найденых тайников',
+            'points' => 'Баллы',
         );
     }
 
@@ -208,12 +211,38 @@ class User extends CActiveRecord
         $this->foundStashCount = Visitor::model()->count('user_id=:user_id',array(':user_id' => $this->id));
     }
 
+    protected function countPoints()
+    {
+        $visit = new Visitor();
+
+        $rows = $visit->findAll('user_id=:user_id', array(':user_id' => $this->id));
+        $count = 0;
+        foreach ($rows as $stashes) {
+            if ($stashes->stash->type == Stash::TYPE_STEPPED_VIRTUAL) {
+                $count = $stashes->stash->complexity + Stash::POINT_STEPPED_VIRTUAL;
+            }
+            if ($stashes->stash->type == Stash::TYPE_STEPPED_TRADITIONAL) {
+                $count = $stashes->stash->complexity + Stash::POINT_STEPPED_TRADITIONAL;
+            }
+            if ($stashes->stash->type == Stash::TYPE_VIRTUAL) {
+                $count = $stashes->stash->complexity + Stash::POINT_VIRTUAL;
+            }
+            if ($stashes->stash->type == Stash::TYPE_TRADITIONAL) {
+                $count = $stashes->stash->complexity + Stash::POINT_TRADITIONAL;
+            }
+
+            $this->points = $this->points + $count;
+        }
+
+    }
+
     protected function afterFind()
     {
         //$this->birthday = Yii::app()->dateFormatter->format('dd.MM.yyyy', $this->birthday);
         //$this->_birthday = Yii::app()->dateFormatter->formatDateTime($this->birthday, 'long', '');
         $this->getCreateStashCount();
         $this->getFoundStashCount();
+        $this->countPoints();
 
         if (!empty($this->city_id)) {
             $this->userPlace = City::model()->with('region', 'country')->findByPk($this->city_id);

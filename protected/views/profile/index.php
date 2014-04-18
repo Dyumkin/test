@@ -39,6 +39,7 @@ else
                 'other_information',
                 'createStashCount',
                 'foundStashCount',
+                'points',
             ),
         )); ?>
     </div>
