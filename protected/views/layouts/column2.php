@@ -31,7 +31,7 @@
 
             <h1>Поиск</h1>
 
-            <form method="post" id="search" action="http://www.free-css.com/">
+            <form method="post" id="search">
                 <p>
                     <input name="search_query" class="textbox" type="text"/>
                     <input name="search" class="searchbutton" value="Search" type="submit"/>

@@ -54,9 +54,6 @@ ul span, ol span {
 }
 
 /* images */
-img {
-	border: 2px solid #CCC;
-}
 img.float-right {
   margin: 5px 0px 10px 10px;  
 }

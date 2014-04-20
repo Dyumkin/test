@@ -37,10 +37,10 @@ $this->widget('bootstrap.widgets.TbGridView', array(
             },
             'buttons'=>array(
                 'picture' => array(
-                    'label' => 'Gallery',
-                    'imageUrl' => Yii::app()->request->baseUrl.'/extensions/bootstrap/assets/bootstrap/img/glyphicons-halflings.png',
+                    'label' => 'Галерея',
+                    'imageUrl' => Yii::app()->request->baseUrl.'/css/icon_picture.png',
                     'url' => 'Yii::app()->createUrl("stash/gallery", array("id"=>$data->id))',
-                    'options' => array('class'=>'icon-picture'),
+                    //'options' => array('class'=>'icon-picture'),
                 ),
             ),
         ),
