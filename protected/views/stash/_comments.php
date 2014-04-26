@@ -45,4 +45,5 @@ foreach ($comments as $comment):
         )); ?>
     <?php endif; ?>
 
+    <?php else: echo '<br>Что бы оставить запись в блокноте необходимо '.CHtml::link('войти',Yii::app()->createUrl('site/login')); ?>
 <?php endif; ?>
