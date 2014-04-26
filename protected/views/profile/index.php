@@ -33,7 +33,7 @@ else
                 'last_name',
                 'sex',
                 //'birthday',
-                'userPlace',
+                //'userPlace',
                 'e_mail',
                 'phone',
                 'other_information',
