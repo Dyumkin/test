@@ -11,7 +11,7 @@ $this->breadcrumbs = array(
 
     <fieldset>
 
-        <legend>Вход</legend>
+        <h1>Вход</h1>
 
         <p>Пожалуйста, заполните следующую форму с вашими учетными данными для входа:</p>
 
@@ -24,10 +24,7 @@ $this->breadcrumbs = array(
         <p class="note">Поля помеченные <span class="required">*</span> являются обязательными для заполнения.</p>
 
             <?php echo $form->textFieldRow($model, 'username'); ?>
-            <?php echo $form->passwordFieldRow($model, 'password', array('placeholder' => 'Password')); ?>
-
-        <a href="<?= Yii::app()->createUrl('user/registration'); ?>">Регистрация</a>
-
+            <?php echo $form->passwordFieldRow($model, 'password'); ?>
             <?php echo $form->checkBoxRow($model, 'rememberMe'); ?>
 
     </fieldset>
@@ -35,6 +32,7 @@ $this->breadcrumbs = array(
 <?php echo TbHtml::formActions(array(
     TbHtml::submitButton('Войти', array('color' => TbHtml::BUTTON_COLOR_PRIMARY)),
     TbHtml::resetButton('Сбросить'),
+    TbHtml::Button('Зарегистрироваться', array('color' => TbHtml::BUTTON_COLOR_SUCCESS, 'submit' => array('user/registration'))),
 )); ?>
 
 <?php $this->endWidget(); ?>

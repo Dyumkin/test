@@ -315,6 +315,22 @@ class Stash extends CActiveRecord
         $pathToStash = Yii::app()->createUrl('stash/view', array('id' => $this->id));
         return CHtml::link(CHtml::encode($this->stash_name), $pathToStash);
     }
+
+    public function getVisitUser()
+    {
+       $users = Visitor::model()->findAll('stash_id=:stash_id', array(':stash_id' => $this->id));
+        $visitor = array();
+        foreach($users as $user){
+           $visitor[$user['user_id']] = $user->user->username;
+        }
+        return $visitor;
+    }
+
+    public function getVisitCount()
+    {
+        return Visitor::model()->count('stash_id=:stash_id', array(':stash_id' => $this->id));
+    }
+
     /**
      * Retrieves a list of models based on the current search/filter conditions.
      *

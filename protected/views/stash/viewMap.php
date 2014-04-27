@@ -35,9 +35,16 @@ $this->breadcrumbs = array(
     }
 
     foreach ($model->findAll() as $attribute) {
+        if($attribute->getVisitCount()>0){
+            $isVisit = '<span style="display: none"></span>';
+        }else {
+            $isVisit = '<span style="color: red">Тайник не разгадан!</span>';
+        }
+
         $infoBox = new EGMapInfoBox('<div class="info_box">
-            <h4 class="text-center">' . $attribute['stash_name'] . '</h4>
-            <div class="text-left">Создан игроком '.$attribute->user->username.': '.$attribute['createStashDate'].'</div><br>
+            <h4 class="text-center">' . $attribute['stash_name'] . '</h4>'
+            .$isVisit.
+            '<div class="text-left">Создан игроком '.$attribute->user->username.': '.$attribute['createStashDate'].'</div><br>
             <div>'.$this->snippet($attribute['place_description']).'</div>
             <div>'.CHtml::link(CHtml::encode('Посмотреть тайник'), $attribute->getUrl()).'</div>
         </div>');

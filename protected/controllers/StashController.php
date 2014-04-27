@@ -140,13 +140,13 @@ class StashController extends Controller
 
                     if($this->visitStash(Yii::app()->user->id, $model->id)){
                     $this->saveMassage($sender->id,$addressee_id,$massage);
-                        echo "Ваш ответ правильный!";
+                        echo "Поздравляем! Ваш ответ правильный!";
                     }else {
                         echo 'Ваш ответ уже был засчитан';
                     }
 
                 }else{
-                    echo "Вы дали неверный ответ";
+                    echo "Вы дали неверный ответ. Пожалуйста попробуйте снова, возможно вы что-то упустили";
                 }
             }else{
                 throw new CHttpException(400, 'Неверный запрос. Пожалуйста, не повторяйте этот запрос снова.');

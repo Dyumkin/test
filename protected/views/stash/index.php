@@ -35,8 +35,27 @@ $this->breadcrumbs = array(
         'update_date',
         array(
             'class'=>'bootstrap.widgets.TbButtonColumn',
-            'template'=>'{view}',
+            'template'=>'{info} {view}',
+            'buttons'=>array(
+                'info' => array(
+                    //'label' => 'Тайник не разгадан',
+                    'imageUrl' => '/images/system/pic.jpg',
+                    'url' =>'Yii::app()->createUrl("stash/view",array("id"=>$data->id))',
+                    'options'=>array(
+                        'id' => 'tooltip',
+                        'title' => 'Тайник не разгадан'),
+                    'visible'=> '$data->getVisitCount() < "1"',
+                ),
+            ),
         ),
     ),
 ));
 ?>
+
+<script>
+    $(function() {
+        $('body').tooltip({
+            selector: "[id=tooltip]"
+        });
+    });
+</script>

@@ -199,6 +199,13 @@ class User extends CActiveRecord
         ));
     }
 
+    public function getUrlById($id)
+    {
+        return Yii::app()->createUrl('user/view', array(
+            'id' => $id,
+        ));
+    }
+
     public function getGenderOptions(){
         return array_combine(self::$genderMap, self::$genderMap);
     }

@@ -43,14 +43,21 @@
                         ),
                         ),
                         array('label' => 'Контакт', 'url' => array('/site/contact')),
-                        array('label' => 'Вход', 'url' => array('/site/login'), 'visible' => Yii::app()->user->isGuest),
 
+                    ),
+                ),
+                array(
+                    'class' => 'bootstrap.widgets.TbMenu',
+                    'htmlOptions' => array('class' => 'pull-right'),
+                    'items' => array(
+                        array('label' => 'Вход', 'url' => array('/site/login'), 'visible' => Yii::app()->user->isGuest),
+                        array('label' => 'Регистрация', 'url' => array('/user/registration'), 'visible' => Yii::app()->user->isGuest),
                         array('label' => 'Добро пожаловать ' . Yii::app()->user->name, 'visible' => !Yii::app()->user->isGuest, 'items' => array(
                             array('label' => 'Личный кабинет', 'url' => array('/profile/index')),
                             array('label' => 'Выход (' . Yii::app()->user->name . ')', 'url' => array('/site/logout')),
                         )
                         ),
-                    ),
+                    )
                 ),
             ),
            // 'htmlOptions' => array('class' => 'header-tabs'),

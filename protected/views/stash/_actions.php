@@ -73,7 +73,7 @@ if (!Yii::app()->user->isGuest) {
 
     }
 }else{
-    echo CHtml::encode('Для получения доступа к действиям необходимо ').CHtml::link('зарегестрироваться',Yii::app()->createUrl('user/registration')).
+    echo CHtml::encode('Для получения доступа к действиям необходимо ').CHtml::link('зарегистрироваться',Yii::app()->createUrl('user/registration')).
         CHtml::encode(' либо ').CHtml::link('войти',Yii::app()->createUrl('site/login')).CHtml::encode(' на сайт под своим псевдонимом');
 }
 ?>
