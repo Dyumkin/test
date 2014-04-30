@@ -87,6 +87,10 @@ class Stash extends CActiveRecord
 
     public $createStashDate;
 
+    public $_latitude;
+
+    public $_longitude;
+
     /**
      * @return string the associated database table name
      */
@@ -104,6 +108,7 @@ class Stash extends CActiveRecord
         // will receive user inputs.
         return array(
             array('stash_name, type, stash_description, place_description, content, answer, question, latitude, longitude', 'required'),
+            array('stash_name', 'unique'),
             array('complexity, user_id, city_id, status, galleryAdded', 'numerical', 'integerOnly' => true),
             array('latitude, longitude', 'numerical'),
             array('stash_name, type', 'length', 'max' => 60),
@@ -159,7 +164,10 @@ class Stash extends CActiveRecord
             'stashPlace' => 'Ближайшая местность',
             'latitude' => 'Широта',
             'longitude' => 'Долгота',
+            '_latitude' => 'Широта',
+            '_longitude' => 'Долгота',
             'galleryAdded' => 'Я хочу добавить фотографии к тайнику',
+
         );
     }
 
@@ -250,6 +258,15 @@ class Stash extends CActiveRecord
         }
     }
 
+    protected function unserializeCoordinates()
+    {
+        $latitude = explode('.', $this->latitude);
+        $longitude = explode('.', $this->longitude);
+
+        $this->_latitude = html_entity_decode($latitude[0].'&deg; '.$latitude[1].'&prime;');
+        $this->_longitude = html_entity_decode($longitude[0].'&deg; '.$longitude[1].'&prime;');
+    }
+
     protected function beforeSave()
     {
         $this->serializeItems();
@@ -278,6 +295,7 @@ class Stash extends CActiveRecord
         //$this->create_date = Yii::app()->dateFormatter->formatDateTime($this->create_date, 'long','');
         $this->update_date = Yii::app()->dateFormatter->formatDateTime($this->update_date, 'long','');
         $this->unserializeItems();
+        $this->unserializeCoordinates();
 
         if (!empty($this->city_id)) {
             $this->stashPlace = City::model()->with('region', 'country')->findByPk($this->city_id);

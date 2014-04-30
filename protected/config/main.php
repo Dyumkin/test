@@ -179,5 +179,7 @@ return array(
         'postsPerPage'=>10,
         'commentNeedApproval'=>true,
         'recentCommentCount'=>10,
+        'searchSize' =>5,
+        'minSearchStringLength' => 3,
 	),
 );

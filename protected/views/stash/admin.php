@@ -27,7 +27,7 @@ $('.search-form form').submit(function(){
 
 Yii::app()->clientScript->registerScript('approve', "
 jQuery('#stash-grid a.approve').live('click',function() {
-        if(!confirm('Are you sure you want to approve this Stash?')) return false;
+        if(!confirm('Вы действительно хотите утвердить этот тайник?')) return false;
 
         var url = $(this).attr('href');
         //  do your post request here

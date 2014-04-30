@@ -17,8 +17,8 @@
             //'attribute',
             'season',
             'complexity',
-            'latitude',
-            'longitude',
+            '_latitude',
+            '_longitude',
 
         ),
     ));

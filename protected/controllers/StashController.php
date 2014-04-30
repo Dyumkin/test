@@ -35,7 +35,7 @@ class StashController extends Controller
     {
         return array(
             array('allow', // allow all users to perform 'index' and 'view' actions
-                'actions' => array('index', 'view', 'viewMap'),
+                'actions' => array('index', 'view', 'viewMap', 'search'),
                 'users' => array('*'),
             ),
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -392,5 +392,39 @@ class StashController extends Controller
         $text = trim($text);
 
         return $text;
+    }
+
+    public function actionSearch()
+    {
+        $search = new SiteSearchForm;
+
+        if(isset($_POST['SiteSearchForm'])) {
+            $search->attributes = $_POST['SiteSearchForm'];
+            $_GET['searchString'] = $search->string;
+        } else {
+            $search->string = $_GET['searchString'];
+        }
+
+        $criteria = new CDbCriteria(array(
+            'condition' => 'status='.Stash::STATUS_APPROVED.' AND place_description LIKE :keyword',
+            'order' => 'create_date DESC',
+            'params' => array(
+                ':keyword' => '%'.$search->string.'%',
+            ),
+        ));
+
+        $materialCount = Stash::model()->count($criteria);
+        $pages = new CPagination($materialCount);
+        $pages->pageSize = Yii::app()->params['searchSize'];
+        $pages->applyLimit($criteria);
+
+        $materials = Stash::model()->findAll($criteria);
+
+        $this->render('found',array(
+            'materials' => $materials,
+            'pages' => $pages,
+            'search' => $search,
+        ));
+
     }
 }

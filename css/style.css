@@ -103,8 +103,8 @@ blockquote {
 	padding: 3px;	
 	width: 110px;
 }
-#sidebar #search input.searchbutton { 
-	margin: 0; 
+#sidebar #search input.searchbutton {
+    margin-bottom: 11px;
 	font: bold 100% Arial, Sans-serif;
 	border: 1px solid #CCC; 
 	background: #CCC url(../images/buttonbg.gif) repeat-x left bottom; 
