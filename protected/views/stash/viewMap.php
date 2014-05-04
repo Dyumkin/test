@@ -34,7 +34,7 @@ $this->breadcrumbs = array(
         $gMap->setCenter(53.315076, 28.23800);
     }
 
-    foreach ($model->findAll() as $attribute) {
+    foreach ($model->findAll('status=:status',array('status' => Stash::STATUS_APPROVED)) as $attribute) {
         if($attribute->getVisitCount()>0){
             $isVisit = '<span style="display: none"></span>';
         }else {
