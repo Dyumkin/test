@@ -9,7 +9,7 @@ $this->pageTitle=Yii::app()->name;
         $('.carousel').carousel('cycle');
     });</script>
 
-<h1>Добро пожаловать на игру <i><?php echo CHtml::encode(Yii::app()->name); ?></i></h1>
+<h1>Добро пожаловать в игру <i><?php echo CHtml::encode(Yii::app()->name); ?></i></h1>
 
 <div id="myCarousel" class="carousel slide">
     <!-- Carousel items -->
