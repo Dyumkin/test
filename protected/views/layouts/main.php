@@ -78,7 +78,7 @@
 
         <?php echo $content; ?>
 
-  <div id="footer"> <span id="footer-left"> &copy; <?php echo date( 'Y', time() ); ?> <strong><?php echo CHtml::encode( Yii::app()->name ); ?></strong> </span> </div>
+  <div id="footer"> <span id="footer-left"> &copy; <?php echo date( 'Y', time() ); ?> Разработчик: <strong>Дюмкин Юрий Валерьевич</strong> | E-mail: <strong>dyumkin@gmail.com</strong> </span> </div>
 </div>
 </body>
 </html>
