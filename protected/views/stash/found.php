@@ -43,7 +43,7 @@ $this->breadcrumbs = array(
         ?>
     <?php endforeach; ?>
 
-    <br/>
+    <br>
     <?php $this->widget('CLinkPager', array('pages' => $pages)); ?>
 
     <?php else: ?>

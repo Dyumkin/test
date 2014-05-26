@@ -364,3 +364,7 @@ hr {
     height: 2px; /* Толщина линии */
     margin: 10px 0px 0px 0px;
 }
+
+.ui-widget-content a {
+    color: #72A545;
+}
