@@ -66,7 +66,7 @@
   </div>
     <div id="header">
         <h1 id="logo-text">Гео<span class="gray">Стэшинг</span></h1>
-        <h2 id="slogan">слоган.</h2>
+        <!--<h2 id="slogan">слоган.</h2>-->
     </div>
 
     <?php if(isset($this->breadcrumbs)):?>
